@@ -72,61 +72,110 @@ async def generate_test_questions(category: str, level: str, num_questions: int 
         ]
 
 async def analyze_test_results(questions: List[Dict], answers: List[Dict], category: str, level: str) -> Dict:
-    """Analyze test answers using GPT-4"""
+    """Analyze test answers using GPT-4 with strict context isolation"""
     
-    qa_pairs = []
+    question_feedback = []
+    
     for q in questions:
         answer = next((a for a in answers if a["question_id"] == q["question_id"]), None)
-        qa_pairs.append({
-            "question": q["question_text"],
-            "expected_criteria": q.get("expected_criteria", ""),
-            "user_answer": answer["answer_text"] if answer else "No answer provided"
-        })
+        
+        isolated_prompt = f"""Analyze this SINGLE question and answer independently. Do not reference any other questions or answers.
+
+Question: {q["question_text"]}
+Expected Criteria: {q.get("expected_criteria", "N/A")}
+User Answer: {answer["answer_text"] if answer else "No answer provided"}
+
+Provide analysis in JSON format with ONLY these fields:
+{{
+  "question_number": {q["question_id"]},
+  "score": <number between 0-100>,
+  "feedback": "<brief feedback about THIS answer only>"
+}}
+
+CRITICAL RULES:
+- Do not infer or recall information beyond this single question
+- Do not assume continuity with other questions
+- Analyze ONLY the provided answer against the provided question
+- Keep feedback focused solely on this question-answer pair"""
+
+        try:
+            response = client.chat.completions.create(
+                model="gpt-4o",
+                messages=[
+                    {"role": "system", "content": "You are an independent question evaluator. Analyze each question in complete isolation. Return ONLY valid JSON, no markdown."},
+                    {"role": "user", "content": isolated_prompt}
+                ],
+                temperature=0.3,  
+                max_tokens=500
+            )
+            
+            content = response.choices[0].message.content
+            content = extract_json(content)
+            feedback_item = json.loads(content)
+            question_feedback.append(feedback_item)
+        except Exception as e:
+            print(f"Error analyzing question {q['question_id']}: {e}")
+            question_feedback.append({
+                "question_number": q["question_id"],
+                "score": 0,
+                "feedback": "Unable to analyze this answer"
+            })
     
-    prompt = f"""Analyze these test answers for a {category} test at {level}.
-
-Questions and Answers:
-{json.dumps(qa_pairs, indent=2)}
-
-Provide a comprehensive analysis in JSON format with:
-1. overall_score (0-100)
-2. detailed_analysis (overall performance summary)
-3. question_feedback (array of objects with question_number, score, and feedback for each question)
-4. strengths (array of strength areas)
-5. improvements (array of areas needing improvement)
-6. recommendations (personalized learning recommendations)
-
-Be constructive, specific, and encouraging in your feedback.
-"""
+    total_score = sum(item.get("score", 0) for item in question_feedback)
+    overall_score = total_score / len(question_feedback) if question_feedback else 0
     
+    aggregated_prompt = f"""Based on these aggregated scores for a {category} test at {level}, provide overall analysis.
+
+Session Summary:
+- Total questions: {len(questions)}
+- Average score: {overall_score:.1f}%
+- Scores distribution: {[item.get("score", 0) for item in question_feedback]}
+
+Provide analysis in JSON format:
+{{
+  "overall_score": {overall_score},
+  "detailed_analysis": "<2-3 sentences about overall performance>",
+  "strengths": ["<strength 1>", "<strength 2>"],
+  "improvements": ["<area 1>", "<area 2>", "<area 3>"],
+  "recommendations": "<personalized learning recommendation>"
+}}
+
+CRITICAL RULES:
+- Do not infer or recall specific question content
+- Do not assume continuity with previous sessions
+- Base analysis ONLY on the provided aggregated scores
+- Keep analysis general and constructive"""
+
     try:
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=[
-                {"role": "system", "content": "You are an expert educational assessor. Return ONLY valid JSON, no markdown formatting."},
-                {"role": "user", "content": prompt}
+                {"role": "system", "content": "You are an educational assessor providing high-level analysis based on aggregated scores only. Return ONLY valid JSON, no markdown."},
+                {"role": "user", "content": aggregated_prompt}
             ],
-            temperature=0.7,
-            max_tokens=2500
+            temperature=0.5,
+            max_tokens=1000
         )
-
-        content = response.choices[0].message.content
-        content = extract_json(content)  # Add this line
-        analysis = json.loads(content)
         
-        analysis = json.loads(response.choices[0].message.content)
-        return analysis
-    except Exception as e:
-        print(f"Error analyzing results: {e}")
-        # Return default analysis if API fails
+        content = response.choices[0].message.content
+        content = extract_json(content)
+        aggregated_analysis = json.loads(content)
+        
         return {
-            "overall_score": 70.0,
+            "overall_score": overall_score,
+            "detailed_analysis": aggregated_analysis.get("detailed_analysis", "Analysis completed."),
+            "question_feedback": question_feedback,
+            "strengths": aggregated_analysis.get("strengths", ["Completed the test"]),
+            "improvements": aggregated_analysis.get("improvements", ["Review the material"]),
+            "recommendations": [aggregated_analysis.get("recommendations", "Continue practicing")]
+        }
+    except Exception as e:
+        print(f"Error creating aggregated analysis: {e}")
+        return {
+            "overall_score": overall_score,
             "detailed_analysis": "Analysis in progress. Please try again later.",
-            "question_feedback": [
-                {"question_number": i, "score": 70, "feedback": "Good effort"}
-                for i in range(1, len(questions) + 1)
-            ],
+            "question_feedback": question_feedback,
             "strengths": ["Completion of test"],
             "improvements": ["Review concepts"],
-            "recommendations": "Continue practicing"
+            "recommendations": ["Continue practicing"]
         }

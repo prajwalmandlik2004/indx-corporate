@@ -82,10 +82,10 @@ export default function CrossSectorUseCasesPage() {
 
           <div className="flex justify-between items-center pt-8 border-t">
             <Link href="/information/ethics-limits" className="btn-secondary">
-              ← Previous: Ethics & Limits
+              ← Back
             </Link>
             <Link href="/information/integration-systems" className="btn-primary">
-              Next: Integration into Systems →
+              Next →
             </Link>
           </div>
         </div>

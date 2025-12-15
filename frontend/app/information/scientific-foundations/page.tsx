@@ -150,10 +150,10 @@ export default function ScientificFoundationsPage() {
 
           <div className="flex justify-between items-center pt-8 border-t">
             <Link href="/information/public-institutions" className="btn-secondary">
-              ← Previous: Public Institutions
+              ← Back
             </Link>
-            <Link href="/information/implementation-faq" className="btn-primary">
-              Next: Implementation & FAQ →
+            <Link href="/information/ethics-limits" className="btn-primary">
+              Next  →
             </Link>
           </div>
         </div>

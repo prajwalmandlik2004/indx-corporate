@@ -125,10 +125,10 @@ export default function MethodologicalPrinciplesPage() {
           {/* Navigation */}
           <div className="flex justify-between items-center pt-8 border-t">
             <Link href="/information/scope-of-measurement" className="btn-secondary">
-              ← Previous: Scope of Measurement
+              ← Back
             </Link>
             <Link href="/information/evaluation-logic" className="btn-primary">
-              Next: Evaluation Logic →
+              Next →
             </Link>
           </div>
         </div>

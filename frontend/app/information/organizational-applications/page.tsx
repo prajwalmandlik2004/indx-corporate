@@ -106,10 +106,10 @@ export default function OrganizationalApplicationsPage() {
 
           <div className="flex justify-between items-center pt-8 border-t">
             <Link href="/information/evaluation-logic" className="btn-secondary">
-              ← Previous: Evaluation Logic
+              ← Back
             </Link>
             <Link href="/information/educational-institutions" className="btn-primary">
-              Next: Educational Institutions →
+              Next →
             </Link>
           </div>
         </div>

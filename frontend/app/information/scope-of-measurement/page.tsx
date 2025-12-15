@@ -121,14 +121,11 @@ export default function ScopeOfMeasurementPage() {
                 href="/information/origin-and-necessity"
                 className="btn-secondary"
               >
-                ← Previous: Origin and Necessity
-              </Link>
-              <Link
-                href="/information"
-                className="btn-primary"
-              >
-                Back to Information Center
-              </Link>
+                ← Back
+            </Link>
+              <Link href="/information/methodological-principles" className="btn-primary">
+              Next  →
+            </Link>
             </div>
           </article>
         </div>

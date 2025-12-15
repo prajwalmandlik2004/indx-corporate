@@ -92,10 +92,10 @@ export default function EthicsLimitsPage() {
 
           <div className="flex justify-between items-center pt-8 border-t">
             <Link href="/information/scientific-foundations" className="btn-secondary">
-              ← Previous: Scientific Foundations
+              ← Back
             </Link>
             <Link href="/information/cross-sector-use-cases" className="btn-primary">
-              Next: Cross-Sector Use Cases →
+              Next →
             </Link>
           </div>
         </div>

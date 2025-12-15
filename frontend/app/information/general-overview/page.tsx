@@ -99,13 +99,13 @@ export default function GeneralOverviewPage() {
                 href="/information"
                 className="btn-secondary"
               >
-                ← Back to Information
+                ← Back
               </Link>
               <Link
                 href="/information/origin-and-necessity"
                 className="btn-primary"
               >
-                Next: Origin and Necessity →
+                Next →
               </Link>
             </div>
           </article>

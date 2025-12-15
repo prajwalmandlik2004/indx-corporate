@@ -116,13 +116,13 @@ export default function OriginAndNecessityPage() {
                 href="/information/general-overview"
                 className="btn-secondary"
               >
-                ← Previous: General Overview
+                ← Back
               </Link>
               <Link
                 href="/information/scope-of-measurement"
                 className="btn-primary"
               >
-                Next: Scope of Measurement →
+                Next →
               </Link>
             </div>
           </article>

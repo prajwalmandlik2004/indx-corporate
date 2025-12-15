@@ -118,10 +118,10 @@ export default function AboutPositioningPage() {
 
           <div className="flex justify-between items-center pt-8 border-t">
             <Link href="/information/general-questions" className="btn-secondary">
-              ← Previous: General Questions
+              ← Back
             </Link>
             <Link href="/information" className="btn-primary">
-              Back to Information Hub →
+              Next →
             </Link>
           </div>
         </div>

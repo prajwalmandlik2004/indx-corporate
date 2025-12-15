@@ -92,10 +92,10 @@ export default function EvaluationLogicPage() {
 
           <div className="flex justify-between items-center pt-8 border-t">
             <Link href="/information/methodological-principles" className="btn-secondary">
-              ← Previous: Methodological Principles
+              ← Back
             </Link>
             <Link href="/information/organizational-applications" className="btn-primary">
-              Next: Organizational Applications →
+              Next →
             </Link>
           </div>
         </div>

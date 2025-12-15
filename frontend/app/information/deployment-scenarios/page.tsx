@@ -120,10 +120,10 @@ export default function DeploymentScenariosPage() {
 
           <div className="flex justify-between items-center pt-8 border-t">
             <Link href="/information/integration-systems" className="btn-secondary">
-              ← Previous: Integration into Systems
+              ← Back
             </Link>
             <Link href="/information/reading-results" className="btn-primary">
-              Next: Reading Results →
+              Next →
             </Link>
           </div>
         </div>

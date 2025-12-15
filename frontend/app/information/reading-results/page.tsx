@@ -114,10 +114,10 @@ export default function ReadingResultsPage() {
 
           <div className="flex justify-between items-center pt-8 border-t">
             <Link href="/information/deployment-scenarios" className="btn-secondary">
-              ← Previous: Deployment Scenarios
+              ← Back
             </Link>
             <Link href="/information/general-questions" className="btn-primary">
-              Next: General Questions →
+              Next →
             </Link>
           </div>
         </div>

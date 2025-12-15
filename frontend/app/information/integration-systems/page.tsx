@@ -103,10 +103,10 @@ export default function IntegrationSystemsPage() {
 
           <div className="flex justify-between items-center pt-8 border-t">
             <Link href="/information/cross-sector-use-cases" className="btn-secondary">
-              ← Previous: Cross-Sector Use Cases
+              ← Back
             </Link>
             <Link href="/information/deployment-scenarios" className="btn-primary">
-              Next: Deployment Scenarios →
+              Next →
             </Link>
           </div>
         </div>

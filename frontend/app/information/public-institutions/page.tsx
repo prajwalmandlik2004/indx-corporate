@@ -135,10 +135,10 @@ export default function PublicInstitutionsPage() {
 
           <div className="flex justify-between items-center pt-8 border-t">
             <Link href="/information/educational-institutions" className="btn-secondary">
-              ← Previous: Educational Institutions
+              ← Back
             </Link>
             <Link href="/information/scientific-foundations" className="btn-primary">
-              Next: Scientific Foundations →
+              Next →
             </Link>
           </div>
         </div>

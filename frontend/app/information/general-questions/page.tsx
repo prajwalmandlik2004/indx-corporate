@@ -110,10 +110,10 @@ export default function GeneralQuestionsPage() {
 
           <div className="flex justify-between items-center pt-8 border-t">
             <Link href="/information/reading-results" className="btn-secondary">
-              ← Previous: Reading Results
+              ← Back
             </Link>
             <Link href="/information/about-positioning" className="btn-primary">
-              Next: About INDX →
+              Next →
             </Link>
           </div>
         </div>

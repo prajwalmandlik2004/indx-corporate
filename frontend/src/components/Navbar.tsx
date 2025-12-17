@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Menu, X, User, LogOut, Home, BookOpen, BarChart3, Info } from 'lucide-react';
+import { Menu, X, User, LogOut, Home, BookOpen, BarChart3, Info, Beaker, Brain } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
@@ -24,7 +24,8 @@ export default function Navbar() {
   const navLinks = [
     { href: '/', label: 'Home', icon: Home },
     { href: '/about', label: 'About', icon: Info },
-    { href: '/test-platform', label: 'Test Platform', icon: BookOpen },
+    { href: '/demo', label: 'Test Platform', icon: Beaker },
+    // { href: '/test-platform', label: 'Test Platform', icon: BookOpen },
     { href: '/test-dashboard', label: 'My Tests', icon: BarChart3 },
     { href: '/information', label: 'Information', icon: Info },
   ];
@@ -35,10 +36,10 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">α</span>
-            </div>
-            <span className="text-2xl font-bold gradient-text">Alpha</span>
+            {/* <div className="w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-900 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-xl"><Brain /></span>
+            </div> */}
+            <span className="text-2xl font-bold text-blue-900">INDX</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -47,9 +48,9 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex items-center space-x-1 text-gray-700 hover:text-green-600 transition-colors duration-300 font-medium"
+                className="flex items-center space-x-1 text-gray-700 hover:text-blue-900 transition-colors duration-300 font-medium"
               >
-                <link.icon size={18} />
+                {/* <link.icon size={18} /> */}
                 <span>{link.label}</span>
               </Link>
             ))}
@@ -61,7 +62,7 @@ export default function Navbar() {
               <>
                 <Link
                   href="/profile"
-                  className="flex items-center space-x-2 text-gray-700 hover:text-green-600 transition-colors duration-300"
+                  className="flex items-center space-x-2 text-gray-700 hover:text-blue-900 transition-colors duration-300"
                 >
                   <User size={20} />
                   <span>Profile</span>
@@ -104,7 +105,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex items-center space-x-2 text-gray-700 hover:text-green-600 py-2 transition-colors"
+                className="flex items-center space-x-2 text-gray-700 hover:text-blue-900 py-2 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 <link.icon size={18} />
@@ -115,7 +116,7 @@ export default function Navbar() {
               <>
                 <Link
                   href="/profile"
-                  className="flex items-center space-x-2 text-gray-700 hover:text-green-600 py-2"
+                  className="flex items-center space-x-2 text-gray-700 hover:text-blue-900 py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   <User size={18} />

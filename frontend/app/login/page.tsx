@@ -24,7 +24,7 @@ export default function Login() {
     try {
       const response = await authAPI.login(formData);
       localStorage.setItem('token', response.data.access_token);
-      router.push('/test-platform');
+      router.push('/demo');
       toast.success('Login successfully');
     } catch (err: any) {
       setError(err.response?.data?.detail || 'Login failed. Please check your credentials.');
@@ -38,11 +38,11 @@ export default function Login() {
       <div className="max-w-md w-full space-y-8 animate-fade-in">
         {/* Header */}
         <div className="text-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+          {/* <div className="w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-900 rounded-xl flex items-center justify-center mx-auto mb-4">
             <LogIn className="text-white" size={32} />
-          </div>
-          <h2 className="text-4xl font-bold gradient-text">Welcome Back</h2>
-          <p className="mt-2 text-gray-600">Login to continue your learning journey</p>
+          </div> */}
+          <h2 className="text-4xl font-bold gradient-text">Login</h2>
+          {/* <p className="mt-2 text-gray-600">Login to continue your learning journey</p> */}
         </div>
 
         {/* Form */}
@@ -103,7 +103,7 @@ export default function Login() {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Don't have an account?{' '}
-              <Link href="/signup" className="text-green-600 hover:text-green-700 font-semibold">
+              <Link href="/signup" className="text-blue-900 hover:text-blue-700 font-semibold">
                 Sign up here
               </Link>
             </p>

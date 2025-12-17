@@ -122,9 +122,9 @@ export default function InformationPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-50 to-emerald-50 py-20 px-4 sm:px-6 lg:px-8">
+      {/* <section className="bg-gradient-to-br from-blue-50 to-blue-50 py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-15 h-15 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-4">
+          <div className="inline-flex items-center justify-center w-15 h-15 bg-gradient-to-br from-blue-500 to-blue-900 rounded-2xl mb-4">
             <Info className="text-white" size={30} />
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold gradient-text">
@@ -134,7 +134,7 @@ export default function InformationPage() {
             Explore comprehensive documentation about INDX - Adaptive Intelligence Steering and evaluation frameworks
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Information Cards Grid */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
@@ -146,21 +146,21 @@ export default function InformationPage() {
                 href={`/information/${page.slug}`}
                 className="block group"
               >
-                <div className="card hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border-l-4 border-green-500 h-full">
+                <div className="card hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] rounded-none border-blue-500 h-full">
                   <div className="flex flex-col h-full">
                     {/* Icon and Number */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-2xl">
+                    {/* <div className="flex items-center justify-between mb-4">
+                      <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-900 rounded-xl flex items-center justify-center text-2xl">
                         {page.icon}
                       </div>
-                      <span className="inline-flex items-center justify-center w-8 h-8 bg-green-100 text-green-700 rounded-full text-sm font-bold">
+                      <span className="inline-flex items-center justify-center w-8 h-8 bg-blue-100 text-blue-700 rounded-full text-sm font-bold">
                         {page.id}
                       </span>
-                    </div>
+                    </div> */}
 
                     {/* Content */}
                     <div className="flex-grow">
-                      <h2 className="text-xl font-bold text-gray-900 group-hover:text-green-600 transition-colors mb-3">
+                      <h2 className="text-xl font-bold text-gray-900 group-hover:text-blue-900 transition-colors mb-3">
                         {page.title}
                       </h2>
                       <p className="text-gray-600 leading-relaxed text-sm mb-4">
@@ -169,7 +169,7 @@ export default function InformationPage() {
                     </div>
 
                     {/* Read More Link */}
-                    <div className="flex items-center text-green-600 font-semibold group-hover:translate-x-2 transition-transform mt-auto">
+                    <div className="flex items-center text-blue-900 font-semibold group-hover:translate-x-2 transition-transform mt-auto">
                       <span className="text-sm">Read More</span>
                       <ArrowRight className="ml-2" size={18} />
                     </div>
@@ -180,7 +180,7 @@ export default function InformationPage() {
           </div>
 
           {/* Additional Info Section */}
-          <div className="mt-16 bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl p-8 text-white">
+          {/* <div className="mt-16 bg-gradient-to-r from-blue-900 to-blue-900 rounded-2xl p-8 text-white">
             <div className="flex items-start space-x-4">
               <FileText size={32} className="flex-shrink-0 mt-1" />
               <div>
@@ -191,13 +191,13 @@ export default function InformationPage() {
                 </p>
                 <Link
                   href="/about"
-                  className="inline-block bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                  className="inline-block bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
                 >
-                  Learn About Alpha
+                  Learn About INDX
                 </Link>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

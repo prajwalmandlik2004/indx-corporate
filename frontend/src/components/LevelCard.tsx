@@ -17,17 +17,17 @@ export default function LevelCard({ level, title, isCompleted, isLocked, onClick
         isLocked
           ? 'opacity-50 cursor-not-allowed'
           : 'hover:scale-105 cursor-pointer'
-      } ${isCompleted ? 'border-2 border-green-500' : ''}`}
+      } ${isCompleted ? 'border-2 border-blue-900' : ''}`}
     >
       {/* Level Number */}
-      <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg">
+      <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-blue-900 to-blue-900 rounded-full flex items-center justify-center shadow-lg">
         <span className="text-white font-bold text-lg">{level}</span>
       </div>
 
       {/* Status Icon */}
       <div className="flex justify-end mb-4">
         {isCompleted ? (
-          <CheckCircle className="text-green-600 animate-pulse" size={32} />
+          <CheckCircle className="text-blue-900 animate-pulse" size={32} />
         ) : isLocked ? (
           <Lock className="text-gray-400" size={32} />
         ) : (
@@ -44,7 +44,7 @@ export default function LevelCard({ level, title, isCompleted, isLocked, onClick
       {/* Progress Bar */}
       {isCompleted && (
         <div className="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden">
-          <div className="h-full bg-gradient-to-r from-green-500 to-emerald-600 animate-pulse"></div>
+          <div className="h-full bg-gradient-to-r from-blue-900 to-blue-900 animate-pulse"></div>
         </div>
       )}
     </button>

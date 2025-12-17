@@ -46,7 +46,7 @@ export default function Signup() {
 
       localStorage.setItem('token', loginResponse.data.access_token);
       toast.success('Signup successfully');
-      router.push('/test-platform');
+      router.push('/demo');
     } catch (err: any) {
       setError(err.response?.data?.detail || 'Signup failed. Please try again.');
     } finally {
@@ -59,11 +59,11 @@ export default function Signup() {
       <div className="max-w-md w-full space-y-8 animate-fade-in">
         {/* Header */}
         <div className="text-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+          {/* <div className="w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-900 rounded-xl flex items-center justify-center mx-auto mb-4">
             <UserPlus className="text-white" size={32} />
-          </div>
+          </div> */}
           <h2 className="text-4xl font-bold gradient-text">Create Account</h2>
-          <p className="mt-2 text-gray-600">Join Alpha and start your learning journey</p>
+          {/* <p className="mt-2 text-gray-600">Join INDX and start your learning journey</p> */}
         </div>
 
         {/* Form */}
@@ -178,7 +178,7 @@ export default function Signup() {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Already have an account?{' '}
-              <Link href="/login" className="text-green-600 hover:text-green-700 font-semibold">
+              <Link href="/login" className="text-blue-900 hover:text-blue-700 font-semibold">
                 Login here
               </Link>
             </p>

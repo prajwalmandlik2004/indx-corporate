@@ -40,13 +40,13 @@ export default function TestDashboard() {
   );
 
   const getScoreColor = (score: number) => {
-    if (score >= 80) return 'text-green-600';
+    if (score >= 80) return 'text-blue-900';
     if (score >= 60) return 'text-yellow-600';
     return 'text-red-600';
   };
 
   const getScoreBadge = (score: number) => {
-    if (score >= 80) return 'bg-green-100 text-green-700';
+    if (score >= 80) return 'bg-blue-100 text-blue-700';
     if (score >= 60) return 'bg-yellow-100 text-yellow-700';
     return 'bg-red-100 text-red-700';
   };
@@ -54,7 +54,7 @@ export default function TestDashboard() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
       </div>
     );
   }
@@ -90,12 +90,12 @@ export default function TestDashboard() {
             <div className="mt-4 md:mt-0">
               <div className="flex items-center space-x-4 bg-white rounded-xl p-4 shadow-lg">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-green-600">{tests.length}</div>
+                  <div className="text-3xl font-bold text-blue-900">{tests.length}</div>
                   <div className="text-sm text-gray-600">Total Tests</div>
                 </div>
                 <div className="w-px h-12 bg-gray-300"></div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-green-600">
+                  <div className="text-3xl font-bold text-blue-900">
                     {tests.filter((t) => t.score >= 80).length}
                   </div>
                   <div className="text-sm text-gray-600">Excellent</div>
@@ -112,7 +112,7 @@ export default function TestDashboard() {
               placeholder="Search tests..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all outline-none"
+              className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
             />
           </div>
         </div>
@@ -127,7 +127,7 @@ export default function TestDashboard() {
             </p>
             {!searchTerm && (
               <button
-                onClick={() => router.push('/test-platform')}
+                onClick={() => router.push('/demo')}
                 className="btn-primary"
               >
                 Take a Test
@@ -139,7 +139,7 @@ export default function TestDashboard() {
             {/* Desktop View */}
             <div className="hidden md:block overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gradient-to-r from-green-50 to-emerald-50">
+                <thead className="bg-gradient-to-r from-blue-50 to-blue-50">
                   <tr>
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">S.No</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Test Name</th>
@@ -155,7 +155,7 @@ export default function TestDashboard() {
                   {filteredTests.map((test, index) => (
                     <tr
                       key={test.id}
-                      className="hover:bg-green-50/50 transition-colors"
+                      className="hover:bg-blue-50/50 transition-colors"
                     >
                       <td className="px-6 py-4 text-sm text-gray-900">{index + 1}</td>
                       <td className="px-6 py-4">
@@ -195,7 +195,7 @@ export default function TestDashboard() {
                         {test.completed ? (
                           <button
                             onClick={() => router.push(`/result/${test.id}`)}
-                            className="flex items-center space-x-2 text-green-600 hover:text-green-700 font-semibold transition-colors"
+                            className="flex items-center space-x-2 text-blue-900 hover:text-blue-700 font-semibold transition-colors"
                           >
                             <Eye size={18} />
                             <span>View Result</span>
@@ -262,7 +262,7 @@ export default function TestDashboard() {
                     {test.completed && (
                       <button
                         onClick={() => router.push(`/result/${test.id}`)}
-                        className="flex items-center space-x-1 text-green-600 hover:text-green-700 font-semibold text-sm"
+                        className="flex items-center space-x-1 text-blue-900 hover:text-blue-700 font-semibold text-sm"
                       >
                         <Eye size={16} />
                         <span>View</span>

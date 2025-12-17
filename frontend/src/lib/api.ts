@@ -54,4 +54,20 @@ export const resultAPI = {
   getResult: (testId: number) => api.get(`/api/result/${testId}`),
 };
 
+// Demo APIs
+// export const demoAPI = {
+//   getSeries: () => api.get('/api/demo/series'),
+//   startTest: (seriesId: string) => api.post(`/api/demo/start/${seriesId}`),
+//   submitTest: (testId: number, answers: Array<{ question_id: number; answer_text: string }>) =>
+//     api.post('/api/demo/submit', { test_id: testId, answers }),
+// };
+
+export const demoAPI = {
+  getSeries: () => api.get('/api/demo/series'),
+  startTest: (seriesId: string) => api.post(`/api/demo/start/${seriesId}`),
+  getTest: (testId: number) => api.get(`/api/demo/test/${testId}`), // ADD THIS
+  submitTest: (testId: number, answers: Array<{ question_id: number; answer_text: string }>) =>
+    api.post('/api/demo/submit', { test_id: testId, answers }),
+};
+
 export default api;

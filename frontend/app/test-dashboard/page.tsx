@@ -40,7 +40,7 @@ export default function TestDashboard() {
   );
 
   const getScoreColor = (score: number) => {
-    if (score >= 80) return 'text-blue-900';
+    if (score >= 80) return 'text-[#050E3C]';
     if (score >= 60) return 'text-yellow-600';
     return 'text-red-600';
   };
@@ -54,7 +54,7 @@ export default function TestDashboard() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#050E3C]"></div>
       </div>
     );
   }
@@ -90,12 +90,12 @@ export default function TestDashboard() {
             <div className="mt-4 md:mt-0">
               <div className="flex items-center space-x-4 bg-white rounded-xl p-4 shadow-lg">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-900">{tests.length}</div>
+                  <div className="text-3xl font-bold text-[#050E3C]">{tests.length}</div>
                   <div className="text-sm text-gray-600">Total Tests</div>
                 </div>
                 <div className="w-px h-12 bg-gray-300"></div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-900">
+                  <div className="text-3xl font-bold text-[#050E3C]">
                     {tests.filter((t) => t.score >= 80).length}
                   </div>
                   <div className="text-sm text-gray-600">Excellent</div>
@@ -195,7 +195,7 @@ export default function TestDashboard() {
                         {test.completed ? (
                           <button
                             onClick={() => router.push(`/result/${test.id}`)}
-                            className="flex items-center space-x-2 text-blue-900 hover:text-blue-700 font-semibold transition-colors"
+                            className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors"
                           >
                             <Eye size={18} />
                             <span>View Result</span>
@@ -262,7 +262,7 @@ export default function TestDashboard() {
                     {test.completed && (
                       <button
                         onClick={() => router.push(`/result/${test.id}`)}
-                        className="flex items-center space-x-1 text-blue-900 hover:text-blue-700 font-semibold text-sm"
+                        className="flex items-center space-x-1 text-[#050E3C] hover:text-blue-700 font-semibold text-sm"
                       >
                         <Eye size={16} />
                         <span>View</span>

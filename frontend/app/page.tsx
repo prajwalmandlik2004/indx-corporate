@@ -60,7 +60,7 @@ export default function Home() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link href="/signup" className="bg-blue-900 text-white font-semibold py-3 px-6 rounded-none hover:bg-blue-900 transition-all duration-300 text-center">
+                <Link href="/signup" className="bg-[#050E3C] text-white font-semibold py-3 px-6 rounded-none hover:bg-[#050E3C] transition-all duration-300 text-center">
                   Get Started
                 </Link>
                 <Link href="/about" className="bg-white text-gray-900 font-semibold py-3 px-6 rounded-none hover:bg-gray-100 transition-all duration-300 border border-gray-300 text-center">
@@ -85,7 +85,7 @@ export default function Home() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-blue-900">
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#050E3C]">
               About INDX
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -100,7 +100,7 @@ export default function Home() {
                 className="card hover:scale-105 transition-transform duration-300 animate-slide-up rounded-none"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                {/* <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-900 rounded-xl flex items-center justify-center mb-4">
+                {/* <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-[#050E3C] rounded-xl flex items-center justify-center mb-4">
                   <feature.icon className="text-white" size={28} />
                 </div> */}
                 <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
@@ -115,7 +115,7 @@ export default function Home() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-blue-900">
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#050E3C]">
               How It Works
             </h2>
             <p className="text-xl text-gray-600">
@@ -147,7 +147,7 @@ export default function Home() {
               <div key={index} className="relative">
                 <div className="card text-center space-y-4 rounded-none">
                   {/* <div className="text-6xl font-bold text-blue-100">{item.step}</div> */}
-                  {/* <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-900 rounded-full flex items-center justify-center mx-auto">
+                  {/* <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-[#050E3C] rounded-full flex items-center justify-center mx-auto">
                     <item.icon className="text-white" size={32} />
                   </div> */}
                   <h3 className="text-2xl font-bold">{item.title}</h3>
@@ -165,7 +165,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      {/* <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-900 to-blue-900">
+      {/* <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#050E3C] to-[#050E3C]">
         <div className="max-w-4xl mx-auto text-center space-y-8 text-white">
           <h2 className="text-4xl sm:text-5xl font-bold">
             Ready to Start Your Journey?
@@ -173,7 +173,7 @@ export default function Home() {
           <p className="text-xl opacity-90">
             Join thousands of users improving their skills with AI-powered testing
           </p>
-          <Link href="/signup" className="inline-block bg-white text-blue-900 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+          <Link href="/signup" className="inline-block bg-white text-[#050E3C] font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
             Create Free Account
           </Link>
         </div>

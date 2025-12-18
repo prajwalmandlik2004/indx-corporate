@@ -75,7 +75,7 @@ export default function TestPage() {
     if (loading) {
         return (
             <div className="min-h-screen flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#050E3C]"></div>
             </div>
         );
     }
@@ -107,7 +107,7 @@ export default function TestPage() {
                 {test?.questions?.map((question: any) => (
                     <div key={question.question_id} className="card">
                         <div className="flex items-start space-x-4">
-                            <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-900 to-blue-900 rounded-full flex items-center justify-center">
+                            <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-[#050E3C] to-[#050E3C] rounded-full flex items-center justify-center">
                                 <span className="text-white font-bold">{question.question_id}</span>
                             </div>
                             <div className="flex-grow space-y-4">

@@ -10,7 +10,7 @@ export default function GeneralOverviewPage() {
         <div className="max-w-4xl mx-auto">
           <Link
             href="/information"
-            className="text-blue-900 hover:underline mb-4 inline-block"
+            className="text-[#050E3C] hover:underline mb-4 inline-block"
           >
             ← Back to Information
           </Link>
@@ -73,13 +73,13 @@ export default function GeneralOverviewPage() {
             <div className="flex justify-between items-center mt-8 pt-6 border-t border-gray-300">
               <Link
                 href="/information"
-                className="text-blue-900 hover:underline"
+                className="text-[#050E3C] hover:underline"
               >
                 ← Back
               </Link>
               <Link
                 href="/information/origin-and-necessity"
-                className="text-blue-900 hover:underline"
+                className="text-[#050E3C] hover:underline"
               >
                 Next →
               </Link>

@@ -59,7 +59,7 @@ export default function Signup() {
       <div className="max-w-md w-full space-y-8 animate-fade-in">
         {/* Header */}
         <div className="text-center">
-          {/* <div className="w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+          {/* <div className="w-16 h-16 bg-gradient-to-br from-[#050E3C] to-[#050E3C] rounded-xl flex items-center justify-center mx-auto mb-4">
             <UserPlus className="text-white" size={32} />
           </div> */}
           <h2 className="text-4xl font-bold gradient-text">Create Account</h2>
@@ -178,7 +178,7 @@ export default function Signup() {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Already have an account?{' '}
-              <Link href="/login" className="text-blue-900 hover:text-blue-700 font-semibold">
+              <Link href="/login" className="text-[#050E3C] hover:text-blue-700 font-semibold">
                 Login here
               </Link>
             </p>

@@ -68,7 +68,7 @@ export default function DemoTestPage() {
     if (!test) {
         return (
             <div className="min-h-screen flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#050E3C]"></div>
             </div>
         );
     }
@@ -82,13 +82,13 @@ export default function DemoTestPage() {
                         <span className="text-sm font-semibold text-gray-600">
                             Question {currentQuestionIndex + 1} sur {test.questions.length}
                         </span>
-                        <span className="text-sm font-semibold text-blue-900">
+                        <span className="text-sm font-semibold text-[#050E3C]">
                             {Math.round(((currentQuestionIndex + 1) / test.questions.length) * 100)}%
                         </span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
                         <div
-                            className="bg-gradient-to-r from-blue-900 to-blue-900 h-2 rounded-full transition-all duration-300"
+                            className="bg-gradient-to-r from-[#050E3C] to-[#050E3C] h-2 rounded-full transition-all duration-300"
                             style={{ width: `${((currentQuestionIndex + 1) / test.questions.length) * 100}%` }}
                         ></div>
                     </div>
@@ -97,11 +97,11 @@ export default function DemoTestPage() {
                 {/* Question Card */}
                 <div className="card mb-8 rounded-none">
                     <div className="flex items-start space-x-4 mb-6">
-                        <div className="w-12 h-12 bg-gradient-to-br from-blue-900 to-blue-900  flex items-center justify-center flex-shrink-0">
+                        <div className="w-12 h-12 bg-gradient-to-br from-[#050E3C] to-[#050E3C]  flex items-center justify-center flex-shrink-0">
                             <span className="text-white font-bold text-lg">{currentQuestionIndex + 1}</span>
                         </div>
                         <div className="flex-grow">
-                            <h2 className="whitespace-pre-line text-lg text-blue-900 mb-4">
+                            <h2 className="whitespace-pre-line text-lg text-[#050E3C] mb-4">
                                 {currentQuestion?.question_text.replace(/\n\s*/g, '\n\n')}
                             </h2>
                         </div>

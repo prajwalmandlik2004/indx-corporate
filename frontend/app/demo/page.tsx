@@ -48,7 +48,7 @@ export default function DemoPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#050E3C]"></div>
       </div>
     );
   }
@@ -58,7 +58,7 @@ export default function DemoPage() {
       {/* Header */}
       <section className="bg-gradient-to-br from-blue-50 to-blue-50 py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          {/* <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-900 rounded-2xl mb-4">
+          {/* <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#050E3C] to-[#050E3C] rounded-2xl mb-4">
             <Beaker className="text-white" size={40} />
           </div> */}
           <h1 className="text-4xl sm:text-6xl font-bold gradient-text">
@@ -81,7 +81,7 @@ export default function DemoPage() {
                 onClick={() => handleStartTest(s.id)}
               >
                 <div className="flex flex-col h-full">
-                  {/* <div className="w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-900 rounded-xl flex items-center justify-center mb-4">
+                  {/* <div className="w-16 h-16 bg-gradient-to-br from-[#050E3C] to-[#050E3C] rounded-xl flex items-center justify-center mb-4">
                     <span className="text-white text-2xl font-bold">
                       {s.title.split(' ')[1] || s.title.charAt(0)}
                     </span>
@@ -95,7 +95,7 @@ export default function DemoPage() {
                       <Users size={16} />
                       <span>{s.question_count} questions</span>
                     </div>
-                    <ArrowRight className="text-blue-900" size={20} />
+                    <ArrowRight className="text-[#050E3C]" size={20} />
                   </div>
                 </div>
               </div>

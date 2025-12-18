@@ -3,14 +3,14 @@ import { Github, Linkedin, Twitter, Mail, Brain } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-blue-900 to-blue-900 text-white mt-20">
+    <footer className="bg-gradient-to-r from-[#050E3C] to-[#050E3C] text-white mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               {/* <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                <span className="text-blue-900 font-bold text-xl"><Brain /></span>
+                <span className="text-[#050E3C] font-bold text-xl"><Brain /></span>
               </div> */}
               <span className="text-2xl font-bold">INDX</span>
             </div>
@@ -44,23 +44,23 @@ export default function Footer() {
           {/* <div>
             <h3 className="font-bold text-lg mb-4">Connect</h3>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+              <a href="#" className="w-10 h-10 bg-[#050E3C] rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
                 <Github size={20} />
               </a>
-              <a href="#" className="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+              <a href="#" className="w-10 h-10 bg-[#050E3C] rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+              <a href="#" className="w-10 h-10 bg-[#050E3C] rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="w-10 h-10 bg-blue-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+              <a href="#" className="w-10 h-10 bg-[#050E3C] rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
                 <Mail size={20} />
               </a>
             </div>
           </div> */}
         </div>
 
-        <div className="border-t border-blue-800 mt-8 pt-8 text-center text-blue-100">
+        <div className="border-t border-[#050E3C] mt-8 pt-8 text-center text-blue-100">
           <p>&copy; 2025 INDX Test Platform. All rights reserved.</p>
         </div>
       </div>

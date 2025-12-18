@@ -53,7 +53,7 @@ export default function Profile() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#050E3C]"></div>
       </div>
     );
   }
@@ -69,7 +69,7 @@ export default function Profile() {
         <div className="card space-y-8">
           {/* Profile Header */}
           <div className="flex flex-col items-center space-y-4 pb-8 border-b">
-            <div className="w-24 h-24 bg-gradient-to-br from-blue-900 to-blue-900 rounded-full flex items-center justify-center">
+            <div className="w-24 h-24 bg-gradient-to-br from-[#050E3C] to-[#050E3C] rounded-full flex items-center justify-center">
               <User className="text-white" size={48} />
             </div>
             <div className="text-center">

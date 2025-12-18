@@ -11,7 +11,7 @@ export default function ThankYouPage() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <div className="max-w-2xl w-full text-center space-y-8 animate-fade-in">
-        {/* <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-blue-900 to-blue-900 rounded-full mb-4">
+        {/* <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-[#050E3C] to-[#050E3C] rounded-full mb-4">
           <CheckCircle className="text-white" size={56} />
         </div> */}
 

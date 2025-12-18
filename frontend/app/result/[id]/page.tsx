@@ -50,7 +50,7 @@ export default function ResultPage() {
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 80) return 'from-blue-500 to-blue-900';
+    if (score >= 80) return 'from-blue-500 to-[#050E3C]';
     if (score >= 60) return 'from-yellow-500 to-orange-600';
     return 'from-red-500 to-pink-600';
   };
@@ -66,7 +66,7 @@ export default function ResultPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#050E3C]"></div>
       </div>
     );
   }
@@ -346,7 +346,7 @@ export default function ResultPage() {
         {/* Back Button */}
         <button
           onClick={() => router.push('/test-dashboard')}
-          className="flex items-center space-x-2 text-gray-600 hover:text-blue-900 transition-colors mb-8"
+          className="flex items-center space-x-2 text-gray-600 hover:text-[#050E3C] transition-colors mb-8"
         >
           <ArrowLeft size={20} />
           <span>Back to Dashboard</span>
@@ -381,7 +381,7 @@ export default function ResultPage() {
                   <div className="text-sm text-white/90">Score</div>
                 </div>
               </div>
-              {/* <div className="font-bold text-lg text-blue-900">{getScoreLabel(result.score)}</div> */}
+              {/* <div className="font-bold text-lg text-[#050E3C]">{getScoreLabel(result.score)}</div> */}
             </div>
           </div>
 
@@ -401,7 +401,7 @@ export default function ResultPage() {
         {/* Analysis Overview */}
         <div className="card mb-8 animate-slide-up">
           <h2 className="text-2xl font-bold mb-4 flex items-center space-x-2">
-            {/* <Trophy className="text-blue-900" size={28} /> */}
+            {/* <Trophy className="text-[#050E3C]" size={28} /> */}
             <span>Performance Analysis</span>
           </h2>
           <p className="text-gray-700 leading-relaxed text-lg">
@@ -412,7 +412,7 @@ export default function ResultPage() {
         {/* Question Feedback */}
         <div className="card mb-8 animate-slide-up" style={{ animationDelay: '100ms' }}>
           <h2 className="text-2xl font-bold mb-6 flex items-center space-x-2">
-            {/* <Target className="text-blue-900" size={28} /> */}
+            {/* <Target className="text-[#050E3C]" size={28} /> */}
             <span>Complete Analysis</span>
           </h2>
 
@@ -424,14 +424,14 @@ export default function ResultPage() {
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center space-x-3">
-                    {/* <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-900 rounded-full flex items-center justify-center">
+                    {/* <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-[#050E3C] rounded-full flex items-center justify-center">
                       <span className="text-white font-bold">{feedback.question_number}</span>
                     </div> */}
                     <h3 className="font-bold text-lg">Sequence {feedback.question_number}</h3>
                   </div>
                   <div className="flex items-center space-x-2">
                     {feedback.score >= 70 ? (
-                      <CheckCircle className="text-blue-900" size={24} />
+                      <CheckCircle className="text-[#050E3C]" size={24} />
                     ) : (
                       <XCircle className="text-red-600" size={24} />
                     )}
@@ -448,14 +448,14 @@ export default function ResultPage() {
         <div className="grid md:grid-cols-2 gap-8 mb-8">
           {/* Strengths */}
           <div className="card animate-slide-up" style={{ animationDelay: '200ms' }}>
-            <h2 className="text-2xl font-bold mb-4 flex items-center space-x-2 text-blue-900">
+            <h2 className="text-2xl font-bold mb-4 flex items-center space-x-2 text-[#050E3C]">
               <TrendingUp size={28} />
               <span>Strengths</span>
             </h2>
             <ul className="space-y-3">
               {result.analysis.strengths.map((strength: string, index: number) => (
                 <li key={index} className="flex items-start space-x-3">
-                  <CheckCircle className="text-blue-900 flex-shrink-0 mt-1" size={20} />
+                  <CheckCircle className="text-[#050E3C] flex-shrink-0 mt-1" size={20} />
                   <span className="text-gray-700">{strength}</span>
                 </li>
               ))}

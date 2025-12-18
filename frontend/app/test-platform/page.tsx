@@ -129,7 +129,7 @@ export default function TestPlatform() {
         <div className="mb-12 animate-fade-in">
           <button
             onClick={() => setSelectedCategory(null)}
-            className="flex items-center space-x-2 text-gray-600 hover:text-blue-900 transition-colors mb-6"
+            className="flex items-center space-x-2 text-gray-600 hover:text-[#050E3C] transition-colors mb-6"
           >
             <ArrowLeft size={20} />
             <span>Back to Categories</span>
@@ -169,7 +169,7 @@ export default function TestPlatform() {
         {loading && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
             <div className="bg-white rounded-xl p-8 space-y-4">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900 mx-auto"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#050E3C] mx-auto"></div>
               <p className="text-gray-600 text-center">Generating your test...</p>
             </div>
           </div>

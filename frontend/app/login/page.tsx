@@ -38,7 +38,7 @@ export default function Login() {
       <div className="max-w-md w-full space-y-8 animate-fade-in">
         {/* Header */}
         <div className="text-center">
-          {/* <div className="w-16 h-16 bg-gradient-to-br from-blue-900 to-blue-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+          {/* <div className="w-16 h-16 bg-gradient-to-br from-[#050E3C] to-[#050E3C] rounded-xl flex items-center justify-center mx-auto mb-4">
             <LogIn className="text-white" size={32} />
           </div> */}
           <h2 className="text-4xl font-bold gradient-text">Login</h2>
@@ -103,7 +103,7 @@ export default function Login() {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Don't have an account?{' '}
-              <Link href="/signup" className="text-blue-900 hover:text-blue-700 font-semibold">
+              <Link href="/signup" className="text-[#050E3C] hover:text-blue-700 font-semibold">
                 Sign up here
               </Link>
             </p>

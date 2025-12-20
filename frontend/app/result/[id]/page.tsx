@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { resultAPI } from '@/src/lib/api';
 import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable'; 
+import autoTable from 'jspdf-autotable';
 
 
 export default function ResultPage() {
@@ -91,7 +91,7 @@ export default function ResultPage() {
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
 
-    doc.setFillColor(34, 197, 94); 
+    doc.setFillColor(34, 197, 94);
     doc.rect(0, 0, pageWidth, 40, 'F');
 
     doc.setFontSize(28);
@@ -370,7 +370,7 @@ export default function ResultPage() {
               </div>
             </div>
 
-            <div className="text-center">
+            {/* <div className="text-center">
               <div
                 className={`w-32 h-32 rounded-full bg-gradient-to-br ${getScoreColor(
                   result.score
@@ -381,7 +381,12 @@ export default function ResultPage() {
                   <div className="text-sm text-white/90">Score</div>
                 </div>
               </div>
-              {/* <div className="font-bold text-lg text-[#050E3C]">{getScoreLabel(result.score)}</div> */}
+            </div> */}
+
+            <div className="text-center">
+              <p className="text-2xl font-bold text-[#050E3C]">
+                INDX1000 : <span className="text-3xl">{result.score.toFixed(0)}</span> / 1000
+              </p>
             </div>
           </div>
 
@@ -429,14 +434,14 @@ export default function ResultPage() {
                     </div> */}
                     <h3 className="font-bold text-lg">Sequence {feedback.question_number}</h3>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  {/* <div className="flex items-center space-x-2">
                     {feedback.score >= 70 ? (
                       <CheckCircle className="text-[#050E3C]" size={24} />
                     ) : (
                       <XCircle className="text-red-600" size={24} />
                     )}
                     <span className="font-bold text-lg">{feedback.score}%</span>
-                  </div>
+                  </div> */}
                 </div>
                 <p className="text-gray-700 leading-relaxed">{feedback.feedback}</p>
               </div>

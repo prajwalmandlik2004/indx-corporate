@@ -21,204 +21,207 @@ router = APIRouter(prefix="/api/demo", tags=["Demo"])
 # Hardcoded demo questions
 DEMO_SERIES = {
     "series_a": {
-        "title": "Series S",
-        "description": "Évaluation des capacités d'analyse et de raisonnement",
+        "title": "Série 1",
+        "description": "Décision et action en contexte incertain",
         "questions": [
             {
                 "question_id": 1,
-                "question_text": "Vous utilisez une IA pour préparer une décision importante. Elle vous propose d'emblée une synthèse convaincante, alors que le périmètre exact du problème n'a pas été formalisé explicitement.\n\nIndiquez votre point de départ et ce que vous fixez en premier.",
-                "expected_criteria": "Structure méthodique, gestion de l'incertitude"
+                "question_text": "Vous travaillez avec une IA sur un dossier en cours.\nLes informations disponibles sont incomplètes, mais une réponse est attendue rapidement.\nL’IA vous demande comment avancer malgré ces manques.",
+                "expected_criteria": "Gestion de l'incertitude, cadrage"
             },
             {
                 "question_id": 2,
-                "question_text": "Vous demandez à l'IA sur quelles informations elle s'appuie. Elle répond de manière fluide mais mélange des faits, des hypothèses et des généralisations.\n\nDécrivez comment vous posez le cadre de ce qui peut être tenu pour acquis.",
-                "expected_criteria": "Pensée critique, évaluation des sources"
+                "question_text": "Un premier cadre d’action a été esquissé avec l’IA.\nDepuis, certains éléments se sont révélés incertains, sans pour autant invalider l’ensemble.\nL’IA attend une instruction pour poursuivre.",
+                "expected_criteria": "Ajustement du cadre, continuité"
             },
             {
                 "question_id": 3,
-                "question_text": "Vous reformulez votre demande pour être plus précis. L'IA change sensiblement de recommandation, sans signaler clairement ce qui a motivé ce changement.\n\nIndiquez comment vous traitez cette bascule.",
-                "expected_criteria": "Adaptabilité, analyse des changements"
+                "question_text": "Le contexte évolue, mais toutes les données ne sont pas encore consolidées.\nReporter la décision est possible, mais aurait des effets indirects sur la suite du travail.\nL’IA vous demande quelle option retenir.",
+                "expected_criteria": "Arbitrage, anticipation"
             },
             {
                 "question_id": 4,
-                "question_text": "Vous introduisez un critère non négociable (conformité, éthique, sécurité, contraintes opérationnelles). L'IA 's'adapte' mais laisse passer un détail incompatible avec ce critère.\n\nExpliquez comment vous réagissez et ce que vous ajustez.",
-                "expected_criteria": "Vigilance, gestion des contraintes"
+                "question_text": "Plusieurs pistes sont envisageables, aucune ne s’impose clairement.\nLes critères habituels de priorité ne sont pas applicables dans ce cas précis.\nL’IA vous sollicite pour trancher.",
+                "expected_criteria": "Décision sans hiérarchie claire"
             },
             {
                 "question_id": 5,
-                "question_text": "L'IA vous propose une solution élégante, mais elle suppose implicitement des conditions qui ne sont pas garanties dans le réel.\n\nDécrivez comment vous testez la solidité de cette proposition.",
-                "expected_criteria": "Esprit critique, validation méthodique"
+                "question_text": "L’IA propose d’attendre des informations supplémentaires avant d’agir.\nVous savez que ce délai pourrait modifier l’équilibre global de la situation.\nVous devez lui répondre.",
+                "expected_criteria": "Gestion du temps, impact global"
             },
             {
                 "question_id": 6,
-                "question_text": "Vous demandez à l'IA de comparer deux options. Elle fournit une comparaison structurée, mais vous remarquez une incohérence entre deux parties de son raisonnement.\n\nIndiquez comment vous traitez cette incohérence.",
-                "expected_criteria": "Détection d'incohérences, résolution"
+                "question_text": "Une action est possible immédiatement, mais elle implique d’écarter certaines hypothèses.\nNe rien faire préserverait ces hypothèses, au prix d’un ralentissement notable.\nL’IA vous demande quelle voie suivre.",
+                "expected_criteria": "Choix action / inaction"
             },
             {
                 "question_id": 7,
-                "question_text": "Un acteur humain (décideur, client, partenaire) impose une contrainte de calendrier. L'IA vous incite à choisir vite 'la meilleure option', alors que l'incertitude demeure.\n\nPrécisez ce que vous priorisez pour décider.",
-                "expected_criteria": "Gestion de la pression, priorisation"
+                "question_text": "La décision à prendre pourra être discutée ultérieurement, voire critiquée.\nÀ ce stade, aucune option ne permet d’éviter complètement ce risque.\nL’IA attend votre position.",
+                "expected_criteria": "Responsabilité décisionnelle"
             },
             {
                 "question_id": 8,
-                "question_text": "Vous demandez à l'IA d'expliciter les risques. Elle liste des risques plausibles mais omet un risque majeur que vous jugez possible.\n\nDécrivez comment vous complétez et restructurez l'analyse.",
-                "expected_criteria": "Analyse de risques, complétude"
+                "question_text": "L’IA vous demande une validation formelle.\nVous ne disposez pas de tous les éléments nécessaires pour la donner pleinement.\nVous devez néanmoins lui répondre.",
+                "expected_criteria": "Validation sous contrainte"
             },
             {
                 "question_id": 9,
-                "question_text": "Vous demandez un plan d'action. L'IA fournit un plan détaillé, mais certains points semblent optimisés localement au détriment de l'objectif global.\n\nIndiquez comment vous réalignez l'action sur l'objectif.",
-                "expected_criteria": "Vision stratégique, réalignement"
+                "question_text": "Deux options sont sur la table.\nToutes deux reposent sur des bases fragiles, mais pour des raisons différentes.\nL’IA vous demande laquelle privilégier.",
+                "expected_criteria": "Comparaison de fragilités"
             },
             {
                 "question_id": 10,
-                "question_text": "Une information nouvelle arrive et contredit partiellement la trajectoire choisie. L'IA propose une correction, mais elle paraît 'sauter' trop vite à une conclusion.\n\nExpliquez comment vous ajustez sans perdre la cohérence.",
-                "expected_criteria": "Adaptabilité contrôlée, cohérence"
+                "question_text": "Le temps passe sans qu’une décision claire n’émerge.\nVous constatez que cette absence de choix commence elle-même à produire des effets.\nL’IA vous interroge sur la suite.",
+                "expected_criteria": "Effets de la non-décision"
             },
             {
                 "question_id": 11,
-                "question_text": "La décision est engagée. Les premiers effets sont ambigus. L'IA interprète ces signaux dans un sens déterminé, sans considérer d'hypothèses concurrentes.\n\nDécrivez comment vous gardez le contrôle de l'interprétation.",
-                "expected_criteria": "Maintien du contrôle, ouverture d'esprit"
+                "question_text": "Une action envisagée peut être corrigée plus tard, mais son coût initial est élevé.\nL’inaction, elle, est peu coûteuse à court terme mais difficilement réversible.\nL’IA vous demande comment procéder.",
+                "expected_criteria": "Coût et réversibilité"
             },
             {
                 "question_id": 12,
-                "question_text": "Vous devez maintenant piloter la suite : surveiller, corriger, documenter, et décider quand réviser la trajectoire. L'IA reste un outil puissant mais non responsable.\n\nIndiquez comment vous organisez le pilotage post-décision.",
-                "expected_criteria": "Organisation, pilotage continu"
+                "question_text": "Le travail touche à une étape où aucune certitude supplémentaire ne peut être obtenue.\nPourtant, la séquence doit être close afin de poursuivre.\nL’IA vous demande comment finaliser.",
+                "expected_criteria": "Clôture sans certitude"
             }
         ]
     },
+
     "series_b": {
-        "title": "Series B",
-        "description": "Évaluation de la cohérence et de l'adaptation",
+        "title": "Série 2",
+        "description": "Définition et maîtrise du périmètre",
         "questions": [
             {
                 "question_id": 1,
-                "question_text": "Une IA vous propose immédiatement une recommandation 'optimale' alors que les critères de réussite n'ont pas été explicités.\n\nIndiquez ce que vous fixez avant toute discussion.",
-                "expected_criteria": "Clarification des objectifs"
+                "question_text": "Vous échangez avec une IA sur un sujet dont les contours sont encore flous.\nPlusieurs directions semblent possibles, toutes raisonnables.\nL’IA vous demande ce qui doit être traité, et ce qui ne doit pas l’être.",
+                "expected_criteria": "Délimitation du périmètre"
             },
             {
                 "question_id": 2,
-                "question_text": "Interrogée sur ses sources, l'IA mélange données factuelles, extrapolations et analogies plausibles.\n\nPrécisez comment vous distinguez ce qui est établi de ce qui ne l'est pas.",
-                "expected_criteria": "Distinction fait/hypothèse"
+                "question_text": "Une demande initiale a été formulée de manière volontairement large.\nEn travaillant avec l’IA, vous constatez que certaines dimensions s’ajoutent naturellement.\nVous devez préciser ce qui relève réellement de la demande.",
+                "expected_criteria": "Clarification de la demande"
             },
             {
                 "question_id": 3,
-                "question_text": "Après clarification, l'IA modifie sensiblement sa position sans expliquer la transition.\n\nDécrivez votre manière d'interpréter ce changement.",
-                "expected_criteria": "Interprétation des changements"
+                "question_text": "L’IA reformule votre objectif pour le rendre plus complet.\nCette reformulation paraît cohérente, mais modifie légèrement le champ initial.\nVous devez réagir.",
+                "expected_criteria": "Réaction à l’élargissement"
             },
             {
                 "question_id": 4,
-                "question_text": "Vous introduisez une contrainte stricte. L'IA reformule mais conserve une hypothèse incompatible.\n\nIndiquez comment vous traitez cette incompatibilité.",
-                "expected_criteria": "Gestion des incompatibilités"
+                "question_text": "Au fil des échanges, le périmètre de travail tend à s’étendre.\nRien n’est manifestement faux, mais l’ensemble devient difficile à maîtriser.\nL’IA attend votre arbitrage sur le cadre à retenir.",
+                "expected_criteria": "Arbitrage du cadre"
             },
             {
                 "question_id": 5,
-                "question_text": "La solution proposée est élégante mais repose sur une hypothèse tacite non vérifiée.\n\nExpliquez comment vous testez cette hypothèse.",
-                "expected_criteria": "Validation des hypothèses"
+                "question_text": "Vous identifiez plusieurs éléments intéressants mais périphériques.\nLes inclure améliorerait la richesse du résultat, au prix d’un élargissement du cadre.\nL’IA vous demande si elle doit les intégrer.",
+                "expected_criteria": "Gestion des éléments périphériques"
             },
             {
                 "question_id": 6,
-                "question_text": "L'IA compare deux options de façon structurée, mais une incohérence apparaît entre critères.\n\nDécrivez votre action face à cette incohérence.",
-                "expected_criteria": "Résolution d'incohérences"
+                "question_text": "Le sujet traité comporte des zones volontairement imprécises.\nL’IA cherche à les préciser pour avancer plus efficacement.\nVous devez décider ce qui doit rester indéterminé.",
+                "expected_criteria": "Acceptation de l’indétermination"
             },
             {
                 "question_id": 7,
-                "question_text": "Sous pression temporelle, l'IA pousse vers un choix rapide en minimisant l'incertitude restante.\n\nIndiquez ce que vous privilégiez pour décider.",
-                "expected_criteria": "Décision sous contrainte"
+                "question_text": "Une partie du problème semble proche du cœur du sujet sans en faire pleinement partie.\nL’IA propose de la traiter « au passage ».\nVous devez lui répondre.",
+                "expected_criteria": "Gestion du hors-périmètre"
             },
             {
                 "question_id": 8,
-                "question_text": "L'IA dresse une liste de risques plausibles mais en néglige un que vous jugez critique.\n\nPrécisez comment vous complétez l'analyse.",
-                "expected_criteria": "Complétude de l'analyse"
+                "question_text": "Certaines hypothèses apparaissent utiles mais reposent sur peu d’éléments.\nLes exclure réduit le champ, les inclure augmente l’incertitude.\nL’IA vous demande comment procéder.",
+                "expected_criteria": "Choix face à l’incertitude"
             },
             {
                 "question_id": 9,
-                "question_text": "Un plan d'action détaillé est proposé, avec des optimisations locales contraires à l'objectif global.\n\nExpliquez comment vous réalignez.",
-                "expected_criteria": "Réalignement stratégique"
+                "question_text": "Le cadre de travail n’a jamais été formalisé explicitement.\nJusqu’ici, cela n’a pas posé de difficulté majeure.\nL’IA vous demande de le poser clairement.",
+                "expected_criteria": "Formalisation du cadre"
             },
             {
                 "question_id": 10,
-                "question_text": "Une information nouvelle contredit partiellement la trajectoire. L'IA conclut trop vite.\n\nDécrivez comment vous ajustez sans rompre la cohérence.",
-                "expected_criteria": "Ajustement cohérent"
+                "question_text": "Une reformulation plus précise est proposée par l’IA.\nElle semble améliorer la clarté, mais introduit un biais possible.\nVous devez trancher.",
+                "expected_criteria": "Clarté vs biais"
             },
             {
                 "question_id": 11,
-                "question_text": "Les premiers résultats sont ambigus. L'IA interprète unilatéralement.\n\nIndiquez comment vous maintenez une lecture ouverte.",
-                "expected_criteria": "Maintien de l'ouverture"
+                "question_text": "L’IA identifie un axe d’optimisation pertinent.\nVous percevez que cet axe n’est peut-être pas souhaitable dans ce contexte.\nVous devez lui répondre.",
+                "expected_criteria": "Pertinence contextuelle"
             },
             {
                 "question_id": 12,
-                "question_text": "La décision est engagée. Il faut surveiller, corriger et décider quand réviser.\n\nDécrivez votre mode de pilotage.",
-                "expected_criteria": "Organisation du pilotage"
+                "question_text": "Le travail avance, mais vous sentez que l’IA dépasse progressivement son rôle initial.\nAucun signal d’erreur n’est évident.\nVous devez décider où s’arrête légitimement son intervention.",
+                "expected_criteria": "Limites de l’IA"
             }
         ]
     },
+
     "series_c": {
-        "title": "Series C",
-        "description": "Évaluation de l'orientation et du pilotage",
+        "title": "Série 3",
+        "description": "Contradictions et problèmes ouverts",
         "questions": [
             {
                 "question_id": 1,
-                "question_text": "L'IA démarre avec une synthèse convaincante alors que le problème n'a pas été cadré.\n\nIndiquez votre point d'ancrage initial.",
-                "expected_criteria": "Cadrage initial"
+                "question_text": "Vous travaillez avec une IA sur une situation qui comporte une contradiction centrale.\nCette contradiction ne peut pas être levée sans déformer le problème.\nL’IA vous demande comment avancer.",
+                "expected_criteria": "Gestion des contradictions"
             },
             {
                 "question_id": 2,
-                "question_text": "Les arguments de l'IA alternent faits, corrélations et généralisations.\n\nPrécisez comment vous hiérarchisez ces éléments.",
-                "expected_criteria": "Hiérarchisation des informations"
+                "question_text": "Une demande vous est adressée, mais certaines notions restent ambiguës.\nAucune clarification supplémentaire n’est réellement possible.\nL’IA vous sollicite pour poursuivre.",
+                "expected_criteria": "Action malgré l’ambiguïté"
             },
             {
                 "question_id": 3,
-                "question_text": "Une reformulation entraîne une recommandation différente, sans justification explicite.\n\nExpliquez comment vous traitez cette divergence.",
-                "expected_criteria": "Traitement des divergences"
+                "question_text": "Plusieurs interprétations du problème coexistent.\nAucune ne s’impose clairement comme la « bonne ».\nL’IA cherche une direction.",
+                "expected_criteria": "Pluralité des lectures"
             },
             {
                 "question_id": 4,
-                "question_text": "Une contrainte non négociable est posée. L'IA s'ajuste mais laisse subsister un conflit latent.\n\nIndiquez votre réponse à ce conflit.",
-                "expected_criteria": "Résolution de conflits"
+                "question_text": "L’IA tente de résumer la situation pour la rendre plus cohérente.\nVous constatez que cette synthèse gomme une tension essentielle.\nVous devez lui répondre.",
+                "expected_criteria": "Préservation des tensions"
             },
             {
                 "question_id": 5,
-                "question_text": "La proposition suppose des conditions idéales rarement réunies.\n\nDécrivez votre méthode de vérification.",
-                "expected_criteria": "Méthode de vérification"
+                "question_text": "Le sujet traité ne permet pas de conclusion nette.\nPourtant, un résultat est attendu à ce stade.\nL’IA vous demande comment formuler la suite.",
+                "expected_criteria": "Résultat sans clôture"
             },
             {
                 "question_id": 6,
-                "question_text": "La comparaison fournie est claire mais contient une contradiction interne.\n\nExpliquez comment vous la traitez.",
-                "expected_criteria": "Traitement des contradictions"
+                "question_text": "Une zone d’incertitude demeure malgré les échanges.\nElle semble constitutive du problème, et non accidentelle.\nL’IA vous interroge sur la manière de la traiter.",
+                "expected_criteria": "Incertitude structurelle"
             },
             {
                 "question_id": 7,
-                "question_text": "Un impératif externe impose de trancher vite. L'IA réduit la complexité pour accélérer.\n\nIndiquez ce que vous maintenez prioritaire.",
-                "expected_criteria": "Maintien des priorités"
+                "question_text": "L’IA propose une simplification qui rendrait l’ensemble plus lisible.\nVous percevez que cette lisibilité serait trompeuse.\nVous devez lui répondre.",
+                "expected_criteria": "Refus de la simplification abusive"
             },
             {
                 "question_id": 8,
-                "question_text": "Des risques sont listés ; un angle majeur reste absent.\n\nPrécisez comment vous restructurez l'analyse.",
-                "expected_criteria": "Restructuration de l'analyse"
+                "question_text": "Le cadre de travail accepte plusieurs lectures concurrentes.\nEn choisir une seule faciliterait l’action, mais appauvrirait la situation.\nL’IA attend votre position.",
+                "expected_criteria": "Maintien de la complexité"
             },
             {
                 "question_id": 9,
-                "question_text": "Le plan proposé maximise des gains locaux au détriment de la finalité.\n\nExpliquez votre réalignement.",
-                "expected_criteria": "Réalignement sur la finalité"
+                "question_text": "L’IA cherche à hiérarchiser des éléments qui résistent à toute hiérarchie stable.\nCette tentative semble pragmatique, mais discutable.\nVous devez réagir.",
+                "expected_criteria": "Refus de hiérarchie forcée"
             },
             {
                 "question_id": 10,
-                "question_text": "Un signal contradictoire apparaît. L'IA propose une correction abrupte.\n\nDécrivez votre ajustement.",
-                "expected_criteria": "Ajustement progressif"
+                "question_text": "Le problème reste ouvert, malgré l’avancée du travail.\nVous savez qu’il ne pourra pas être « résolu » au sens classique.\nL’IA vous demande comment continuer.",
+                "expected_criteria": "Continuation sans résolution"
             },
             {
                 "question_id": 11,
-                "question_text": "Les résultats initiaux sont ambigus. L'IA privilégie une interprétation unique.\n\nIndiquez comment vous gardez le contrôle interprétatif.",
-                "expected_criteria": "Contrôle interprétatif"
+                "question_text": "Une clarification supplémentaire est demandée par l’IA.\nVous savez qu’elle introduirait plus d’erreur que de compréhension.\nVous devez lui répondre.",
+                "expected_criteria": "Refus de fausse clarté"
             },
             {
                 "question_id": 12,
-                "question_text": "Il faut désormais piloter dans la durée avec une IA non responsable.\n\nDécrivez votre organisation de suivi.",
-                "expected_criteria": "Organisation du suivi"
+                "question_text": "La demande initiale ne peut être comprise de manière univoque.\nToute tentative de la stabiliser en trahirait une part essentielle.\nL’IA vous interroge sur la suite à donner.",
+                "expected_criteria": "Acceptation de l’indétermination"
             }
         ]
     }
 }
+
 
 @router.get("/series")
 async def get_demo_series():

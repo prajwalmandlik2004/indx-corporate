@@ -184,8 +184,8 @@ export default function TestDashboard() {
                       <td className="px-6 py-4">
                         {test.score !== null ? (
                           <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold ${getScoreBadge(test.score)}`}>
-                            <Award size={16} className="mr-1" />
-                            {test.score.toFixed(1)}%
+                            {/* <Award size={16} className="mr-1" /> */}
+                            {test.score.toFixed(0)}
                           </span>
                         ) : (
                           <span className="text-gray-400 text-sm">N/A</span>

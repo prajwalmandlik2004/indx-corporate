@@ -162,7 +162,7 @@ CRITICAL RULES:
         aggregated_analysis = json.loads(content)
         
         return {
-            "overall_score": overall_score,
+            "overall_score": overall_score * 10,
             "detailed_analysis": aggregated_analysis.get("detailed_analysis", "Analysis completed."),
             "question_feedback": question_feedback,
             "strengths": aggregated_analysis.get("strengths", ["Completed the test"]),
@@ -172,7 +172,7 @@ CRITICAL RULES:
     except Exception as e:
         print(f"Error creating aggregated analysis: {e}")
         return {
-            "overall_score": overall_score,
+            "overall_score": overall_score * 10,
             "detailed_analysis": "Analysis in progress. Please try again later.",
             "question_feedback": question_feedback,
             "strengths": ["Completion of test"],

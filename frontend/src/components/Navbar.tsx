@@ -13,12 +13,12 @@ export default function Navbar() {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [testSeries, setTestSeries] = useState([
-    { id: 'series_a', name: 'Série 15-A' },
-    { id: 'series_b', name: 'Série 15-B' },
-    { id: 'series_c', name: 'Série 15-C' },
-    { id: 'series_25_a', name: 'Série 25-A' },
-    { id: 'series_25_b', name: 'Série 25-B' },
-    { id: 'series_25_c', name: 'Série 25-C' },
+    { id: 'series_a', name: 'Série 15 - S1' },
+    { id: 'series_b', name: 'Série 15 - S2' },
+    { id: 'series_c', name: 'Série 15 - S3' },
+    { id: 'series_25_a', name: 'Série 25 - T1' },
+    { id: 'series_25_b', name: 'Série 25 - T2' },
+    { id: 'series_25_c', name: 'Série 25 - T3' },
   ]);
 
   const handleTestSelect = async (seriesId: string) => {
@@ -186,7 +186,7 @@ export default function Navbar() {
             ))}
 
             {/* INDX1000 Dropdown - Mobile */}
-            <div className="border-t pt-3 mt-3">
+            <div className="border-t">
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 className="flex items-center justify-between w-full text-white py-2"

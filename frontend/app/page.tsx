@@ -322,7 +322,7 @@ export default function Home() {
             <p>
               INDX ne décrit pas ce que fait une IA dans un domaine donné, mais comment un humain organise, stabilise et pilote son interaction avec elle, quelles que soient les finalités poursuivies.
             </p>
-            <p className="font-semibold">Cette approche permet :</p>
+            <p className="">Cette approche permet :</p>
             <ul className="list-none space-y-2 pl-0">
               <li>- des lectures comparables entre environnements hétérogènes,</li>
               <li>- l'identification de schémas récurrents de pilotage ou de dérive,</li>
@@ -371,7 +371,7 @@ export default function Home() {
               <p>
                 Le cadre INDX repose sur un ensemble de principes méthodologiques stables, indépendants des contextes d'application.
               </p>
-              <p className="font-semibold">Il privilégie :</p>
+              <p className="">Il privilégie :</p>
               <ul className="list-none space-y-2 pl-0">
                 <li>- une observation contextualisée des situations,</li>
                 <li>- une distinction claire entre processus cognitifs et résultats obtenus,</li>
@@ -419,7 +419,7 @@ export default function Home() {
               <p>
                 Le champ de mesures d'INDX porte sur des capacités cognitives spécifiques, mobilisées dans l'interaction avec des systèmes d'IA.
               </p>
-              <p className="font-semibold">Il observe notamment la capacité à :</p>
+              <p className="">Il observe notamment la capacité à :</p>
               <ul className="list-none space-y-2 pl-0">
                 <li>- formuler et reformuler une intention exploitable par un système intelligent,</li>
                 <li>- maintenir une cohérence intellectuelle dans la durée,</li>
@@ -444,13 +444,13 @@ export default function Home() {
               <p>
                 Il ne vise ni à prédire des comportements futurs, ni à qualifier la valeur intrinsèque d'un individu, d'un groupe ou d'une organisation.
               </p>
-              <p className="font-semibold">Les résultats produits par INDX doivent toujours être interprétés :</p>
+              <p className="">Les résultats produits par INDX doivent toujours être interprétés :</p>
               <ul className="list-none space-y-2 pl-0">
                 <li>- dans un contexte donné,</li>
                 <li>- à un moment donné,</li>
                 <li>- en complément d'autres éléments d'analyse.</li>
               </ul>
-              <p className="font-semibold">Le cadre exclut explicitement :</p>
+              <p className="">Le cadre exclut explicitement :</p>
               <ul className="list-none space-y-2 pl-0">
                 <li>- toute interprétation automatisée des résultats,</li>
                 <li>- tout usage décisionnel direct sans médiation humaine,</li>
@@ -474,7 +474,7 @@ export default function Home() {
               <p>
                 INDX a été conçu pour pouvoir être déployé selon des modalités variées, adaptées aux contextes institutionnels, académiques ou organisationnels dans lesquels il est mobilisé.
               </p>
-              <p className="font-semibold">Le cadre peut être utilisé :</p>
+              <p className="">Le cadre peut être utilisé :</p>
               <ul className="list-none space-y-2 pl-0">
                 <li>- à des fins d'observation ponctuelle,</li>
                 <li>- dans des dispositifs longitudinaux de suivi,</li>
@@ -506,7 +506,7 @@ export default function Home() {
               <p>
                 INDX est un cadre d'évaluation indépendant, conçu pour analyser une capacité humaine spécifique : la manière dont un individu structure, conduit et stabilise son interaction cognitive avec une intelligence artificielle.
               </p>
-              <p className="font-semibold">Il ne s'agit :</p>
+              <p className="">Il ne s'agit :</p>
               <ul className="list-none space-y-2 pl-0">
                 <li>- ni d'un système d'intelligence artificielle,</li>
                 <li>- ni d'un outil d'analyse automatisée,</li>

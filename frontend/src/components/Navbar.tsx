@@ -22,8 +22,15 @@ export default function Navbar() {
   ]);
 
   const handleTestSelect = async (seriesId: string) => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setDropdownOpen(false);
+      setIsOpen(false);
+      router.push('/login');
+      return;
+    }
+
     try {
-      const token = localStorage.getItem('token');
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/demo/start/${seriesId}`, {
         method: 'POST',
         headers: {
@@ -31,14 +38,34 @@ export default function Navbar() {
           'Content-Type': 'application/json',
         },
       });
+
+      if (response.status === 401) {
+        localStorage.removeItem('token');
+        setIsLoggedIn(false);
+        setDropdownOpen(false);
+        setIsOpen(false);
+        router.push('/login');
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error('Failed to start test');
+      }
+
       const data = await response.json();
       router.push(`/demo/${data.id}?data=${encodeURIComponent(JSON.stringify(data))}`);
     } catch (error) {
       console.error('Failed to start test:', error);
+      localStorage.removeItem('token');
+      setIsLoggedIn(false);
+      setDropdownOpen(false);
+      setIsOpen(false);
+      router.push('/login');
     }
     setDropdownOpen(false);
     setIsOpen(false);
   };
+
 
 
   useEffect(() => {

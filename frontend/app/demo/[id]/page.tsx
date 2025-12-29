@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { ArrowRight, Send, X } from 'lucide-react';
+import { ArrowRight, Send } from 'lucide-react';
 import { demoAPI } from '@/src/lib/api';
 
 export default function DemoTestPage() {
@@ -118,28 +118,16 @@ export default function DemoTestPage() {
         <>
             {loading && (
                 <div className="fixed inset-0 bg-gray-800/20 bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-white rounded-lg p-8 flex flex-col items-center space-y-4 max-w-md relative">
-                        {/* Close button with lucide icon */}
-                        <button
-                            onClick={() => {
-                                setLoading(false);
-                                router.push('/demo');
-                            }}
-                            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-                            aria-label="Close"
-                        >
-                            <X size={24} />
-                        </button>
-
+                    <div className="bg-white rounded-lg p-8 flex flex-col items-center space-y-4 max-w-md">
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#050E3C]"></div>
                         <p className="text-lg font-semibold text-[#050E3C]">{analysisStatus}</p>
                         <p className="text-sm text-gray-600 text-center">
-                            This may take up to 3 minutes. You can close this and check results later.
+                            This may take up to 3 minutes. Please don't close this page.
                         </p>
                     </div>
                 </div>
             )}
-            
+
             <div className="min-h-screen px-4 py-20">
                 <div className="max-w-4xl mx-auto">
                     {/* Progress */}

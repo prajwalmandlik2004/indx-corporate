@@ -142,38 +142,39 @@ export default function DemoTestPage() {
                 </div>
             )}
 
-            {/* Cancel Confirmation Modal */}
             {showCancelModal && (
-                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-                    <div className="bg-white p-8 max-w-md mx-4">
-                        <h2 className="text-2xl font-bold text-[#050E3C] mb-4">
-                            Cancel Test?
-                        </h2>
-                        <p className="text-gray-600 mb-6">
-                            Are you sure you want to cancel this test? All your progress will be lost and cannot be recovered.
-                        </p>
-                        <div className="flex space-x-4">
-                            <button
-                                onClick={() => setShowCancelModal(false)}
-                                className="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 transition-colors"
-                            >
-                                No, Continue
-                            </button>
-                            <button
-                                onClick={handleCancelTest}
-                                className="flex-1 px-6 py-3 bg-red-500 text-white font-semibold hover:bg-red-600 transition-colors"
-                            >
-                                Yes, Cancel
-                            </button>
-                        </div>
+                <div className="fixed inset-0 z-50 flex items-center justify-center">
+                    <div className="relative bg-red-600 text-white px-7 py-2">
+
+                        <button
+                            onClick={() => setShowCancelModal(false)}
+                            className="absolute top-1 right-1 
+                   bg-white text-black text-xs w-5 h-5 flex items-center 
+                   justify-center border border-gray-300"
+                            aria-label="Close"
+                        >
+                            ✕
+                        </button>
+
+                        <button
+                            onClick={handleCancelTest}
+                            className="text-white 
+                   text-lg font-medium px-3 py-1.5 leading-tight"
+                        >
+                            Confirm
+                        </button>
                     </div>
                 </div>
             )}
 
+
+
+
+
             <div className="min-h-screen px-4 py-20">
                 <div className="max-w-4xl mx-auto">
                     {/* Progress */}
-                    <div className="mb-8">
+                    {/* <div className="mb-8">
                         <div className="flex items-center justify-between mb-2">
                             <span className="text-sm font-semibold text-gray-600">
                                 Question {currentQuestionIndex + 1} sur {test.questions.length}
@@ -188,21 +189,13 @@ export default function DemoTestPage() {
                                 style={{ width: `${((currentQuestionIndex + 1) / test.questions.length) * 100}%` }}
                             ></div>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Test Name */}
                     <div className="mb-6 flex items-center justify-between">
                         <h1 className="text-2xl font-bold text-[#050E3C]">
                             {test.test_name}
                         </h1>
-
-                        {/* Cancel Button */}
-                        <button
-                            onClick={() => setShowCancelModal(true)}
-                            className="px-3 py-2 border-2 border-red-500 text-red-500 font-semibold hover:bg-red-50 transition-colors"
-                        >
-                            Cancel Test
-                        </button>
                     </div>
 
                     {/* Question Card */}
@@ -230,32 +223,43 @@ export default function DemoTestPage() {
                     </div>
 
                     {/* Navigation */}
-                    <div className="flex justify-end">
-                        {isLastQuestion ? (
-                            <button
-                                onClick={handleSubmit}
-                                disabled={!canProceed || loading}
-                                className="btn-primary flex items-center space-x-2 text-lg disabled:opacity-50"
-                            >
-                                {loading ? (
-                                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
-                                ) : (
-                                    <>
-                                        <Send size={20} />
-                                        <span>Submit</span>
-                                    </>
-                                )}
-                            </button>
-                        ) : (
-                            <button
-                                onClick={handleNext}
-                                disabled={!canProceed}
-                                className="btn-primary flex items-center space-x-2 text-lg disabled:opacity-50"
-                            >
-                                <span>Next</span>
-                                <ArrowRight size={20} />
-                            </button>
-                        )}
+                    <div className="flex justify-between items-center">
+                        {/* Cancel Button */}
+                        <h1
+                            onClick={() => setShowCancelModal(true)}
+                            className="text-xl text-gray-500 underline cursor-pointer"
+                        >
+                            Cancel
+                        </h1>
+
+                        {/* Next/Submit Button */}
+                        <div>
+                            {isLastQuestion ? (
+                                <button
+                                    onClick={handleSubmit}
+                                    disabled={!canProceed || loading}
+                                    className="btn-primary flex items-center space-x-2 text-lg disabled:opacity-50"
+                                >
+                                    {loading ? (
+                                        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+                                    ) : (
+                                        <>
+                                            <Send size={20} />
+                                            <span>Submit</span>
+                                        </>
+                                    )}
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={handleNext}
+                                    disabled={!canProceed}
+                                    className="btn-primary flex items-center space-x-2 text-lg disabled:opacity-50"
+                                >
+                                    <span>Next</span>
+                                    <ArrowRight size={20} />
+                                </button>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

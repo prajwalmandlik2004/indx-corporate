@@ -7,14 +7,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
-          <div className="space-y-4">
+          {/* <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              {/* <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                <span className="text-[#050E3C] font-bold text-xl"><Brain /></span>
-              </div> */}
+             
               <span className="text-2xl font-bold">INDX</span>
             </div>
-          </div>
+          </div> */}
 
           {/* Quick Links */}
           <div>
@@ -33,20 +31,20 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/demo" className="text-blue-100 hover:text-white transition-colors">Plateforme</Link></li>
               <li><Link href="/test-dashboard" className="text-blue-100 hover:text-white transition-colors">Dashboard</Link></li>
-              <li><Link href="/profile" className="text-blue-100 hover:text-white transition-colors">Profil</Link></li>
+              <li><Link href="/about" className="text-blue-100 hover:text-white transition-colors">À propos d’INDX</Link></li>
             </ul>
           </div>
 
 
           {/* Categories */}
-          <div>
+          {/* <div>
             <h3 className="font-bold text-lg mb-4">Serie</h3>
             <ul className="space-y-2 text-blue-100">
               <li><Link href="/demo">Serie 1</Link></li>
               <li><Link href="/demo">Serie 2</Link></li>
               <li><Link href="/demo">Serie 3</Link></li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Contact */}
           {/* <div>

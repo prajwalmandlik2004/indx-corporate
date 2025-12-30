@@ -88,6 +88,7 @@ export default function Navbar() {
     { href: '/demo', label: 'Plateforme', icon: Beaker },
     // { href: '/test-platform', label: 'Test Platform', icon: BookOpen },
     { href: '/test-dashboard', label: 'Dashboard', icon: BarChart3 },
+    { href: '/about', label: 'À propos d’INDX', icon: BarChart3 },
 
   ];
 
@@ -112,12 +113,12 @@ export default function Navbar() {
             {/* <div className="w-10 h-10 bg-gradient-to-br from-[#050E3C] to-[#050E3C]  flex items-center justify-center">
               <span className="text-white font-bold text-xl"><Brain /></span>
             </div> */}
-            <span className="text-2xl font-bold text-white">INDX</span>
+            <span className="text-3xl font-bold text-white">INDX</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
+            {navLinks.slice(0, 4).map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -153,19 +154,30 @@ export default function Navbar() {
               )}
             </div>
 
+            {/* Remaining links: Dashboard, À propos d'INDX */}
+            {navLinks.slice(4).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="flex items-center space-x-1 text-white transition-colors duration-300 font-medium"
+              >
+                <span>{link.label}</span>
+              </Link>
+            ))}
+
           </div>
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             {isLoggedIn ? (
               <>
-                <Link
+                {/* <Link
                   href="/profile"
                   className="flex items-center space-x-2 text-white transition-colors duration-300"
                 >
                   <User size={20} />
                   <span>Profil</span>
-                </Link>
+                </Link> */}
                 <button
                   onClick={handleLogout}
                   className="flex items-center space-x-2 bg-white text-[#050E3C] px-4 py-2  transition-colors duration-300"
@@ -200,7 +212,7 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-[#050E3C] border-t animate-fade-in">
           <div className="px-4 py-4 space-y-3">
-            {navLinks.map((link) => (
+            {navLinks.slice(0, 4).map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -239,16 +251,28 @@ export default function Navbar() {
               )}
             </div>
 
+            {/* Remaining links: Dashboard, À propos d'INDX */}
+            {navLinks.slice(4).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="flex items-center space-x-2 text-white py-2 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                <span>{link.label}</span>
+              </Link>
+            ))}
+
             {isLoggedIn ? (
               <>
-                <Link
+                {/* <Link
                   href="/profile"
                   className="flex items-center space-x-2 text-white py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   <User size={18} />
                   <span>Profil</span>
-                </Link>
+                </Link> */}
                 <button
                   onClick={() => {
                     handleLogout();

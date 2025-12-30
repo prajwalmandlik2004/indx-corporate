@@ -23,3 +23,4 @@ class ResultResponse(BaseModel):
     score: float
     analyses: Dict[str, Any]
     completed_at: str
+    answers: Optional[List[Dict[str, Any]]] = None

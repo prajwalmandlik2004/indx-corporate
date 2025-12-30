@@ -56,12 +56,12 @@ export default function DemoPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <section className="bg-gradient-to-br from-blue-50 to-blue-50 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
+      <section className="bg-gradient-to-br from-blue-50 to-blue-50 py-15 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto text-left space-y-6">
           {/* <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#050E3C] to-[#050E3C] rounded-2xl mb-4">
             <Beaker className="text-white" size={40} />
           </div> */}
-          <h1 className="text-4xl sm:text-6xl font-bold gradient-text">
+          <h1 className="text-3xl sm:text-5xl font-bold gradient-text">
             Series Test
           </h1>
           {/* <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
@@ -71,7 +71,7 @@ export default function DemoPage() {
       </section>
 
       {/* Series Cards */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             {series.map((s, index) => (

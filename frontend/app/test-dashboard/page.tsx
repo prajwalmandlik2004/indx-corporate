@@ -143,11 +143,13 @@ export default function TestDashboard() {
                   <tr>
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">S.No</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Test Name</th>
+                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Author</th>
                     {/* <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Category</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Level</th> */}
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Date & Time</th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Score</th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Action</th>
+                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Answers</th>
+                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">INDX1000</th>
+                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Analysis</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Delete</th>
                   </tr>
                 </thead>
@@ -160,6 +162,9 @@ export default function TestDashboard() {
                       <td className="px-6 py-4 text-sm text-gray-900">{index + 1}</td>
                       <td className="px-6 py-4">
                         <div className="font-semibold text-gray-900">{test.test_name}</div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="text-sm text-gray-700">{test.user?.full_name || 'N/A'}</div>
                       </td>
                       {/* <td className="px-6 py-4">
                         <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
@@ -181,7 +186,20 @@ export default function TestDashboard() {
                           </span>
                         </div>
                       </td>
-                      <td className="px-6 py-4">
+                      {/* Add this new cell */}
+                      <td className="px-8 py-4">
+                        {test.completed ? (
+                          <button
+                            onClick={() => router.push(`/answers/${test.id}`)}
+                            className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors"
+                          >
+                            <Eye size={18} />
+                          </button>
+                        ) : (
+                          <span className="text-gray-400 text-sm">N/A</span>
+                        )}
+                      </td>
+                      <td className="px-8 py-4">
                         {test.score !== null ? (
                           <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold ${getScoreBadge(test.score)}`}>
                             {/* <Award size={16} className="mr-1" /> */}
@@ -191,14 +209,14 @@ export default function TestDashboard() {
                           <span className="text-gray-400 text-sm">N/A</span>
                         )}
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-8 py-4">
                         {test.completed ? (
                           <button
                             onClick={() => router.push(`/result/${test.id}`)}
                             className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors"
                           >
                             <Eye size={18} />
-                            <span>View Result</span>
+                            {/* <span>View Result</span> */}
                           </button>
                         ) : (
                           <span className="text-gray-400 text-sm">Incomplete</span>
@@ -260,13 +278,23 @@ export default function TestDashboard() {
                       </span>
                     </div>
                     {test.completed && (
-                      <button
-                        onClick={() => router.push(`/result/${test.id}`)}
-                        className="flex items-center space-x-1 text-[#050E3C] hover:text-blue-700 font-semibold text-sm"
-                      >
-                        <Eye size={16} />
-                        <span>View</span>
-                      </button>
+                      <>
+                        {/* Add this button */}
+                        <button
+                          onClick={() => router.push(`/answers/${test.id}`)}
+                          className="flex items-center space-x-1 text-[#050E3C] hover:text-blue-700 font-semibold text-sm"
+                        >
+                          <Eye size={16} />
+                          <span>Answers</span>
+                        </button>
+                        <button
+                          onClick={() => router.push(`/result/${test.id}`)}
+                          className="flex items-center space-x-1 text-[#050E3C] hover:text-blue-700 font-semibold text-sm"
+                        >
+                          <Eye size={16} />
+                          <span>View</span>
+                        </button>
+                      </>
                     )}
                     <button
                       onClick={() => handleDeleteTest(test.id)}

@@ -86,5 +86,6 @@ async def get_test_result(
         "level": test.level.value,
         "score": test.score,
         "analyses": parsed_analyses,
-        "completed_at": test.completed.isoformat()
+        "completed_at": test.completed.isoformat(),
+        "answers": test.answers  
     }

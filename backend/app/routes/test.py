@@ -102,8 +102,26 @@ async def get_test_dashboard(
     tests = db.query(TestAttempt).filter(
         TestAttempt.user_id == current_user.id
     ).order_by(TestAttempt.created_at.desc()).all()
+
     
-    return tests
+    result = []
+    for test in tests:
+        test_dict = {
+            "id": test.id,
+            "test_name": test.test_name,
+            "category": test.category,
+            "level": test.level,
+            "score": test.score,
+            "completed": test.completed,
+            "created_at": test.created_at,
+            "user": {
+                "full_name": test.user.full_name,
+                "email": test.user.email
+            }
+        }
+        result.append(test_dict)
+    
+    return result
 
 @router.get("/categories")
 async def get_categories():

@@ -19,6 +19,7 @@ export default function Navbar() {
     { id: 'series_25_a', name: 'Série 25 - T1' },
     { id: 'series_25_b', name: 'Série 25 - T2' },
     { id: 'series_25_c', name: 'Série 25 - T3' },
+    { id: 'series_25_d', name: 'Série 25 - T3 CTX' },
   ]);
 
   const handleTestSelect = async (seriesId: string) => {

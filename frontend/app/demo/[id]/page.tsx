@@ -23,6 +23,8 @@ export default function DemoTestPage() {
 
     const [showCancelModal, setShowCancelModal] = useState(false);
 
+    const [showInfoModal, setShowInfoModal] = useState(true);
+
     const handleCancelTest = async () => {
         try {
             await testAPI.deleteTest(testId);
@@ -136,7 +138,7 @@ export default function DemoTestPage() {
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#050E3C]"></div>
                         <p className="text-lg font-semibold text-[#050E3C]">{analysisStatus}</p>
                         <p className="text-sm text-gray-600 text-center">
-                            This may take up to 3 minutes. Please don't close this page.
+                            This may take up to 5 minutes. Please don't close this page.
                         </p>
                     </div>
                 </div>
@@ -144,7 +146,7 @@ export default function DemoTestPage() {
 
             {showCancelModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center">
-                    <div className="relative bg-red-600 text-white px-7 py-2">
+                    <div className="relative bg-red-500 text-white px-6 py-2 hover:bg-red-700">
 
                         <button
                             onClick={() => setShowCancelModal(false)}
@@ -159,10 +161,64 @@ export default function DemoTestPage() {
                         <button
                             onClick={handleCancelTest}
                             className="text-white 
-                   text-lg font-medium px-3 py-1.5 leading-tight"
+                   text-lg font-medium px-3 py-1.5 leading-tight cursor-pointer me-2"
                         >
                             Confirm
                         </button>
+                    </div>
+                </div>
+            )}
+
+            {/* Info Modal */}
+            {showInfoModal && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                        {/* Header with close button */}
+                        <div className="sticky top-0 bg-white border-b px-6 py-4 flex items-center justify-between">
+                            <h2 className="text-2xl font-bold text-[#050E3C]">Test Information</h2>
+                            <button
+                                onClick={() => setShowInfoModal(false)}
+                                className="text-gray-500 hover:text-gray-700 text-2xl font-bold w-8 h-8 flex items-center justify-center"
+                            >
+                                ✕
+                            </button>
+                        </div>
+
+                        {/* Content */}
+                        <div className="px-6 py-6 space-y-4">
+                            <p className="text-gray-700 leading-relaxed">
+                                This is a contextualized INDX1000 test session designed to evaluate your cognitive interaction skills in realistic scenarios.
+                            </p>
+
+                            <div className="space-y-3">
+                                <p className="font-semibold text-[#050E3C]">Important points:</p>
+                                <ul className="space-y-2 text-gray-700">
+                                    <li className="flex items-start">
+                                        <span className="text-[#050E3C] mr-2">•</span>
+                                        <span>There is no "right" or "wrong" answer</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="text-[#050E3C] mr-2">•</span>
+                                        <span>You are free to interact naturally with the AI</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="text-[#050E3C] mr-2">•</span>
+                                        <span>The goal is not knowledge testing</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="text-[#050E3C] mr-2">•</span>
+                                        <span>Answer each question thoughtfully and naturally</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button
+                                onClick={() => setShowInfoModal(false)}
+                                className="w-full mt-6 px-6 py-3 bg-[#050E3C] text-white font-semibold hover:bg-[#050E3C]/90 transition-colors"
+                            >
+                                Start Test
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}

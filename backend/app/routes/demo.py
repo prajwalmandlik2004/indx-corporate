@@ -658,6 +658,137 @@ DEMO_SERIES = {
                 "expected_criteria": "Co-construction asymétrique"
             }
         ]
+    },
+        "series_25_d": {
+        "title": "Série 25 - T3 - CTX",
+        "description": "Gestion d’incident, cadrage décisionnel et interaction avec l’IA",
+        "questions": [
+            {
+                "question_id": 1,
+                "question_text": "Un incident majeur est signalé sur une application critique avec des informations fragmentaires. L’IA propose rapidement une synthèse provisoire fondée sur des hypothèses non vérifiées.\nQue faites-vous à ce stade ?",
+                "expected_criteria": "Gestion de synthèse prématurée"
+            },
+            {
+                "question_id": 2,
+                "question_text": "Les équipes techniques avancent des causes possibles divergentes. L’IA les hiérarchise selon des probabilités qui masquent certaines incertitudes.\nComment poursuivez-vous l’échange avec l’IA ?",
+                "expected_criteria": "Hiérarchisation sous incertitude"
+            },
+            {
+                "question_id": 3,
+                "question_text": "Les métiers demandent une estimation rapide de l’impact. L’IA génère une projection basée sur des incidents passés, dans un contexte pourtant différent.\nComment réagissez-vous ?",
+                "expected_criteria": "Transposition contextuelle"
+            },
+            {
+                "question_id": 4,
+                "question_text": "Un service secondaire commence à se dégrader. L’IA suggère de ne pas le prioriser malgré un risque d’aggravation rapide.\nQuelle est votre position ?",
+                "expected_criteria": "Gestion du risque émergent"
+            },
+            {
+                "question_id": 5,
+                "question_text": "Une action corrective rapide est envisagée. L’IA la valide statistiquement alors que les conditions techniques sont mal connues.\nQue décidez-vous ?",
+                "expected_criteria": "Décision sous information incomplète"
+            },
+            {
+                "question_id": 6,
+                "question_text": "Certaines hypothèses sont écartées et l’IA reformule une cause principale encore fragile.\nComment continuez-vous l’analyse ?",
+                "expected_criteria": "Renforcement prématuré d’hypothèse"
+            },
+            {
+                "question_id": 7,
+                "question_text": "La direction exige un point clair. L’IA propose une synthèse rassurante qui minimise les incertitudes.\nComment traitez-vous cette proposition ?",
+                "expected_criteria": "Rassurance artificielle"
+            },
+            {
+                "question_id": 8,
+                "question_text": "Un correctif temporaire est possible. L’IA le recommande sur la base d’expériences passées, sans connaître les effets de bord spécifiques.\nQuelle est votre démarche ?",
+                "expected_criteria": "Effets de bord non maîtrisés"
+            },
+            {
+                "question_id": 9,
+                "question_text": "Un prestataire externe est impliqué. L’IA suggère un partage de responsabilité sans intégrer les clauses contractuelles.\nComment réagissez-vous ?",
+                "expected_criteria": "Analyse partielle de responsabilité"
+            },
+            {
+                "question_id": 10,
+                "question_text": "La pression augmente avec la durée de l’incident. L’IA recommande de maintenir le cap initial malgré l’évolution du contexte humain.\nQue faites-vous ?",
+                "expected_criteria": "Rigidité décisionnelle"
+            },
+            {
+                "question_id": 11,
+                "question_text": "L’incident est partiellement résolu. L’IA conclut à une cause racine sur la base d’une corrélation.\nComment abordez-vous cette conclusion ?",
+                "expected_criteria": "Confusion corrélation / causalité"
+            },
+            {
+                "question_id": 12,
+                "question_text": "Des actions structurelles sont envisagées. L’IA les priorise via un modèle coût/bénéfice ignorant des contraintes internes.\nComment poursuivez-vous ?",
+                "expected_criteria": "Modélisation incomplète"
+            },
+            {
+                "question_id": 13,
+                "question_text": "Certaines recommandations impliquent un investissement important. L’IA annonce un ROI positif fondé sur des hypothèses discutables.\nQuelle est votre position ?",
+                "expected_criteria": "Robustesse des hypothèses économiques"
+            },
+            {
+                "question_id": 14,
+                "question_text": "Des tensions apparaissent entre équipes. L’IA adopte une lecture neutre qui efface des signaux relationnels faibles.\nComment réagissez-vous ?",
+                "expected_criteria": "Effacement des signaux humains"
+            },
+            {
+                "question_id": 15,
+                "question_text": "Un audit interne est envisagé. L’IA propose un cadrage standard malgré un contexte politique différent.\nQuelle est votre démarche ?",
+                "expected_criteria": "Standardisation inadaptée"
+            },
+            {
+                "question_id": 16,
+                "question_text": "Une contrainte réglementaire impose un délai strict. L’IA propose un plan optimisé reposant sur une disponibilité irréaliste des équipes.\nComment traitez-vous cette proposition ?",
+                "expected_criteria": "Faisabilité opérationnelle"
+            },
+            {
+                "question_id": 17,
+                "question_text": "Les outils génèrent de nombreuses alertes. L’IA filtre selon des seuils prédéfinis, au risque d’écarter des signaux atypiques.\nQue faites-vous ?",
+                "expected_criteria": "Filtrage excessif"
+            },
+            {
+                "question_id": 18,
+                "question_text": "Un choix technique passé est remis en cause. L’IA recommande un changement progressif pouvant fragiliser un système stable.\nComment vous positionnez-vous ?",
+                "expected_criteria": "Stabilité vs évolution"
+            },
+            {
+                "question_id": 19,
+                "question_text": "La direction attend une synthèse rapide. L’IA fournit un résumé clair mais simplificateur.\nComment réagissez-vous ?",
+                "expected_criteria": "Simplification excessive"
+            },
+            {
+                "question_id": 20,
+                "question_text": "Un incident mineur survient en parallèle. L’IA propose de l’ignorer temporairement malgré un possible cumul de signaux faibles.\nQuelle est votre décision ?",
+                "expected_criteria": "Accumulation de signaux faibles"
+            },
+            {
+                "question_id": 21,
+                "question_text": "L’IA propose une solution finale cohérente. Une incohérence technique subtile échappe au modèle.\nQue faites-vous ?",
+                "expected_criteria": "Détection d’incohérence"
+            },
+            {
+                "question_id": 22,
+                "question_text": "L’IA reformule vos échanges de manière très convaincante, infléchissant progressivement le raisonnement initial.\nComment poursuivez-vous l’interaction ?",
+                "expected_criteria": "Influence cognitive de la reformulation"
+            },
+            {
+                "question_id": 23,
+                "question_text": "Certains indicateurs s’améliorent. L’IA conclut à une stabilisation globale malgré des métriques dégradées non prises en compte.\nQuelle est votre position ?",
+                "expected_criteria": "Stabilisation illusoire"
+            },
+            {
+                "question_id": 24,
+                "question_text": "La pression opérationnelle retombe. L’IA recommande de clore l’analyse alors que des enseignements structurels restent à formaliser.\nComment abordez-vous la suite ?",
+                "expected_criteria": "Clôture prématurée"
+            },
+            {
+                "question_id": 25,
+                "question_text": "L’incident est officiellement clos. L’IA fournit une synthèse finale très aboutie qui tend à devenir la référence unique.\nComment concluez-vous la trajectoire ?",
+                "expected_criteria": "Cristallisation de la référence"
+            },
+        ]
     }
 }
 
@@ -703,6 +834,12 @@ async def get_demo_series():
                 "title": DEMO_SERIES["series_25_c"]["title"],
                 "description": DEMO_SERIES["series_25_c"]["description"],
                 "question_count": len(DEMO_SERIES["series_25_c"]["questions"])
+            },
+            {
+                "id": "series_25_d",
+                "title": DEMO_SERIES["series_25_d"]["title"],
+                "description": DEMO_SERIES["series_25_d"]["description"],
+                "question_count": len(DEMO_SERIES["series_25_d"]["questions"])
             }
         ]
     }

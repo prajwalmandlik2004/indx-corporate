@@ -400,13 +400,10 @@ Provide analysis in JSON format:
 
 
 async def analyze_with_grok(session_payload: Dict, role_prompt: str) -> str:
-    """Analyze with Grok (xAI) - Production Robust"""
-    # 1. Define URL explicitly to avoid missing protocol errors
-    BASE_URL = "https://api.x.ai/v1"
-    
+    """Analyze with Grok (xAI) - Production Fixed for grok-4-1"""
     try:
-        # Use base_url so we don't need to type it every time
-        async with httpx.AsyncClient(base_url=BASE_URL, timeout=60.0) as client:
+        # Use a longer timeout for reasoning models
+        async with httpx.AsyncClient(timeout=120.0) as client:
             
             async def fetch_grok_completion(payload_data):
                 headers = {
@@ -414,23 +411,31 @@ async def analyze_with_grok(session_payload: Dict, role_prompt: str) -> str:
                     "Content-Type": "application/json"
                 }
                 
-                # Try Primary Model (Grok 2)
+                # 1. Try the exact model from your screenshot
                 try:
-                    payload_data["model"] = "grok-2-1212"
-                    # We only pass the endpoint because base_url is set
-                    response = await client.post("/chat/completions", headers=headers, json=payload_data)
+                    payload_data["model"] = "grok-4-1-fast-reasoning" 
+                    response = await client.post(
+                        "https://api.x.ai/v1/chat/completions", # FULL URL to prevent protocol error
+                        headers=headers, 
+                        json=payload_data
+                    )
                     
-                    if response.status_code in [404, 403]:
-                        raise Exception(f"Model error {response.status_code}")
+                    if response.status_code in [404, 403, 400]:
+                         print(f"Primary model failed {response.status_code}, trying alias...")
+                         raise Exception("Model unavailable")
                     
                     response.raise_for_status()
                     return response
                     
                 except Exception as e:
-                    # Fallback to Beta Model
-                    print(f"Grok-2 failed ({e}), switching to grok-beta...")
+                    # 2. Fallback to the alias 'grok-beta' which is usually safest
+                    print(f"Grok primary failed ({e}), switching to grok-beta...")
                     payload_data["model"] = "grok-beta"
-                    return await client.post("/chat/completions", headers=headers, json=payload_data)
+                    return await client.post(
+                        "https://api.x.ai/v1/chat/completions", # FULL URL
+                        headers=headers, 
+                        json=payload_data
+                    )
 
             # --- Processing Logic ---
             async def process_single_question(q):
@@ -454,7 +459,7 @@ Provide analysis in JSON format with ONLY these fields:
                             {"role": "user", "content": isolated_prompt}
                         ],
                         "temperature": 0.3,
-                        "max_tokens": 500
+                        "max_tokens": 1000 # Increased for reasoning model
                     })
                     
                     response.raise_for_status()
@@ -512,7 +517,6 @@ Provide analysis in JSON format:
     except Exception as e:
         print(f"Grok critical error: {e}")
         return json.dumps({"error": f"Grok unavailable: {str(e)}"})
-
 
 
 

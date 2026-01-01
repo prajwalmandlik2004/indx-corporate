@@ -180,9 +180,14 @@ export default function TestDashboard() {
                         <div className="flex items-center space-x-2">
                           <Calendar size={16} />
                           <span>
-                            {test.completed
-                              ? new Date(test.completed).toLocaleString()
-                              : 'In Progress'}
+                            {new Date(test.completed || test.created_at).toLocaleString('en-IN', {
+                              year: 'numeric',
+                              month: 'short',
+                              day: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit',
+                              hour12: false
+                            })}
                           </span>
                         </div>
                       </td>
@@ -272,9 +277,14 @@ export default function TestDashboard() {
                     <div className="flex items-center space-x-2 text-sm text-gray-600">
                       <Calendar size={14} />
                       <span>
-                        {test.completed
-                          ? new Date(test.completed).toLocaleDateString()
-                          : 'In Progress'}
+                        {new Date(test.completed || test.created_at).toLocaleString('en-IN', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                          hour12: false
+                        })}
                       </span>
                     </div>
                     {test.completed && (

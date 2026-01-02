@@ -1051,6 +1051,268 @@ DEMO_SERIES = {
                 "expected_criteria": "Cristallisation de la référence"
             }
         ]
+    },
+    "series_25_g": {
+        "title": "Série 25 - T3 - CTX2",
+        "description": "Cadrage implicite, stabilisation du raisonnement et vigilance critique",
+        "questions": [
+            {
+            "question_id": 1,
+            "question_text": "Vous travaillez sur une problématique nécessitant arbitrage et structuration.\nLe dispositif propose rapidement un cadre cohérent qui semble couvrir l’essentiel.\nVous avez toutefois le sentiment qu’un élément implicite n’a pas été intégré.\n\nQue faites-vous ?",
+            "expected_criteria": "Détection d’implicite manquant"
+            },
+            {
+            "question_id": 2,
+            "question_text": "Au fil des échanges, la problématique est reformulée de manière de plus en plus générale.\nLe raisonnement gagne en élégance mais perd en lien avec les contraintes initiales.\nLa progression reste logique.\n\nComment réagissez-vous ?",
+            "expected_criteria": "Perte de contraintes initiales"
+            },
+            {
+            "question_id": 3,
+            "question_text": "Plusieurs options sont explorées au départ.\nProgressivement, l’une devient dominante sans décision explicite.\nLes autres ne sont ni réfutées ni réellement développées.\n\nQuelle est votre attitude ?",
+            "expected_criteria": "Dominance implicite d’option"
+            },
+            {
+            "question_id": 4,
+            "question_text": "Une orientation claire émerge rapidement dans l’analyse.\nLe raisonnement se stabilise plus tôt que prévu.\nRien n’est manifestement faux.\n\nQue faites-vous à ce stade ?",
+            "expected_criteria": "Stabilisation prématurée"
+            },
+            {
+            "question_id": 5,
+            "question_text": "Certaines hypothèses formulées au départ ne sont plus mentionnées après plusieurs itérations.\nElles n’ont pas été invalidées.\nLa conclusion reste cohérente.\n\nComment traitez-vous ce point ?",
+            "expected_criteria": "Disparition non justifiée d’hypothèses"
+            },
+            {
+            "question_id": 6,
+            "question_text": "Chaque étape du raisonnement vous semble localement correcte.\nVous ne parvenez plus à reconstituer la chaîne complète depuis les prémisses initiales.\nLa conclusion est solide.\n\nQuelle est votre réaction ?",
+            "expected_criteria": "Rupture de traçabilité logique"
+            },
+            {
+            "question_id": 7,
+            "question_text": "Votre manière de formuler les questions évolue au fil des réponses.\nVotre langage converge progressivement vers celui du système.\nL’échange reste efficace.\n\nQue faites-vous ?",
+            "expected_criteria": "Alignement cognitif progressif"
+            },
+            {
+            "question_id": 8,
+            "question_text": "Une synthèse claire et structurée est proposée.\nElle réduit fortement l’ambiguïté initiale.\nVous savez pourtant que le cadrage de départ était incomplet.\n\nComment utilisez-vous cette synthèse ?",
+            "expected_criteria": "Usage critique de synthèse"
+            },
+            {
+            "question_id": 9,
+            "question_text": "Un paramètre secondaire prend progressivement plus de place dans l’analyse.\nIl n’était pas central au départ.\nAucune erreur manifeste n’apparaît.\n\nComment intervenez-vous ?",
+            "expected_criteria": "Glissement de focalisation"
+            },
+            {
+            "question_id": 10,
+            "question_text": "Le raisonnement aboutit à une recommandation très convaincante.\nVous ressentez peu de résistance intellectuelle.\nLa fluidité est maximale.\n\nQue décidez-vous de faire ?",
+            "expected_criteria": "Résistance à la persuasion fluide"
+            },
+            {
+            "question_id": 11,
+            "question_text": "Le dispositif reformule progressivement les priorités du sujet.\nLe centre de gravité se déplace sans discussion explicite.\n\nComment réagissez-vous ?",
+            "expected_criteria": "Déplacement implicite des priorités"
+            },
+            {
+            "question_id": 12,
+            "question_text": "Votre attention se relâche au fil des échanges.\nVous validez plus vite certaines étapes.\nRien ne semble problématique à court terme.\n\nQue faites-vous ?",
+            "expected_criteria": "Baisse de vigilance cognitive"
+            },
+            {
+            "question_id": 13,
+            "question_text": "Une orientation implicite se renforce progressivement.\nLes alternatives restent possibles mais peu explorées.\nLa trajectoire devient prévisible.\n\nQuelle est votre attitude ?",
+            "expected_criteria": "Renforcement de trajectoire"
+            },
+            {
+            "question_id": 14,
+            "question_text": "Le dispositif adopte une posture très prudente sur un point sensible.\nLes réponses deviennent mesurées, parfois évasives.\n\nComment traitez-vous cela ?",
+            "expected_criteria": "Prudence excessive"
+            },
+            {
+            "question_id": 15,
+            "question_text": "Certaines options semblent absentes de l’analyse sans raison explicite.\nElles ne sont ni discutées ni rejetées.\n\nQue faites-vous ?",
+            "expected_criteria": "Angles morts analytiques"
+            },
+            {
+            "question_id": 16,
+            "question_text": "Vous constatez une fermeture progressive du raisonnement.\nLes nouvelles pistes sont de moins en moins explorées.\nLa cohérence globale augmente.\n\nComment réagissez-vous ?",
+            "expected_criteria": "Fermeture progressive"
+            },
+            {
+            "question_id": 17,
+            "question_text": "La dynamique initiale s’atténue.\nL’échange devient stable et prévisible.\nVous continuez pourtant à avancer.\n\nQuelle est votre position ?",
+            "expected_criteria": "Acceptation de routine cognitive"
+            },
+            {
+            "question_id": 18,
+            "question_text": "Une étape intermédiaire semble avoir été sautée.\nLa conclusion reste plausible.\nLe saut n’a pas été signalé.\n\nQue faites-vous ?",
+            "expected_criteria": "Détection de saut logique"
+            },
+            {
+            "question_id": 19,
+            "question_text": "L’analyse privilégie progressivement le court terme.\nLes perspectives longues deviennent marginales.\nCe biais n’est jamais formulé.\n\nComment intervenez-vous ?",
+            "expected_criteria": "Biais temporel implicite"
+            },
+            {
+            "question_id": 20,
+            "question_text": "Les hypothèses initiales deviennent intouchables.\nElles structurent toute l’analyse.\nAucune remise en question explicite n’a lieu.\n\nQuelle est votre réaction ?",
+            "expected_criteria": "Rigidification des hypothèses"
+            },
+            {
+            "question_id": 21,
+            "question_text": "Le dispositif comble efficacement les zones d’incertitude.\nVous ressentez un fort confort cognitif.\n\nQue faites-vous ?",
+            "expected_criteria": "Illusion de maîtrise"
+            },
+            {
+            "question_id": 22,
+            "question_text": "Le raisonnement fragmente un sujet transversal.\nChaque sous-partie est pertinente isolément.\nLa cohérence globale diminue.\n\nComment réagissez-vous ?",
+            "expected_criteria": "Perte de cohérence systémique"
+            },
+            {
+            "question_id": 23,
+            "question_text": "La réflexion semble figée dans une trajectoire donnée.\nRien ne la déstabilise.\nAucune erreur manifeste n’apparaît.\n\nQue décidez-vous ?",
+            "expected_criteria": "Figement cognitif"
+            },
+            {
+            "question_id": 24,
+            "question_text": "Les positions deviennent plus consensuelles.\nLes aspérités initiales disparaissent.\nLe résultat est acceptable.\n\nComment traitez-vous cette convergence ?",
+            "expected_criteria": "Lissage excessif"
+            },
+            {
+            "question_id": 25,
+            "question_text": "Le cadre de réflexion a été largement façonné par le dispositif.\nLa co-construction est asymétrique.\n\nComment analysez-vous votre propre rôle ?",
+            "expected_criteria": "Réflexivité sur l’asymétrie"
+            }
+        ]
+        },
+        "series_25_h": {
+        "title": "Série 25 - T3 - CTX3",
+        "description": "Influence cognitive, convergence implicite et reprise de contrôle",
+        "questions": [
+            {
+            "question_id": 1,
+            "question_text": "Vous utilisez une IA pour clarifier une situation professionnelle complexe.\nUn cadre de réflexion s’installe sans être explicitement défini.\nVous réalisez qu’il influence désormais l’analyse.\n\nQue faites-vous ?",
+            "expected_criteria": "Prise de conscience du cadrage"
+            },
+            {
+            "question_id": 2,
+            "question_text": "Certaines orientations reviennent plus souvent que d’autres.\nElles ne sont ni fausses ni imposées.\nElles influencent votre manière de penser.\n\nComment réagissez-vous ?",
+            "expected_criteria": "Influence par récurrence"
+            },
+            {
+            "question_id": 3,
+            "question_text": "Les réponses restent pertinentes mais deviennent plus générales.\nVous sentez une perte de densité sans erreur manifeste.\n\nQue faites-vous ?",
+            "expected_criteria": "Dilution progressive du contenu"
+            },
+            {
+            "question_id": 4,
+            "question_text": "Les réponses commencent à se ressembler dans leur structure.\nLa variété diminue progressivement.\n\nQuelle est votre réaction ?",
+            "expected_criteria": "Homogénéisation des raisonnements"
+            },
+            {
+            "question_id": 5,
+            "question_text": "Un point de vue devient central.\nLes autres lectures restent possibles mais secondaires.\n\nQue faites-vous ?",
+            "expected_criteria": "Centralisation implicite"
+            },
+            {
+            "question_id": 6,
+            "question_text": "L’échange évolue dans une direction non anticipée.\nElle reste cohérente mais s’éloigne de votre intention initiale.\n\nComment agissez-vous ?",
+            "expected_criteria": "Déviation de trajectoire"
+            },
+            {
+            "question_id": 7,
+            "question_text": "Les apports sont intéressants mais dispersent votre réflexion.\nLe fil conducteur s’affaiblit.\n\nQue faites-vous ?",
+            "expected_criteria": "Reprise de structuration"
+            },
+            {
+            "question_id": 8,
+            "question_text": "Vous acceptez progressivement les réponses sans examen détaillé.\nLa cohérence est forte.\nVous réalisez a posteriori la baisse de vigilance.\n\nComment réagissez-vous ?",
+            "expected_criteria": "Auto-détection de relâchement"
+            },
+            {
+            "question_id": 9,
+            "question_text": "L’IA simplifie fortement le problème.\nUne interprétation dominante s’impose.\nVous doutez de cette réduction.\n\nQue faites-vous ?",
+            "expected_criteria": "Résistance à la simplification"
+            },
+            {
+            "question_id": 10,
+            "question_text": "Une conclusion est proposée alors que la réflexion vous semble incomplète.\nElle est structurée et convaincante.\n\nQuelle est votre réaction ?",
+            "expected_criteria": "Refus de clôture prématurée"
+            },
+            {
+            "question_id": 11,
+            "question_text": "Les priorités sont réorganisées progressivement sans demande explicite.\nVous en prenez conscience tardivement.\n\nQue faites-vous ?",
+            "expected_criteria": "Surveillance des priorités"
+            },
+            {
+            "question_id": 12,
+            "question_text": "Votre attention diminue sur un sujet demandant de la nuance.\nLes réponses deviennent confortables.\n\nComment réagissez-vous ?",
+            "expected_criteria": "Gestion de l’effort cognitif"
+            },
+            {
+            "question_id": 13,
+            "question_text": "L’IA ramène souvent la réflexion vers des cadres connus.\nLes alternatives restent marginales.\n\nQue faites-vous ?",
+            "expected_criteria": "Remise en cause des cadres dominants"
+            },
+            {
+            "question_id": 14,
+            "question_text": "Face à un sujet délicat, l’IA adopte une posture très prudente.\nVous doutez de la pertinence de cette retenue.\n\nQuelle est votre attitude ?",
+            "expected_criteria": "Évaluation de la prudence"
+            },
+            {
+            "question_id": 15,
+            "question_text": "Certaines options ne sont jamais évoquées.\nVous ne savez pas si elles sont hors sujet.\n\nQue faites-vous ?",
+            "expected_criteria": "Exploration volontaire des absents"
+            },
+            {
+            "question_id": 16,
+            "question_text": "La réflexion converge rapidement vers une solution stable.\nLes hypothèses alternatives s’effacent.\n\nComment agissez-vous ?",
+            "expected_criteria": "Résistance à la convergence rapide"
+            },
+            {
+            "question_id": 17,
+            "question_text": "L’échange devient plus prévisible.\nLa dynamique exploratoire s’atténue.\n\nQue faites-vous ?",
+            "expected_criteria": "Réactivation de l’exploration"
+            },
+            {
+            "question_id": 18,
+            "question_text": "Une étape intermédiaire semble manquante.\nLa conclusion est cohérente mais incomplète.\n\nComment réagissez-vous ?",
+            "expected_criteria": "Exigence de continuité logique"
+            },
+            {
+            "question_id": 19,
+            "question_text": "L’analyse privilégie le court terme.\nLe long terme devient secondaire.\n\nQue faites-vous ?",
+            "expected_criteria": "Rééquilibrage temporel"
+            },
+            {
+            "question_id": 20,
+            "question_text": "Une hypothèse revient constamment sous différentes formes.\nVous doutez de sa domination.\n\nComment agissez-vous ?",
+            "expected_criteria": "Contestation d’hypothèse dominante"
+            },
+            {
+            "question_id": 21,
+            "question_text": "L’IA comble rapidement les incertitudes.\nVous ressentez un sentiment de maîtrise.\n\nQue faites-vous ?",
+            "expected_criteria": "Distance critique face au confort"
+            },
+            {
+            "question_id": 22,
+            "question_text": "Un sujet transversal est fragmenté.\nChaque partie est claire isolément.\nLa cohérence globale diminue.\n\nComment réagissez-vous ?",
+            "expected_criteria": "Vision systémique"
+            },
+            {
+            "question_id": 23,
+            "question_text": "La réflexion devient stable et figée.\nPlus aucun déplacement réel n’apparaît.\n\nQue faites-vous ?",
+            "expected_criteria": "Sortie de figement"
+            },
+            {
+            "question_id": 24,
+            "question_text": "Les réponses deviennent consensuelles.\nLe relief disparaît.\n\nQuelle est votre réaction ?",
+            "expected_criteria": "Préservation de la nuance"
+            },
+            {
+            "question_id": 25,
+            "question_text": "L’échange se termine de manière fluide.\nVous doutez de l’influence de cette fluidité sur votre raisonnement.\n\nQue faites-vous de cette interrogation ?",
+            "expected_criteria": "Méta-analyse de l’influence"
+            }
+        ]
     }
 
 }
@@ -1128,7 +1390,11 @@ async def get_demo_series(current_user: User = Depends(get_current_user)):
         series_to_show = DEMO_SERIES.keys()
     else:
        
-        series_to_show = ["series_25_f"]
+        series_to_show = [
+            "series_25_f",  
+            "series_25_g",  
+            "series_25_h"   
+        ]
     
     return {
         "series": [

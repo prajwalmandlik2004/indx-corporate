@@ -15,8 +15,10 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [testSeries, setTestSeries] = useState([
     { id: 'series_25_f', name: 'Série 25 - T3 CTX1' },
-  ]); 
-  
+    { id: 'series_25_g', name: 'Série 25 - T3 CTX2' },
+    { id: 'series_25_h', name: 'Série 25 - T3 CTX3' },
+  ]);
+
   useEffect(() => {
     if (isAdmin) {
       setTestSeries([
@@ -33,6 +35,8 @@ export default function Navbar() {
     } else {
       setTestSeries([
         { id: 'series_25_f', name: 'Série 25 - T3 CTX1' },
+        { id: 'series_25_g', name: 'Série 25 - T3 CTX2' },
+        { id: 'series_25_h', name: 'Série 25 - T3 CTX3' },
       ]);
     }
   }, [isAdmin]);

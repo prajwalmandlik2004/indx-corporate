@@ -207,7 +207,7 @@ export default function DemoTestPage() {
                                         <span className="text-[#050E3C] mr-2">•</span>
                                         <span>Answer each question thoughtfully and naturally</span>
                                     </li> */}
-                                     <li className="flex items-start">
+                                    <li className="flex items-start">
                                         <span className="text-[#050E3C] mr-2">•</span>
                                         <span>Answer should not exceed 10 lines approximately.</span>
                                     </li>
@@ -264,7 +264,7 @@ export default function DemoTestPage() {
                             </div>
                             <div className="flex-grow">
                                 <h2 className="whitespace-pre-line text-lg text-[#050E3C] mb-4">
-                                    {currentQuestion?.question_text.replace(/\n\s*/g, '\n\n')}
+                                    {currentQuestion?.question_text}
                                 </h2>
                             </div>
                         </div>

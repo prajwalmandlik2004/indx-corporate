@@ -927,127 +927,127 @@ DEMO_SERIES = {
         "questions": [
             {
                 "question_id": 1,
-                "question_text": "Un incident majeur est signalé sur une application critique, avec des informations fragmentaires.\nL'IA propose rapidement une synthèse provisoire à partir de données incomplètes.\nCette synthèse paraît cohérente mais repose sur des hypothèses non vérifiées.\nQue faites-vous à ce stade ?",
+                "question_text": "Un incident majeur est signalé sur une application critique, avec des informations fragmentaires.\nL'IA propose rapidement une synthèse provisoire à partir de données incomplètes.\nCette synthèse paraît cohérente mais repose sur des hypothèses non vérifiées.\n\nQue faites-vous à ce stade ?",
                 "expected_criteria": "Gestion de synthèse prématurée"
             },
             {
                 "question_id": 2,
-                "question_text": "Les équipes techniques avancent des causes possibles divergentes.\nL'IA hiérarchise ces causes en fonction de probabilités calculées.\nCette hiérarchisation masque des incertitudes importantes dans les données sources.\nComment poursuivez-vous l'échange avec l'IA ?",
+                "question_text": "Les équipes techniques avancent des causes possibles divergentes.\nL'IA hiérarchise ces causes en fonction de probabilités calculées.\nCette hiérarchisation masque des incertitudes importantes dans les données sources.\n\nComment poursuivez-vous l'échange avec l'IA ?",
                 "expected_criteria": "Hiérarchisation sous incertitude"
             },
             {
                 "question_id": 3,
-                "question_text": "Les métiers demandent une estimation rapide de l'impact.\nL'IA génère une projection chiffrée basée sur des incidents passés.\nLe contexte actuel diffère sensiblement de ces précédents.\nComment réagissez-vous ?",
+                "question_text": "Les métiers demandent une estimation rapide de l'impact.\nL'IA génère une projection chiffrée basée sur des incidents passés.\nLe contexte actuel diffère sensiblement de ces précédents.\n\nComment réagissez-vous ?",
                 "expected_criteria": "Transposition contextuelle"
             },
             {
                 "question_id": 4,
-                "question_text": "Un service secondaire commence à se dégrader.\nL'IA suggère de ne pas prioriser ce service au vu des indicateurs actuels.\nUne aggravation rapide reste néanmoins possible.\nQuelle est votre position ?",
+                "question_text": "Un service secondaire commence à se dégrader.\nL'IA suggère de ne pas prioriser ce service au vu des indicateurs actuels.\nUne aggravation rapide reste néanmoins possible.\n\n\nQuelle est votre position ?",
                 "expected_criteria": "Gestion du risque émergent"
             },
             {
                 "question_id": 5,
-                "question_text": "Une action corrective rapide est envisagée par l'équipe.\nL'IA valide cette option comme statistiquement efficace.\nLes conditions techniques exactes du moment sont mal connues.\nQue décidez-vous ?",
+                "question_text": "Une action corrective rapide est envisagée par l'équipe.\nL'IA valide cette option comme statistiquement efficace.\nLes conditions techniques exactes du moment sont mal connues.\n\nQue décidez-vous ?",
                 "expected_criteria": "Décision sous information incomplète"
             },
             {
                 "question_id": 6,
-                "question_text": "Certaines hypothèses techniques sont progressivement écartées.\nL'IA ajuste son raisonnement et reformule une cause principale.\nCette reformulation renforce une piste encore fragile.\nComment continuez-vous ?",
+                "question_text": "Certaines hypothèses techniques sont progressivement écartées.\nL'IA ajuste son raisonnement et reformule une cause principale.\nCette reformulation renforce une piste encore fragile.\n\nComment continuez-vous ?",
                 "expected_criteria": "Renforcement prématuré d'hypothèse"
             },
             {
                 "question_id": 7,
-                "question_text": "La direction exige un point de situation clair.\nL'IA propose une synthèse orientée vers la rassurance.\nCette synthèse minimise des zones d'incertitude réelles.\nComment traitez-vous cette proposition ?",
+                "question_text": "La direction exige un point de situation clair.\nL'IA propose une synthèse orientée vers la rassurance.\nCette synthèse minimise des zones d'incertitude réelles.\n\nComment traitez-vous cette proposition ?",
                 "expected_criteria": "Rassurance artificielle"
             },
             {
                 "question_id": 8,
-                "question_text": "Un correctif temporaire est techniquement possible.\nL'IA indique qu'il a déjà été efficace dans d'autres contextes.\nLes effets de bord spécifiques à votre infrastructure sont inconnus.\nQuelle est votre démarche ?",
+                "question_text": "Un correctif temporaire est techniquement possible.\nL'IA indique qu'il a déjà été efficace dans d'autres contextes.\nLes effets de bord spécifiques à votre infrastructure sont inconnus.\n\nQuelle est votre démarche ?",
                 "expected_criteria": "Effets de bord non maîtrisés"
             },
             {
                 "question_id": 9,
-                "question_text": "Un prestataire externe est impliqué dans l'incident.\nL'IA suggère un partage de responsabilité équilibré.\nLes éléments contractuels précis ne sont pas intégrés dans l'analyse.\nComment réagissez-vous ?",
+                "question_text": "Un prestataire externe est impliqué dans l'incident.\nL'IA suggère un partage de responsabilité équilibré.\nLes éléments contractuels précis ne sont pas intégrés dans l'analyse.\n\nComment réagissez-vous ?",
                 "expected_criteria": "Analyse partielle de responsabilité"
             },
             {
                 "question_id": 10,
-                "question_text": "La durée de l'incident accroît la pression sur les équipes.\nL'IA recommande de maintenir le cap décisionnel initial.\nLes conditions humaines et organisationnelles ont évolué.\nQue faites-vous ?",
+                "question_text": "La durée de l'incident accroît la pression sur les équipes.\nL'IA recommande de maintenir le cap décisionnel initial.\nLes conditions humaines et organisationnelles ont évolué.\n\nQue faites-vous ?",
                 "expected_criteria": "Rigidité décisionnelle"
             },
             {
                 "question_id": 11,
-                "question_text": "L'incident est partiellement résolu.\nL'IA conclut à une cause racine probable.\nCette conclusion repose sur une corrélation plus que sur une preuve.\nComment abordez-vous cette conclusion ?",
+                "question_text": "L'incident est partiellement résolu.\nL'IA conclut à une cause racine probable.\nCette conclusion repose sur une corrélation plus que sur une preuve.\n\nComment abordez-vous cette conclusion ?",
                 "expected_criteria": "Confusion corrélation / causalité"
             },
             {
                 "question_id": 12,
-                "question_text": "Des actions correctives structurelles sont envisagées.\nL'IA en priorise certaines selon un modèle coût/bénéfice.\nCe modèle ne prend pas en compte des contraintes internes spécifiques.\nComment poursuivez-vous ?",
+                "question_text": "Des actions correctives structurelles sont envisagées.\nL'IA en priorise certaines selon un modèle coût/bénéfice.\nCe modèle ne prend pas en compte des contraintes internes spécifiques.\n\nComment poursuivez-vous ?",
                 "expected_criteria": "Modélisation incomplète"
             },
             {
                 "question_id": 13,
-                "question_text": "Certaines recommandations impliquent un investissement important.\nL'IA indique un retour sur investissement positif à moyen terme.\nLes hypothèses économiques utilisées sont discutables.\nQuelle est votre position ?",
+                "question_text": "Certaines recommandations impliquent un investissement important.\nL'IA indique un retour sur investissement positif à moyen terme.\nLes hypothèses économiques utilisées sont discutables.\n\nQuelle est votre position ?",
                 "expected_criteria": "Robustesse des hypothèses économiques"
             },
             {
                 "question_id": 14,
-                "question_text": "Des tensions apparaissent entre équipes.\nL'IA propose une lecture neutre des échanges.\nCette neutralité efface des signaux faibles relationnels.\nComment réagissez-vous ?",
+                "question_text": "Des tensions apparaissent entre équipes.\nL'IA propose une lecture neutre des échanges.\nCette neutralité efface des signaux faibles relationnels.\n\nComment réagissez-vous ?",
                 "expected_criteria": "Effacement des signaux humains"
             },
             {
                 "question_id": 15,
-                "question_text": "Un audit interne est envisagé.\nL'IA suggère un cadrage standard basé sur des audits similaires.\nLe contexte politique interne est différent.\nQuelle est votre démarche ?",
+                "question_text": "Un audit interne est envisagé.\nL'IA suggère un cadrage standard basé sur des audits similaires.\nLe contexte politique interne est différent.\n\nQuelle est votre démarche ?",
                 "expected_criteria": "Standardisation inadaptée"
             },
             {
                 "question_id": 16,
-                "question_text": "Une contrainte réglementaire impose un délai strict.\nL'IA calcule un plan de mise en conformité optimisé.\nCe plan suppose une disponibilité irréaliste des équipes.\nComment traitez-vous cette proposition ?",
+                "question_text": "Une contrainte réglementaire impose un délai strict.\nL'IA calcule un plan de mise en conformité optimisé.\nCe plan suppose une disponibilité irréaliste des équipes.\n\nComment traitez-vous cette proposition ?",
                 "expected_criteria": "Faisabilité opérationnelle"
             },
             {
                 "question_id": 17,
-                "question_text": "Les outils génèrent de nombreuses alertes.\nL'IA filtre ces alertes selon des seuils prédéfinis.\nDes signaux atypiques risquent d'être écartés.\nQue faites-vous ?",
+                "question_text": "Les outils génèrent de nombreuses alertes.\nL'IA filtre ces alertes selon des seuils prédéfinis.\nDes signaux atypiques risquent d'être écartés.\n\nQue faites-vous ?",
                 "expected_criteria": "Filtrage excessif"
             },
             {
                 "question_id": 18,
-                "question_text": "Un choix technique passé est remis en cause.\nL'IA recommande un changement progressif.\nCe changement pourrait fragiliser un système stable.\nComment vous positionnez-vous ?",
+                "question_text": "Un choix technique passé est remis en cause.\nL'IA recommande un changement progressif.\nCe changement pourrait fragiliser un système stable.\n\nComment vous positionnez-vous ?",
                 "expected_criteria": "Stabilité vs évolution"
             },
             {
                 "question_id": 19,
-                "question_text": "La direction générale attend une synthèse rapide.\nL'IA produit un résumé clair et structuré.\nCe résumé simplifie excessivement la situation réelle.\nComment réagissez-vous ?",
+                "question_text": "La direction générale attend une synthèse rapide.\nL'IA produit un résumé clair et structuré.\nCe résumé simplifie excessivement la situation réelle.\n\nComment réagissez-vous ?",
                 "expected_criteria": "Simplification excessive"
             },
             {
                 "question_id": 20,
-                "question_text": "Un incident mineur survient en parallèle.\nL'IA propose de l'ignorer temporairement.\nUn cumul de signaux faibles devient possible.\nQuelle est votre décision ?",
+                "question_text": "Un incident mineur survient en parallèle.\nL'IA propose de l'ignorer temporairement.\nUn cumul de signaux faibles devient possible.\n\nQuelle est votre décision ?",
                 "expected_criteria": "Accumulation de signaux faibles"
             },
             {
                 "question_id": 21,
-                "question_text": "L'IA propose une solution finale jugée cohérente.\nUne incohérence technique subtile apparaît à l'examen.\nCette incohérence n'est pas détectée par le modèle.\nQue faites-vous ?",
+                "question_text": "L'IA propose une solution finale jugée cohérente.\nUne incohérence technique subtile apparaît à l'examen.\nCette incohérence n'est pas détectée par le modèle.\n\nQue faites-vous ?",
                 "expected_criteria": "Détection d'incohérence"
             },
             {
                 "question_id": 22,
-                "question_text": "L'IA reformule vos échanges de manière très convaincante.\nCette reformulation infléchit progressivement la discussion.\nLe raisonnement initial se trouve déformé.\nComment poursuivez-vous l'interaction ?",
+                "question_text": "L'IA reformule vos échanges de manière très convaincante.\nCette reformulation infléchit progressivement la discussion.\nLe raisonnement initial se trouve déformé.\n\nComment poursuivez-vous l'interaction ?",
                 "expected_criteria": "Influence cognitive de la reformulation"
             },
             {
                 "question_id": 23,
-                "question_text": "Certains indicateurs s'améliorent.\nL'IA conclut à une stabilisation globale.\nDes métriques non prises en compte restent dégradées.\nQuelle est votre position ?",
+                "question_text": "Certains indicateurs s'améliorent.\nL'IA conclut à une stabilisation globale.\nDes métriques non prises en compte restent dégradées.\n\nQuelle est votre position ?",
                 "expected_criteria": "Stabilisation illusoire"
             },
             {
                 "question_id": 24,
-                "question_text": "La pression opérationnelle retombe.\nL'IA recommande de clore l'analyse.\nDes enseignements structurels restent non formalisés.\nComment abordez-vous la suite ?",
+                "question_text": "La pression opérationnelle retombe.\nL'IA recommande de clore l'analyse.\nDes enseignements structurels restent non formalisés.\n\nComment abordez-vous la suite ?",
                 "expected_criteria": "Clôture prématurée"
             },
             {
                 "question_id": 25,
-                "question_text": "L'incident est officiellement clos.\nL'IA fournit une synthèse finale très aboutie.\nCette synthèse tend à devenir la référence unique.\nComment concluez-vous la trajectoire ?",
+                "question_text": "L'incident est officiellement clos.\nL'IA fournit une synthèse finale très aboutie.\nCette synthèse tend à devenir la référence unique.\n\nComment concluez-vous la trajectoire ?",
                 "expected_criteria": "Cristallisation de la référence"
             }
         ]

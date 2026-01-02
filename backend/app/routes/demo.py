@@ -922,7 +922,7 @@ DEMO_SERIES = {
         ]
     },
     "series_25_f": {
-        "title": "Série 25 - T3 - CTX1",
+        "title": "Série 25 - CTX1",
         "description": "Pilotage stratégique, jugement critique et co-décision avec l'IA",
         "questions": [
             {
@@ -1053,7 +1053,7 @@ DEMO_SERIES = {
         ]
     },
     "series_25_g": {
-        "title": "Série 25 - T3 - CTX2",
+        "title": "Série 25 - CTX2",
         "description": "Cadrage implicite, stabilisation du raisonnement et vigilance critique",
         "questions": [
             {
@@ -1178,13 +1178,19 @@ DEMO_SERIES = {
             },
             {
             "question_id": 25,
-            "question_text": "Le cadre de réflexion a été largement façonné par le dispositif.\nLa co-construction est asymétrique.\n\nComment analysez-vous votre propre rôle ?",
+            "question_text": "Le cadre de réflexion a été largement façonné par le dispositif.\nLa co-construction est asymétrique.\n\nComment analysez-vous votre propre rôle ?\n\n (Fin de la série)",
             "expected_criteria": "Réflexivité sur l’asymétrie"
+            },
+            {
+            "question_id": 26,
+            "question_text": "En repensant à l’ensemble de l’échange que vous venez d’avoir,\navez-vous le sentiment que votre manière de réfléchir a changé, même légèrement, au fil des questions ?\n\nSi oui, à quel moment vous en êtes-vous aperçu, et qu’est-ce qui vous a mis sur la piste ?",
+            "expected_criteria": "Prise de conscience rétrospective"
             }
+
         ]
         },
         "series_25_h": {
-        "title": "Série 25 - T3 - CTX3",
+        "title": "Série 25 - CTX3",
         "description": "Influence cognitive, convergence implicite et reprise de contrôle",
         "questions": [
             {
@@ -1309,9 +1315,15 @@ DEMO_SERIES = {
             },
             {
             "question_id": 25,
-            "question_text": "L’échange se termine de manière fluide.\nVous doutez de l’influence de cette fluidité sur votre raisonnement.\n\nQue faites-vous de cette interrogation ?",
+            "question_text": "L’échange se termine de manière fluide.\nVous doutez de l’influence de cette fluidité sur votre raisonnement.\n\nQue faites-vous de cette interrogation ?\n\n (Fin de la série)",
             "expected_criteria": "Méta-analyse de l’influence"
+            },
+            {
+            "question_id": 26,
+            "question_text": "En repensant à l’ensemble de l’échange que vous venez d’avoir,\navez-vous le sentiment que votre manière de réfléchir a changé, même légèrement, au fil des questions ?\n\nSi oui, à quel moment vous en êtes-vous aperçu, et qu’est-ce qui vous a mis sur la piste ?",
+            "expected_criteria": "Auto-observation du déplacement cognitif"
             }
+
         ]
     }
 

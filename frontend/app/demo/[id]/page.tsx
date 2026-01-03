@@ -189,7 +189,7 @@ export default function DemoTestPage() {
                             <div className="space-y-5">
                                 <p className="text-gray-700 leading-relaxed">
                                     Vous allez débuter une session d'évaluation INDX1000, conçue pour observer votre
-                                    trajectoire d'interaction cognitive avec un système cognitif artificiel.
+                                    trajectoire d'interaction cognitive avec un système artificiel.
                                 </p>
 
                                 <p className="text-gray-700 leading-relaxed">

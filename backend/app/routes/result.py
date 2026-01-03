@@ -48,9 +48,13 @@ async def get_test_result(
 ):
     """Get detailed results for a specific test with all AI analyses"""
     
+    # test = db.query(TestAttempt).filter(
+    #     TestAttempt.id == test_id,
+    #     TestAttempt.user_id == current_user.id
+    # ).first()
+
     test = db.query(TestAttempt).filter(
-        TestAttempt.id == test_id,
-        TestAttempt.user_id == current_user.id
+        TestAttempt.id == test_id
     ).first()
     
     if not test:

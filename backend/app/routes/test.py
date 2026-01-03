@@ -99,9 +99,13 @@ async def get_test_dashboard(
 ):
     """Get all tests taken by the user"""
     
-    tests = db.query(TestAttempt).filter(
-        TestAttempt.user_id == current_user.id
-    ).order_by(TestAttempt.created_at.desc()).all()
+    # tests = db.query(TestAttempt).filter(
+    #     TestAttempt.user_id == current_user.id
+    # ).order_by(TestAttempt.created_at.desc()).all()
+
+    tests = db.query(TestAttempt).order_by(
+        TestAttempt.created_at.desc()
+    ).all()
 
     
     result = []
@@ -144,9 +148,13 @@ async def delete_test(
 ):
     """Delete a test attempt"""
     
+    # test = db.query(TestAttempt).filter(
+    #     TestAttempt.id == test_id,
+    #     TestAttempt.user_id == current_user.id
+    # ).first()
+
     test = db.query(TestAttempt).filter(
-        TestAttempt.id == test_id,
-        TestAttempt.user_id == current_user.id
+        TestAttempt.id == test_id
     ).first()
     
     if not test:

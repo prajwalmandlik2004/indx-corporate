@@ -171,55 +171,92 @@ export default function DemoTestPage() {
                 </div>
             )}
 
-            {/* Info Modal */}
             {showInfoModal && (
-                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-                    <div className="bg-white max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                        {/* Header with close button */}
-                        <div className="sticky top-0 bg-white border-b px-6 py-4 flex items-center justify-between">
-                            <h2 className="text-2xl font-bold text-[#050E3C]">Test Information</h2>
-                            <button
-                                onClick={() => setShowInfoModal(false)}
-                                className="text-gray-500 hover:text-gray-700 text-2xl font-bold w-8 h-8 flex items-center justify-center"
-                            >
-                                ✕
-                            </button>
-                        </div>
+                <div className="fixed inset-0 bg-white z-40 overflow-y-auto">
+                    <div className="max-w-4xl mx-auto px-6 py-25">
+                        <div className="space-y-8">
+                            {/* Header */}
+                            <div>
+                                <h1 className="text-2xl font-bold text-[#050E3C] mb-3">
+                                    INDX1000 – {test.test_name}
+                                </h1>
+                                <h2 className="text-lg font-semibold text-gray-800">
+                                    Session d'évaluation – Informations préalables
+                                </h2>
+                            </div>
 
-                        {/* Content */}
-                        <div className="px-6 py-6 space-y-4">
-                            <p className="text-gray-700 leading-relaxed">
-                                This is INDX1000, an INDX test session designed to evaluate your cognitive interaction trajectory with an artificial cognitive system.
-                            </p>
+                            {/* Main description - with proper spacing */}
+                            <div className="space-y-5">
+                                <p className="text-gray-700 leading-relaxed">
+                                    Vous allez débuter une session d'évaluation INDX1000, conçue pour observer votre
+                                    trajectoire d'interaction cognitive avec un système cognitif artificiel.
+                                </p>
 
-                            <div className="space-y-3">
-                                <p className="font-semibold text-[#050E3C]">Please Note :</p>
+                                <p className="text-gray-700 leading-relaxed">
+                                    Cette évaluation ne mesure ni vos connaissances, ni votre expertise technique, ni votre
+                                    familiarité avec l'intelligence artificielle.
+                                    Elle se concentre exclusivement sur la manière dont vous structurez, orientez et ajustez une
+                                    interaction avec un système non déterministe.
+                                </p>
+                            </div>
+
+                            {/* Before you begin section */}
+                            <div>
+                                <h3 className="text-lg font-bold text-[#050E3C] mb-3">
+                                    Avant de commencer
+                                </h3>
                                 <ul className="space-y-2 text-gray-700">
                                     <li className="flex items-start">
-                                        <span className="text-[#050E3C] mr-2">•</span>
-                                        <span>There is no "right" or "wrong" answer,</span>
+                                        <span className="mr-2">•</span>
+                                        <span>Il n'existe ni bonne ni mauvaise réponse.</span>
                                     </li>
                                     <li className="flex items-start">
-                                        <span className="text-[#050E3C] mr-2">•</span>
-                                        <span>The goal is not knowledge testing,</span>
+                                        <span className="mr-2">•</span>
+                                        <span>Il ne s'agit pas d'un test de connaissances.</span>
                                     </li>
-                                    {/* <li className="flex items-start">
-                                        <span className="text-[#050E3C] mr-2">•</span>
-                                        <span>Answer each question thoughtfully and naturally</span>
-                                    </li> */}
                                     <li className="flex items-start">
-                                        <span className="text-[#050E3C] mr-2">•</span>
-                                        <span>Answer should not exceed 10 lines approximately.</span>
+                                        <span className="mr-2">•</span>
+                                        <span>
+                                            Ce qui est observé n'est pas ce que vous savez, mais la façon dont vous
+                                            raisonnez et réajustez votre approche.
+                                        </span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-2">•</span>
+                                        <span>
+                                            Les réponses doivent rester concises, dans une limite d'environ dix lignes.
+                                            La clarté prime sur la longueur.
+                                        </span>
                                     </li>
                                 </ul>
                             </div>
 
-                            <button
-                                onClick={() => setShowInfoModal(false)}
-                                className="w-full mt-6 px-6 py-3 bg-[#050E3C] text-white font-semibold hover:bg-[#050E3C]/90 transition-colors"
-                            >
-                                Start Test
-                            </button>
+                            {/* Test mindset section */}
+                            <div>
+                                <h3 className="text-lg font-bold text-[#050E3C] mb-3">
+                                    Esprit du test
+                                </h3>
+                                <div className="space-y-3 text-gray-700">
+                                    <p>Prenez le temps de lire chaque énoncé avec attention.
+                                        Répondez de manière sincère, sans chercher à anticiper ce qui pourrait être attendu,
+                                        ni à « performer ».
+                                    </p>
+                                    <p>
+                                        INDX1000 observe des dynamiques d'interaction dans la durée, et non des réponses isolées.
+                                        Il évalue une dynamique de pilotage cognitif, et non une performance ponctuelle.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Start button */}
+                            <div className="pt-6">
+                                <button
+                                    onClick={() => setShowInfoModal(false)}
+                                    className="w-full px-8 py-4 bg-[#050E3C] text-white font-semibold hover:bg-[#050E3C]/90 transition-colors"
+                                >
+                                    Commencer le test
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

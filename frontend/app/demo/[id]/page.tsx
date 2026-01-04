@@ -219,7 +219,7 @@ export default function DemoTestPage() {
                             {/* Guest Info Form - Only show if not logged in */}
                             {!localStorage.getItem('token') && (
                                 <div className="space-y-4 bg-white p-6 border-l-4 border-[#050E3C]">
-                                    <h3 className="font-semibold text-[#050E3C]">Vos informations</h3>
+                                    <h3 className="font-semibold text-[#050E3C]">Vos informations<span className='ms-1 text-red-500'>*</span></h3>
                                     <input
                                         type="email"
                                         placeholder="Votre email"

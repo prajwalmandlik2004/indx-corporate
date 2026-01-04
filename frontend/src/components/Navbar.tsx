@@ -14,6 +14,7 @@ export default function Navbar() {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [testSeries, setTestSeries] = useState([
+    { id: 'series_25_a', name: 'Série 25 - T1' },
     { id: 'series_25_f', name: 'Série 25 - CTX1' },
     { id: 'series_25_g', name: 'Série 25 - CTX2' },
     { id: 'series_25_i', name: 'Série 25 - CTX2.5' },
@@ -40,6 +41,7 @@ export default function Navbar() {
       ]);
     } else {
       setTestSeries([
+        { id: 'series_25_a', name: 'Série 25 - T1' },
         { id: 'series_25_f', name: 'Série 25 - CTX1' },
         { id: 'series_25_g', name: 'Série 25 - CTX2' },
         { id: 'series_25_i', name: 'Série 25 - CTX2.5' },

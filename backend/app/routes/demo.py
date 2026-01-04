@@ -1660,6 +1660,7 @@ async def get_demo_series(
         series_to_show = DEMO_SERIES.keys()
     else:
         series_to_show = [
+            "series_25_a", 
             "series_25_f",  
             "series_25_g",  
             "series_25_h",

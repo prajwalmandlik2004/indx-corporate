@@ -17,7 +17,7 @@ const getAIModels = (isAdmin: boolean) => {
   if (isAdmin) {
     return [
       { id: 'gpt4o', name: 'GPT-4o', color: 'from-green-500 to-emerald-600' },
-      { id: 'claude', name: 'Claude', color: 'from-orange-500 to-red-600' },
+      { id: 'grok', name: 'Claude', color: 'from-orange-500 to-red-600' },
       { id: 'grok', name: 'Grok', color: 'from-black to-black' },
       { id: 'groq', name: 'Gemini', color: 'from-blue-500 to-blue-600' },
       { id: 'mistral', name: 'Mistral', color: 'from-violet-500 to-violet-600' },

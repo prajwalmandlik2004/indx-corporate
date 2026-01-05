@@ -30,6 +30,7 @@ class TestAttempt(Base):
     answers = Column(JSON, nullable=False)    # Store user answers as JSON
     score = Column(Float)
     analysis = Column(Text)
+    remarks = Column(Text, nullable=True)
     completed = Column(DateTime)
     created_at = Column(DateTime, default=datetime.utcnow)
     

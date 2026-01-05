@@ -67,6 +67,10 @@ export const testAPI = {
     api.post('/api/test/submit', data),
   getDashboard: () => api.get('/api/test/dashboard'),
   deleteTest: (testId: number) => api.delete(`/api/test/delete/${testId}`),
+  updateRemarks: (testId: number, remarks: string) =>  // ADD THIS
+    api.patch(`/api/test/remarks/${testId}`, null, {
+    params: { remarks }
+  }),
 };
 
 // Result APIs

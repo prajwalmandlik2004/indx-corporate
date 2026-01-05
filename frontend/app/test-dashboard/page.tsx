@@ -13,6 +13,8 @@ export default function TestDashboard() {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [deletingTestId, setDeletingTestId] = useState<number | null>(null);
+  const [editingRemarks, setEditingRemarks] = useState<{ [key: number]: string }>({});
+  const [savingRemarks, setSavingRemarks] = useState<number | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -28,10 +30,56 @@ export default function TestDashboard() {
     try {
       const response = await testAPI.getDashboard();
       setTests(response.data);
+
+      const remarksMap: { [key: number]: string } = {};
+      response.data.forEach((test: any) => {
+        remarksMap[test.id] = test.remarks || '';
+      });
+      setEditingRemarks(remarksMap);
+
     } catch (err) {
       console.error('Failed to fetch tests');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleRemarksChange = (testId: number, value: string) => {
+    setEditingRemarks({
+      ...editingRemarks,
+      [testId]: value
+    });
+  };
+
+  const handleRemarksBlur = async (testId: number) => {
+    const remarks = editingRemarks[testId] || '';
+    const originalRemarks = tests.find(t => t.id === testId)?.remarks || '';
+
+    if (remarks === originalRemarks) return;
+
+    setSavingRemarks(testId);
+    try {
+      await testAPI.updateRemarks(testId, remarks);
+
+      setTests(tests.map(test =>
+        test.id === testId ? { ...test, remarks } : test
+      ));
+
+      setEditingRemarks({
+        ...editingRemarks,
+        [testId]: remarks
+      });
+
+      toast.success('Remarks saved');
+    } catch (err) {
+      console.error('Failed to save remarks');
+      toast.error('Failed to save remarks');
+      setEditingRemarks({
+        ...editingRemarks,
+        [testId]: originalRemarks
+      });
+    } finally {
+      setSavingRemarks(null);
     }
   };
 
@@ -40,7 +88,7 @@ export default function TestDashboard() {
   // );
 
   const filteredTests = tests
-    .filter((test) => test.completed !== null) 
+    .filter((test) => test.completed !== null)
     .filter((test) =>
       test.test_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -91,38 +139,19 @@ export default function TestDashboard() {
         {/* Header */}
         <div className="mb-12 animate-fade-in">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
-            <div>
-              <h1 className="text-5xl font-bold gradient-text mb-4">Test Dashboard</h1>
-              <p className="text-xl text-gray-600">Track your progress and view all your test results</p>
-            </div>
-            <div className="mt-4 md:mt-0">
-              <div className="flex items-center space-x-4 bg-white rounded-xl p-4 shadow-lg">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-[#050E3C]">{tests.length}</div>
-                  <div className="text-sm text-gray-600">Total Tests</div>
-                </div>
-                <div className="w-px h-12 bg-gray-300"></div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-[#050E3C]">
-                    {tests.filter((t) => t.score >= 80).length}
-                  </div>
-                  <div className="text-sm text-gray-600">Excellent</div>
-                </div>
-              </div>
+            <h1 className="text-5xl font-bold gradient-text">Test Dashboard</h1>
+            <div className="relative">
+              <Search className="absolute left-4 top-5 text-gray-400" size={20} />
+              <input
+                type="text"
+                placeholder="Search tests..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
+              />
             </div>
           </div>
 
-          {/* Search Bar */}
-          <div className="relative">
-            <Search className="absolute left-4 top-4 text-gray-400" size={20} />
-            <input
-              type="text"
-              placeholder="Search tests..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none"
-            />
-          </div>
         </div>
 
         {/* Tests Table */}
@@ -152,7 +181,7 @@ export default function TestDashboard() {
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">S.No</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Test Name</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Author</th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Email</th>
+                    {/* <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Email</th> */}
                     {/* <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Category</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Level</th> */}
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Date & Time</th>
@@ -160,6 +189,7 @@ export default function TestDashboard() {
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">INDX1000</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Analysis</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Delete</th>
+                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Remarks</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
@@ -175,9 +205,9 @@ export default function TestDashboard() {
                       <td className="px-6 py-4">
                         <div className="text-sm text-gray-700">{test.user?.full_name || 'N/A'}</div>
                       </td>
-                      <td className="px-6 py-4">
+                      {/* <td className="px-6 py-4">
                         <div className="text-sm text-gray-700">{test.user?.email || 'N/A'}</div>
-                      </td>
+                      </td> */}
                       {/* <td className="px-6 py-4">
                         <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
                           {test.category}
@@ -253,6 +283,23 @@ export default function TestDashboard() {
                           )}
                           <span>Delete</span>
                         </button>
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="relative">
+                          <input
+                            type="text"
+                            value={editingRemarks[test.id] || ''}
+                            onChange={(e) => handleRemarksChange(test.id, e.target.value)}
+                            onBlur={() => handleRemarksBlur(test.id)}
+                            placeholder="Add remarks..."
+                            className="w-48 px-3 py-2 text-sm border border-gray-300 rounded focus:border-[#050E3C] focus:ring-1 focus:ring-[#050E3C] outline-none"
+                          />
+                          {savingRemarks === test.id && (
+                            <div className="absolute right-2 top-2">
+                              <div className="h-4 w-4 border-2 border-[#050E3C] border-t-transparent rounded-full animate-spin" />
+                            </div>
+                          )}
+                        </div>
                       </td>
                     </tr>
                   ))}

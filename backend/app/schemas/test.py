@@ -41,6 +41,7 @@ class TestDashboardItem(BaseModel):
     score: Optional[float]
     completed: Optional[datetime]
     created_at: datetime
+    remarks: Optional[str] = None
     user: Optional[Dict[str, str]] = None
     
     class Config:

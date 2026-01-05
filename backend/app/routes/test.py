@@ -118,6 +118,7 @@ async def get_test_dashboard(
             "score": test.score,
             "completed": test.completed,
             "created_at": test.created_at,
+            "remarks": test.remarks,
             # "user": {
             #     "full_name": test.user.full_name,
             #     "email": test.user.email
@@ -169,3 +170,27 @@ async def delete_test(
     db.commit()
     
     return {"message": "Test deleted successfully", "test_id": test_id}
+
+
+@router.patch("/remarks/{test_id}")
+async def update_test_remarks(
+    test_id: int,
+    remarks: str,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Update remarks for a test (admin only)"""
+    from ..utils.auth import is_admin_user
+    
+    if not is_admin_user(current_user):
+        raise HTTPException(status_code=403, detail="Admin access required")
+    
+    test = db.query(TestAttempt).filter(TestAttempt.id == test_id).first()
+    
+    if not test:
+        raise HTTPException(status_code=404, detail="Test not found")
+    
+    test.remarks = remarks
+    db.commit()
+    
+    return {"message": "Remarks updated successfully", "test_id": test_id}

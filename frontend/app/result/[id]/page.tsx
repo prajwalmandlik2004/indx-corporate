@@ -17,7 +17,7 @@ const getAIModels = (isAdmin: boolean) => {
   if (isAdmin) {
     return [
       { id: 'gpt4o', name: 'GPT-4o', color: 'from-green-500 to-emerald-600' },
-      { id: 'grok', name: 'Claude', color: 'from-orange-500 to-red-600' },
+      { id: 'claude', name: 'Claude', color: 'from-orange-500 to-red-600' },
       { id: 'grok', name: 'Grok', color: 'from-black to-black' },
       { id: 'groq', name: 'Gemini', color: 'from-blue-500 to-blue-600' },
       { id: 'mistral', name: 'Mistral', color: 'from-violet-500 to-violet-600' },
@@ -168,8 +168,8 @@ export default function ResultPage() {
                 key={model.id}
                 onClick={() => setActiveModel(model.id)}
                 className={`p-4 font-semibold transition-all ${activeModel === model.id
-                    ? `bg-gradient-to-br ${model.color} text-white shadow-lg scale-105`
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? `bg-gradient-to-br ${model.color} text-white shadow-lg scale-105`
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
               >
                 {model.name}
@@ -190,75 +190,53 @@ export default function ResultPage() {
 
         {/* Analysis Content */}
         {!currentAnalysis?.error && currentAnalysis && (
-          <>
-            {/* Performance Analysis */}
-            <div className="card mb-8 animate-slide-up">
-              <h2 className="text-2xl font-bold mb-4">Performance Analysis</h2>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                {currentAnalysis.detailed_analysis}
-              </p>
+          <div className="space-y-6">
+
+            {/* 1. INDEX - Numbered list with title */}
+            <div className="card animate-slide-up">
+              <h3 className="text-lg font-semibold mb-4 text-gray-800">Index de lecture</h3>
+              <ol className="list-decimal list-inside space-y-2">
+                {currentAnalysis.index?.map((item: string, index: number) => (
+                  <li key={index} className="text-gray-700 text-base pl-2">
+                    {item}
+                  </li>
+                ))}
+              </ol>
             </div>
 
-            {/* Question Feedback */}
-            <div className="card mb-8 animate-slide-up" style={{ animationDelay: '100ms' }}>
-              <h2 className="text-2xl font-bold mb-6">Complete Analysis</h2>
-              <div className="space-y-4">
-                {currentAnalysis.question_feedback?.map((feedback: any, index: number) => (
-                  <div
-                    key={index}
-                    className="border-2 border-gray-200 p-6 hover:border-blue-300 transition-colors"
-                  >
-                    <div className="flex items-start justify-between mb-3">
-                      <h3 className="font-bold text-lg">Sequence {feedback.question_number}</h3>
-                    </div>
-                    <p className="text-gray-700 leading-relaxed">{feedback.feedback}</p>
-                  </div>
+            {/* 2. ANALYSIS - Title + Paragraphs with spacing */}
+            <div className="card animate-slide-up" style={{ animationDelay: '100ms' }}>
+              <h3 className="text-lg font-semibold mb-4 text-gray-800">Analyse synthétique continue</h3>
+              <div className="text-gray-700 leading-relaxed text-base space-y-4">
+                {currentAnalysis.analysis?.split('\n\n').map((paragraph: string, index: number) => (
+                  <p key={index} className="text-justify">
+                    {paragraph.trim()}
+                  </p>
                 ))}
               </div>
             </div>
 
-            {/* Strengths & Improvements */}
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
-              <div className="card animate-slide-up" style={{ animationDelay: '200ms' }}>
-                <h2 className="text-2xl font-bold mb-4 text-[#050E3C]">Strengths</h2>
-                <ul className="space-y-3">
-                  {currentAnalysis.strengths?.map((strength: string, index: number) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <span className="text-[#050E3C]">✓</span>
-                      <span className="text-gray-700">{strength}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="card animate-slide-up" style={{ animationDelay: '300ms' }}>
-                <h2 className="text-2xl font-bold mb-4 text-[#050E3C]">Areas for Improvement</h2>
-                <ul className="space-y-3">
-                  {currentAnalysis.improvements?.map((improvement: string, index: number) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <span className="text-[#050E3C]">⚠</span>
-                      <span className="text-gray-700">{improvement}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Recommendations */}
-            <div className="card animate-slide-up" style={{ animationDelay: '400ms' }}>
-              <h2 className="text-2xl font-bold mb-4">Recommendations</h2>
-              <p className="text-gray-700 leading-relaxed text-lg mb-6">
-                {currentAnalysis.recommendations?.[0] || currentAnalysis.recommendations}
+            {/* 3. OPERATIONAL PROJECTION - With title */}
+            <div className="card animate-slide-up" style={{ animationDelay: '200ms' }}>
+              <h3 className="text-lg font-semibold mb-4 text-gray-800">Projection opératoire</h3>
+              <p className="text-gray-700 leading-relaxed text-base text-justify">
+                {currentAnalysis.operational_projection}
               </p>
-
-              {/* <div className="flex flex-wrap gap-4">
-                <button onClick={() => router.push('/demo')} className="btn-primary">
-                  Take Another Test
-                </button>
-              </div> */}
             </div>
-          </>
+
+            {/* 4. INDX SCORE - Compact format matching screenshot 2 */}
+            <div className="card animate-slide-up bg-white border border-gray-200" style={{ animationDelay: '300ms' }}>
+              <div className="py-4">
+                <h3 className="text-sm font-bold text-gray-800 mb-1">INDX — Note brute</h3>
+                <p className="text-2xl font-bold text-[#050E3C]">
+                  INDX : {result.score.toFixed(0)} / 1000
+                </p>
+              </div>
+            </div>
+
+          </div>
         )}
+
       </div>
     </div>
   );

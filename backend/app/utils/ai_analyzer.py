@@ -143,27 +143,32 @@ CRITICAL RULES:
     total_score = sum(item.get("score", 0) for item in question_feedback)
     overall_score = total_score / len(question_feedback) if question_feedback else 0
     
-    aggregated_prompt = f"""Based on these aggregated scores for a {category} test at {level}, provide overall analysis.
+    aggregated_prompt = f"""{isolated_prompt}
+
+Analyze the user's cognitive interaction with AI systems based on these scores.
 
 Session Summary:
-- Total questions: {len(questions)}
+- Total questions: {len(questions["questions"])}
 - Average score: {overall_score:.1f}%
-- Scores distribution: {[item.get("score", 0) for item in question_feedback]}
 
-Provide analysis in JSON format:
+Provide analysis in STRICT JSON format with EXACTLY these fields:
 {{
   "overall_score": {overall_score},
-  "detailed_analysis": "<2-3 sentences about overall performance>",
-  "strengths": ["<strength 1>", "<strength 2>"],
-  "improvements": ["<area 1>", "<area 2>", "<area 3>"],
-  "recommendations": "<personalized learning recommendation>"
+  "index": ["<item1>", "<item2>", "<item3>", "<item4>", "<item5>", "<item6>", "<item7>"],
+  "analysis": "<paragraph1>\\n\\n<paragraph2>\\n\\n<paragraph3>",
+  "operational_projection": "<one paragraph>"
 }}
 
-CRITICAL RULES:
-- Do not infer or recall specific question content
-- Do not assume continuity with previous sessions
-- Base analysis ONLY on the provided aggregated scores
-- Keep analysis general and constructive"""
+CRITICAL FORMATTING RULES:
+- index: Exactly 6-7 items, each 5-6 words maximum, descriptive phrases
+  Example: "Rapport à l'intention initiale", "Gestion de la continuité par rupture volontaire"
+- analysis: MUST be 2-3 separate paragraphs separated by \\n\\n (double newline)
+  Each paragraph should be 3-5 sentences
+  NO bullet points, NO sections, continuous prose only
+- operational_projection: ONE paragraph, 3-4 sentences, conditional phrasing
+- Do NOT use special characters, quotes, or control characters in strings
+- Score is already calculated: {overall_score} - do NOT recalculate
+- Write in a neutral, analytical tone similar to academic assessment"""
 
     try:
         response = client.chat.completions.create(
@@ -176,18 +181,20 @@ CRITICAL RULES:
             max_tokens=1000
         )
         
-        content = response.choices[0].message.content
-        content = extract_json(content)
+        # Clean the content to remove control characters before parsing
+        content = extract_json(response.choices[0].message.content)  # or anthropic equivalent
+        # Add this line to remove control characters
+        content = content.replace('\r', '').replace('\t', ' ')
+
         aggregated_analysis = json.loads(content)
-        
-        return {
+
+        return json.dumps({
             "overall_score": overall_score * 10,
-            "detailed_analysis": aggregated_analysis.get("detailed_analysis", "Analysis completed."),
-            "question_feedback": question_feedback,
-            "strengths": aggregated_analysis.get("strengths", ["Completed the test"]),
-            "improvements": aggregated_analysis.get("improvements", ["Review the material"]),
-            "recommendations": [aggregated_analysis.get("recommendations", "Continue practicing")]
-        }
+            "index": aggregated_analysis.get("index", [])[:7],  # Limit to 7 items
+            "analysis": aggregated_analysis.get("analysis", ""),
+            "operational_projection": aggregated_analysis.get("operational_projection", ""),
+            "question_feedback": question_feedback
+        })
     except Exception as e:
         print(f"Error creating aggregated analysis: {e}")
         return {

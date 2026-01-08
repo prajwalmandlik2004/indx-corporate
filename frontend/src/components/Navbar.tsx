@@ -224,7 +224,7 @@ export default function Navbar() {
                     <button
                       key={test.id}
                       onClick={() => handleTestSelect(test.id)}
-                      className="w-full text-left px-4 py-2 text-[#050E3C] hover:bg-blue-50 transition-colors"
+                      className="w-full text-left px-4 py-2 text-[#050E3C] hover:bg-[#050E3C] hover:text-white transition-colors"
                     >
                       {test.name}
                     </button>
@@ -269,7 +269,7 @@ export default function Navbar() {
               </>
             ) : (
               <>
-                <Link href="/login" className="btn-secondary rounded-none">
+                <Link href="/login" className="text-white">
                   Connexion
                 </Link>
                 <AutoLanguageSelector />
@@ -372,7 +372,7 @@ export default function Navbar() {
               </>
             ) : (
               <div className="space-y-2 pt-2">
-                <Link href="/login" className="block w-full btn-secondary text-center rounded-none" onClick={() => setIsOpen(false)}>
+                <Link href="/login" className="block w-full text-white" onClick={() => setIsOpen(false)}>
                   Connexion
                 </Link>
                 <div className="flex items-center justify-between py-2">

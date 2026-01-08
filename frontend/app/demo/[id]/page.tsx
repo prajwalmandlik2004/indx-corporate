@@ -217,73 +217,47 @@ export default function DemoTestPage() {
 
             {showInfoModal && (
                 <div className="fixed inset-0 bg-white z-40 overflow-y-auto">
-                    <div className="max-w-4xl mx-auto px-6 py-25">
-                        <div className="space-y-8">
+                    <div className="max-w-4xl mx-auto px-6 py-30">
+                        <div className="space-y-10">
                             {/* Header */}
                             <div>
                                 <h1 className="text-2xl font-bold text-[#050E3C] mb-3">
                                     INDX1000 – {test.test_name}
                                 </h1>
                                 <h2 className="text-lg font-semibold text-gray-800">
-                                    Session d'évaluation – Informations préalables
+                                    Session d'évaluation – Beta test
                                 </h2>
                             </div>
 
 
-                            {/* Main description - with proper spacing */}
-                            <div className="space-y-5">
-                                <p className="text-gray-900 leading-relaxed">
-                                    Vous allez débuter une session INDX1000 destinée à observer votre manière de conduire une interaction cognitive avec un système
-                                    artificiel non déterministe.<br></br>
-                                    il ne s’agit ni d’un test de connaissances ni d’expertise, mais de l’analyse de la façon dont vous structurez, orientez et ajustez votre
-                                    raisonnement au fil de l’échange.
-                                </p>
+                           {/* Main description - with proper spacing */}
+                            <div className="space-y-6">
+                                <div>
+                                    <h3 className="text-lg font-normal text-gray-900 mb-10 underline">
+                                        Informations :
+                                    </h3>
+                                    
+                                    <div className="space-y-4 text-md text-gray-900 leading-relaxed">
+                                        <p>
+                                            - Vous êtes sur le point de débuter une session INDX1000, destinée à observer votre manière de conduire une interaction cognitive avec un système artificiel non déterministe.
+                                            <br />
+                                            il ne s'agit ni d'un test de connaissances ni d'expertise, mais de l'analyse de la façon dont vous structurez, orientez et ajustez votre raisonnement au fil de l'échange.
+                                        </p>
 
-                                <p className="text-gray-900 leading-relaxed">
-                                    Il n’existe donc ni bonne ni mauvaise réponse : répondez sincèrement, sans chercher à anticiper une attente implicite, de façon
-                                    concise (environ dix lignes), la clarté primant sur la longueur.<br></br>
-                                    INDX1000 n’évalue pas des réponses isolées ni une performance ponctuelle, mais une dynamique de pilotage cognitif inscrite dans
-                                    la durée.
-                                </p>
+                                        <p>
+                                            - INDX1000 n'évalue pas des réponses isolées ni une performance ponctuelle, mais une dynamique de pilotage cognitif inscrite dans la durée (ici comprise entre 15 et 25 minutes pour les "Séries 15" ; 30 à 45 pour les "Séries 25").
+                                        </p>
 
-                                <div className="h-px bg-gray-400 my-4"></div>
+                                        <p>
+                                            - Il n'existe donc ni bonne ni mauvaise réponse : répondez sincèrement, sans chercher à anticiper une attente implicite, de façon concise (environ dix lignes), la clarté primant sur la longueur.
+                                        </p>
 
-                                <p className='text-gray-900 leading-relaxed'>INDX ne constitue ni une plateforme de collecte de données personnelles, ni un outil de profilage, ni un dispositif d’exploitation marketing.
-                                    L’adresse e-mail demandée lors du test a pour seule fonction technique la transmission du reporting individuel.
-                                    Elle n’est associée à aucun identifiant de test, n’est pas conservée dans une base exploitable,
-                                    et ne fait l’objet d’aucune réutilisation ultérieure.</p>
+                                        <p>
+                                            - En fin de test vous pourrez récupérer immédiatement le compte-rendu d'analyse par mail (votre adresse n'étant communiquée à strictement personne externe à INDX).
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-
-                            {/* Before you begin section */}
-                            {/* <div>
-                                <h3 className="text-lg font-bold text-[#050E3C] mb-3">
-                                    Avant de commencer
-                                </h3>
-                                <ul className="space-y-2 text-gray-700">
-                                    <li className="flex items-start">
-                                        <span className="mr-2">•</span>
-                                        <span>Il n'existe ni bonne ni mauvaise réponse.</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span className="mr-2">•</span>
-                                        <span>Il ne s'agit pas d'un test de connaissances.</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span className="mr-2">•</span>
-                                        <span>
-                                            Ce qui est observé n'est pas ce que vous savez, mais la façon dont vous
-                                            raisonnez et réajustez votre approche.
-                                        </span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span className="mr-2">•</span>
-                                        <span>
-                                            Les réponses doivent rester concises, dans une limite d'environ dix lignes.
-                                            La clarté prime sur la longueur.
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div> */}
 
 
                             {/* Guest Info Form - Only show if not logged in */}
@@ -312,11 +286,11 @@ export default function DemoTestPage() {
                             )}
 
                             {/* Modified start button */}
-                            <div className="pt-2">
+                            <div className="pt-5">
                                 <button
                                     onClick={handleStartTest}
                                     disabled={isRegistering || (!localStorage.getItem('token') && (!guestInfo.email || !guestInfo.fullName))}
-                                    className="w-full px-8 py-4 bg-[#050E3C] text-white font-semibold hover:bg-[#050E3C]/90 transition-colors disabled:opacity-50"
+                                    className="px-6 py-3 bg-[#050E3C] text-white text-md font-semibold hover:bg-[#050E3C]/90 transition-colors disabled:opacity-50"
                                 >
                                     {isRegistering ? 'Enregistrement...' : 'Commencer le test'}
                                 </button>

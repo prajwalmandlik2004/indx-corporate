@@ -155,11 +155,11 @@ export default function TestDashboard() {
   };
 
   return (
-    <div className="min-h-screen px-4 py-20">
-      <div className="max-w-[1700px] mx-auto">
+    <div className="min-h-screen py-10">
+      <div className="max-w-[1320px] mx-auto px-4">
 
         {/* Header */}
-        <div className="mb-12 animate-fade-in">
+        <div className="mb-8 animate-fade-in">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
             <h1 className="text-4xl font-bold gradient-text">Test Dashboard</h1>
             <div className="relative">
@@ -224,24 +224,24 @@ export default function TestDashboard() {
         ) : (
           <div className="card overflow-hidden">
             {/* Desktop View */}
-            <div className="hidden md:block overflow-x-auto">
+            <div className="hidden md:block overflow-x-auto max-h-[calc(100vh-300px)] overflow-y-auto">
               <table className="w-full">
-                <thead className="bg-gradient-to-r from-blue-50 to-blue-50">
+                <thead className="bg-gradient-to-r from-blue-50 to-blue-50 sticky top-0 z-10">
                   <tr>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">S.No</th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Test Name</th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Author</th>
+                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">S.No</th>
+                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Test Name</th>
+                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Author</th>
                     {/* <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Email</th> */}
                     {/* <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Category</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Level</th> */}
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Date & Time</th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Answers</th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">INDX1000</th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Analysis</th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Delete</th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Remarks</th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Feedback</th>
-                    <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Certificate</th>
+                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Date & Time</th>
+                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Answers</th>
+                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">INDX1000</th>
+                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Analysis</th>
+                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Delete</th>
+                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Remarks</th>
+                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Feedback</th>
+                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Certificate</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
@@ -250,11 +250,11 @@ export default function TestDashboard() {
                       key={test.id}
                       className="hover:bg-blue-50/50 transition-colors"
                     >
-                      <td className="px-6 py-4 text-sm text-gray-900">{index + 1}</td>
-                      <td className="px-6 py-4">
+                      <td className="px-2 py-2 text-sm text-gray-900">{index + 1}</td>
+                      <td className="px-2 py-2">
                         <div className="font-semibold text-gray-900">{test.test_name}</div>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-2 py-2">
                         <div className="text-sm text-gray-700">{test.user?.full_name || 'N/A'}</div>
                       </td>
                       {/* <td className="px-6 py-4">
@@ -270,9 +270,9 @@ export default function TestDashboard() {
                           {test.level.replace('_', ' ')}
                         </span>
                       </td> */}
-                      <td className="px-6 py-4 text-sm text-gray-600">
+                      <td className="px-2 py-2 text-sm text-gray-600">
                         <div className="flex items-center space-x-2">
-                          <Calendar size={16} />
+                          {/* <Calendar size={16} /> */}
                           <span>
                             {new Date(test.completed || test.created_at).toLocaleString('en-IN', {
                               year: 'numeric',
@@ -286,57 +286,65 @@ export default function TestDashboard() {
                         </div>
                       </td>
                       {/* Add this new cell */}
-                      <td className="px-8 py-4">
+                      <td className="px-2 py-2">
                         {test.completed ? (
-                          <button
-                            onClick={() => router.push(`/answers/${test.id}`)}
-                            className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors"
-                          >
-                            <Eye size={18} />
-                          </button>
+                          <div className="flex justify-center">
+                            <button
+                              onClick={() => router.push(`/answers/${test.id}`)}
+                              className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors"
+                            >
+                              <Eye size={18} />
+                            </button>
+                          </div>
                         ) : (
                           <span className="text-gray-400 text-sm">N/A</span>
                         )}
                       </td>
-                      <td className="px-8 py-4">
+                      <td className="px-2 py-2">
                         {test.score !== null ? (
-                          <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold ${getScoreBadge(test.score)}`}>
-                            {/* <Award size={16} className="mr-1" /> */}
-                            {test.score.toFixed(0)}
-                          </span>
+                          <div className="flex justify-center">
+                            <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold ${getScoreBadge(test.score)}`}>
+                              {/* <Award size={16} className="mr-1" /> */}
+                              {test.score.toFixed(0)}
+                            </span>
+                          </div>
                         ) : (
                           <span className="text-gray-400 text-sm">N/A</span>
                         )}
                       </td>
-                      <td className="px-8 py-4">
+                      <td className="px-2 py-2">
                         {test.completed ? (
-                          <button
-                            onClick={() => router.push(`/result/${test.id}`)}
-                            className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors"
-                          >
-                            <Eye size={18} />
-                            {/* <span>View Result</span> */}
-                          </button>
+                          <div className="flex justify-center">
+                            <button
+                              onClick={() => router.push(`/result/${test.id}`)}
+                              className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors"
+                            >
+                              <Eye size={18} />
+                              {/* <span>View Result</span> */}
+                            </button>
+                          </div>
                         ) : (
                           <span className="text-gray-400 text-sm">Incomplete</span>
                         )}
                       </td>
-                      <td className="px-6 py-4">
-                        <button
-                          onClick={() => handleDeleteTest(test.id)}
-                          disabled={deletingTestId === test.id}
-                          className="flex items-center space-x-2 text-red-600 hover:text-red-700 font-semibold transition-colors disabled:opacity-50"
-                        >
-                          {deletingTestId === test.id ? (
-                            <div className="h-4 w-4 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
+                      <td className="px-2 py-2">
+                        <div className="flex justify-center">
+                          <button
+                            onClick={() => handleDeleteTest(test.id)}
+                            disabled={deletingTestId === test.id}
+                            className="flex items-center space-x-2 text-red-600 hover:text-red-700 font-semibold transition-colors disabled:opacity-50"
+                          >
+                            {deletingTestId === test.id ? (
+                              <div className="h-4 w-4 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
 
-                          ) : (
-                            <Trash2 size={18} />
-                          )}
-                          <span>Delete</span>
-                        </button>
+                            ) : (
+                              <Trash2 size={18} />
+                            )}
+                            {/* <span>Delete</span> */}
+                          </button>
+                        </div>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-2 py-2">
                         <div className="relative">
                           <input
                             type="text"
@@ -354,34 +362,42 @@ export default function TestDashboard() {
                         </div>
                       </td>
 
-                      <td className="px-6 py-4">
+                      <td className="px-2 py-2">
                         {test.feedback ? (
-                          <button
-                            onClick={() => {
-                              setSelectedFeedback(test.feedback);
-                              setShowFeedbackModal(true);
-                            }}
-                            className="flex items-center space-x-2 text-green-600 hover:text-green-700 font-semibold"
-                          >
-                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                            <span>View</span>
-                          </button>
+                          <div className="flex justify-center">
+                            <button
+                              onClick={() => {
+                                setSelectedFeedback(test.feedback);
+                                setShowFeedbackModal(true);
+                              }}
+                              className="flex items-center space-x-2 text-green-600 hover:text-green-700 font-semibold"
+                            >
+                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                              <span>View</span>
+                            </button>
+                          </div>
                         ) : (
-                          <span className="text-gray-400 text-sm">No feedback</span>
+                          <div className="flex justify-center">
+                            <span className="text-gray-400 text-sm">N/A</span>
+                          </div>
                         )}
                       </td>
 
-                      <td className="px-6 py-4">
+                      <td className="px-2 py-2">
                         {test.completed && test.score ? (
-                          <button
-                            onClick={() => handleDownloadCertificate(test.id, test.test_name)}
-                            className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors"
-                          >
-                            <Download size={18} />
-                            <span>Download</span>
-                          </button>
+                          <div className="flex justify-center">
+                            <button
+                              onClick={() => handleDownloadCertificate(test.id, test.test_name)}
+                              className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors"
+                            >
+                              <Download size={18} />
+                              {/* <span>Download</span> */}
+                            </button>
+                          </div>
                         ) : (
-                          <span className="text-gray-400 text-sm">N/A</span>
+                          <div className="flex justify-center">
+                            <span className="text-gray-400 text-sm">N/A</span>
+                          </div>
                         )}
                       </td>
 

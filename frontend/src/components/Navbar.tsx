@@ -39,6 +39,7 @@ export default function Navbar() {
         { id: 'series_25_i', name: 'Série 25 - CTX2.5' },
         { id: 'series_25_h', name: 'Série 25 - CTX3' },
         { id: 'series_15_j', name: 'Série 15 - CTX4' },
+        { id: 'series_1_k', name: 'Série 1 - Admin' },
       ]);
     } else {
       setTestSeries([

@@ -1542,8 +1542,18 @@ DEMO_SERIES = {
             "expected_criteria": "Bilan réflexif"
             }
         ]
+    },
+     "series_1_k": {
+        "title": "Série 1 - Admin",
+        "description": "Décision personnelle, confort cognitif et reprise de contrôle",
+        "questions": [
+            {
+            "question_id": 1,
+            "question_text": "Vous utilisez une IA pour réfléchir à une décision vous concernant (travail, orientation, organisation personnelle).\nAu fil de l’échange, la discussion prend une direction précise, sans que vous l’ayez vraiment choisie au départ.\nCette direction commence à influencer votre manière de voir le problème.\n\nQue faites-vous à ce moment-là ?",
+            "expected_criteria": "Prise de conscience du cadrage"
+            },
+        ]
     }
-
 }
 
 

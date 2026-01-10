@@ -27,6 +27,8 @@ export default function DemoTestPage() {
     const [guestInfo, setGuestInfo] = useState({ email: '', fullName: '' });
     const [isRegistering, setIsRegistering] = useState(false);
 
+    const [isOkClicked, setIsOkClicked] = useState(false);
+
     // Add this handler
     const handleStartTest = async () => {
         const token = localStorage.getItem('token');
@@ -176,6 +178,11 @@ export default function DemoTestPage() {
         );
     }
 
+    const isValidEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
     return (
         <>
             {loading && (
@@ -289,10 +296,11 @@ export default function DemoTestPage() {
                                                 required
                                             />
                                             <button
-                                                disabled={!guestInfo.email || !guestInfo.fullName}
-                                                className={`absolute -bottom-14 right-0 px-3 py-1 font-semibold transition-colors ${guestInfo.email && guestInfo.fullName
-                                                    ? 'bg-[#050E3C] text-white'
-                                                    : 'bg-gray-400 text-white cursor-not-allowed'
+                                                onClick={() => setIsOkClicked(true)}
+                                                disabled={!guestInfo.fullName || !isValidEmail(guestInfo.email)}
+                                                className={`absolute -bottom-14 right-0 px-3 py-1 font-semibold transition-colors ${guestInfo.fullName && isValidEmail(guestInfo.email)
+                                                        ? 'bg-[#050E3C] text-white'
+                                                        : 'bg-gray-400 text-white cursor-not-allowed'
                                                     }`}
                                             >
                                                 OK
@@ -306,7 +314,7 @@ export default function DemoTestPage() {
                             <div className="pt-8">
                                 <button
                                     onClick={handleStartTest}
-                                    disabled={isRegistering || (!localStorage.getItem('token') && (!guestInfo.email || !guestInfo.fullName))}
+                                    disabled={isRegistering || (!localStorage.getItem('token') && !isOkClicked)}
                                     className="px-6 py-3 bg-[#050E3C] text-white text-md font-semibold hover:bg-[#050E3C]/90 transition-colors disabled:opacity-50"
                                 >
                                     {isRegistering ? 'Enregistrement...' : 'Commencer le test'}

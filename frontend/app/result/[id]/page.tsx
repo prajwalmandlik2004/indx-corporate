@@ -129,6 +129,10 @@ export default function ResultPage() {
     }
   };
 
+  const handleSequentialClick = () => {
+    router.push(`/result/${testId}/sequential/${activeModel}`);
+  };
+
   return (
     <div className="min-h-screen px-4 py-20">
       <div className="max-w-6xl mx-auto">
@@ -228,7 +232,20 @@ export default function ResultPage() {
 
             {/* 2. ANALYSIS - Title + Paragraphs with spacing */}
             <div className="card animate-slide-up" style={{ animationDelay: '100ms' }}>
-              <h3 className="text-lg font-semibold mb-4 text-gray-800">Analyse synthétique continue</h3>
+              {/* <h3 className="text-lg font-semibold mb-4 text-gray-800">Analyse synthétique continue</h3> */}
+              <div className="mb-4">
+                <h3 className="text-lg font-semibold text-gray-800 inline">
+                  Analyse synthétique continue  <span className='ml-3'>/</span>
+                  {isAdmin && (
+                    <button
+                      onClick={handleSequentialClick}
+                      className="text-[#050E3C] font-medium text-lg ml-3 cursor-pointer hover:underline"
+                    >
+                      Sequential
+                    </button>
+                  )}
+                </h3>
+              </div>
               <div className="text-gray-700 leading-relaxed text-base space-y-4">
                 {currentAnalysis.analysis?.split('\n\n').map((paragraph: string, index: number) => (
                   <p key={index} className="">

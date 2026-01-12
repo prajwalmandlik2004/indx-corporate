@@ -1918,3 +1918,24 @@ async def submit_demo_test(
             "test_id": test.id,
             "score": test.score
         }
+    
+
+@router.get("/test/{test_id}")
+async def get_test(
+    test_id: int,
+    db: Session = Depends(get_db)
+):
+    """Get test details"""
+    test = db.query(TestAttempt).filter(
+        TestAttempt.id == test_id
+    ).first()
+    
+    if not test:
+        raise HTTPException(status_code=404, detail="Test not found")
+    
+    return {
+        "id": test.id,
+        "test_name": test.test_name,
+        "questions": test.questions,  # This has the full question text
+        "answers": test.answers
+    }

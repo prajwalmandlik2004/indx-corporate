@@ -84,6 +84,12 @@ export const resultAPI = {
     api.get(`/api/result/${testId}/certificate`, {
       responseType: 'blob'
   }),
+
+  getSequenceAnalyses: (testId: number, modelName: string) =>
+    api.get(`/api/sequence-analysis/${testId}/${modelName}`),
+  saveSequenceAnalysis: (data: any) =>
+    api.post('/api/sequence-analysis/save', data),
+  
 };
 
 // Demo APIs

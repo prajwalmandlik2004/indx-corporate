@@ -19,6 +19,14 @@ export default function TestDashboard() {
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [selectedFeedback, setSelectedFeedback] = useState('');
 
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [selectedTest, setSelectedTest] = useState<any>(null);
+
+  const handleOpenDetails = (test: any) => {
+    setSelectedTest(test);
+    setShowDetailsModal(true);
+  };
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -162,7 +170,7 @@ export default function TestDashboard() {
         <div className="mb-8 animate-fade-in">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
             <h1 className="text-4xl font-bold gradient-text">Test Dashboard</h1>
-            <div className="relative">
+            <div className="relative mt-4 md:mt-0 w-full md:w-64">
               <Search className="absolute left-4 top-5 text-gray-400" size={20} />
               <input
                 type="text"
@@ -407,21 +415,96 @@ export default function TestDashboard() {
               </table>
             </div>
 
+
             {/* Mobile View */}
-            <div className="md:hidden space-y-6">
-              {filteredTests.map((test, index) => (
-                <div key={test.id} className="border border-gray-200 rounded-lg p-4 bg-white">
+            <div className="md:hidden -mx-4 max-h-[calc(100vh-250px)] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              <table className="w-full text-xs">
+                <thead className="bg-gradient-to-r from-blue-50 to-blue-50 sticky top-0 z-10">
+                  <tr>
+                    <th className="px-1 py-3 text-left font-bold text-gray-700">No.</th>
+                    <th className="px-1 py-3 text-left font-bold text-gray-700">Test Name</th>
+                    <th className="px-1 py-3 text-left font-bold text-gray-700">Author</th>
+                    <th className="px-1 py-3 text-center font-bold text-gray-700">Analysis</th>
+                    <th className="px-1 py-3 text-center font-bold text-gray-700">Details</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  {filteredTests.map((test, index) => (
+                    <tr key={test.id} className="hover:bg-blue-50/50">
+                      <td className="px-1 py-3">
+                        <div className="text-gray-900 text-xs font-semibold">
+                          {index + 1}
+                        </div>
+                      </td>
+                      <td className="px-1 py-3">
+                        <div className="font-semibold text-gray-900 text-xs break-words max-w-[100px]">
+                          {test.test_name}
+                        </div>
+                      </td>
+                      <td className="px-1 py-3">
+                        <div className="text-gray-700 text-xs break-words max-w-[70px]">
+                          {test.user?.full_name || 'N/A'}
+                        </div>
+                      </td>
+                      <td className="px-1 py-3">
+                        {test.completed ? (
+                          <div className="flex justify-center">
+                            <button
+                              onClick={() => router.push(`/result/${test.id}`)}
+                              className="text-[#050E3C] hover:text-blue-700"
+                            >
+                              <Eye size={16} />
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="flex justify-center">
+                            <span className="text-gray-400 text-xs">N/A</span>
+                          </div>
+                        )}
+                      </td>
+                      <td className="px-1 py-3">
+                        <div className="flex justify-center">
+                          <button
+                            onClick={() => handleOpenDetails(test)}
+                            className="text-[#050E3C] hover:text-blue-700"
+                          >
+                            <Eye size={16} />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Details Modal for Mobile - Full Screen */}
+            {showDetailsModal && selectedTest && (
+              <div className="fixed top-16 left-0 right-0 bottom-0 bg-white z-40 md:hidden overflow-y-auto">
+                <div className="sticky top-0 bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between shadow-sm">
+                  <h3 className="text-lg font-bold text-gray-900">Test Details</h3>
+                  <button
+                    onClick={() => setShowDetailsModal(false)}
+                    className="text-gray-500 hover:text-gray-700 text-2xl leading-none"
+                  >
+                    ✕
+                  </button>
+                </div>
+
+                <div className="p-4">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
                       <div className="flex items-center space-x-2 mb-1">
-                        <span className="text-sm font-bold text-gray-500">#{index + 1}</span>
-                        <span className="font-bold text-gray-900">{test.test_name}</span>
+                        <span className="text-sm font-bold text-gray-500">
+                          #{filteredTests.findIndex(t => t.id === selectedTest.id) + 1}
+                        </span>
+                        <span className="font-bold text-gray-900">{selectedTest.test_name}</span>
                       </div>
                     </div>
-                    {test.score !== null && (
-                      <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold ${getScoreBadge(test.score)}`}>
-                        {test.score.toFixed(0)}
+                    {selectedTest.score !== null && (
+                      <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold ${getScoreBadge(selectedTest.score)}`}>
+                        {selectedTest.score.toFixed(0)}
                       </span>
                     )}
                   </div>
@@ -429,14 +512,14 @@ export default function TestDashboard() {
                   {/* Author */}
                   <div className="mb-2">
                     <span className="text-xs font-semibold text-gray-600">Author: </span>
-                    <span className="text-sm text-gray-700">{test.user?.full_name || 'N/A'}</span>
+                    <span className="text-sm text-gray-700">{selectedTest.user?.full_name || 'N/A'}</span>
                   </div>
 
                   {/* Date */}
                   <div className="flex items-center space-x-2 text-sm text-gray-600 mb-3">
                     <Calendar size={14} />
                     <span>
-                      {new Date(test.completed || test.created_at).toLocaleString('en-IN', {
+                      {new Date(selectedTest.completed || selectedTest.created_at).toLocaleString('en-IN', {
                         year: 'numeric',
                         month: 'short',
                         day: 'numeric',
@@ -453,13 +536,13 @@ export default function TestDashboard() {
                     <div className="relative">
                       <input
                         type="text"
-                        value={editingRemarks[test.id] || ''}
-                        onChange={(e) => handleRemarksChange(test.id, e.target.value)}
-                        onBlur={() => handleRemarksBlur(test.id)}
+                        value={editingRemarks[selectedTest.id] || ''}
+                        onChange={(e) => handleRemarksChange(selectedTest.id, e.target.value)}
+                        onBlur={() => handleRemarksBlur(selectedTest.id)}
                         placeholder="Add remarks..."
                         className="w-full px-3 py-2 text-sm border border-gray-300 rounded focus:border-[#050E3C] focus:ring-1 focus:ring-[#050E3C] outline-none"
                       />
-                      {savingRemarks === test.id && (
+                      {savingRemarks === selectedTest.id && (
                         <div className="absolute right-2 top-2">
                           <div className="h-4 w-4 border-2 border-[#050E3C] border-t-transparent rounded-full animate-spin" />
                         </div>
@@ -469,17 +552,23 @@ export default function TestDashboard() {
 
                   {/* Action Buttons */}
                   <div className="space-y-2">
-                    {test.completed ? (
+                    {selectedTest.completed ? (
                       <>
                         <button
-                          onClick={() => router.push(`/answers/${test.id}`)}
+                          onClick={() => {
+                            setShowDetailsModal(false);
+                            router.push(`/answers/${selectedTest.id}`);
+                          }}
                           className="w-full flex items-center justify-center space-x-2 px-4 py-2 text-[#050E3C] hover:text-blue-700 border border-gray-300 rounded font-semibold text-sm"
                         >
                           <Eye size={16} />
                           <span>View Answers</span>
                         </button>
                         <button
-                          onClick={() => router.push(`/result/${test.id}`)}
+                          onClick={() => {
+                            setShowDetailsModal(false);
+                            router.push(`/result/${selectedTest.id}`);
+                          }}
                           className="w-full flex items-center justify-center space-x-2 px-4 py-2 text-[#050E3C] hover:text-blue-700 border border-gray-300 rounded font-semibold text-sm"
                         >
                           <Eye size={16} />
@@ -492,10 +581,11 @@ export default function TestDashboard() {
                       </div>
                     )}
 
-                    {test.feedback ? (
+                    {selectedTest.feedback ? (
                       <button
                         onClick={() => {
-                          setSelectedFeedback(test.feedback);
+                          setShowDetailsModal(false);
+                          setSelectedFeedback(selectedTest.feedback);
                           setShowFeedbackModal(true);
                         }}
                         className="w-full flex items-center justify-center space-x-2 px-4 py-2 text-green-600 hover:text-green-700 border border-gray-300 rounded font-semibold text-sm"
@@ -509,9 +599,9 @@ export default function TestDashboard() {
                       </div>
                     )}
 
-                    {test.completed && test.score ? (
+                    {selectedTest.completed && selectedTest.score ? (
                       <button
-                        onClick={() => handleDownloadCertificate(test.id, test.test_name)}
+                        onClick={() => handleDownloadCertificate(selectedTest.id, selectedTest.test_name)}
                         className="w-full flex items-center justify-center space-x-2 px-4 py-2 text-[#050E3C] hover:text-blue-700 border border-gray-300 rounded font-semibold text-sm"
                       >
                         <Download size={16} />
@@ -524,11 +614,11 @@ export default function TestDashboard() {
                     )}
 
                     <button
-                      onClick={() => handleDeleteTest(test.id)}
-                      disabled={deletingTestId === test.id}
+                      onClick={() => handleDeleteTest(selectedTest.id)}
+                      disabled={deletingTestId === selectedTest.id}
                       className="w-full flex items-center justify-center space-x-2 px-4 py-2 text-red-600 hover:text-red-700 border border-gray-300 rounded font-semibold text-sm disabled:opacity-50"
                     >
-                      {deletingTestId === test.id ? (
+                      {deletingTestId === selectedTest.id ? (
                         <div className="h-4 w-4 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
                       ) : (
                         <Trash2 size={16} />
@@ -537,10 +627,8 @@ export default function TestDashboard() {
                     </button>
                   </div>
                 </div>
-              ))}
-            </div>
-
-
+              </div>
+            )}
 
           </div>
         )}

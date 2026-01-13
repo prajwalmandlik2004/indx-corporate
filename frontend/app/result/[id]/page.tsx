@@ -136,14 +136,15 @@ export default function ResultPage() {
   return (
     <div className="min-h-screen px-4 py-20">
       <div className="max-w-6xl mx-auto">
-        {/* Back Button */}
+        {isAdmin && (
         <button
-          onClick={() => router.push('/demo')}
+          onClick={() => router.push('/test-dashboard')}
           className="flex items-center space-x-2 text-gray-600 hover:text-[#050E3C] transition-colors mb-8"
         >
           <ArrowLeft size={20} />
-          <span>Back to Tests</span>
+          <span>Back to Dashboard</span>
         </button>
+        )}
 
         {/* Header */}
         <div className="card mb-8 animate-fade-in">

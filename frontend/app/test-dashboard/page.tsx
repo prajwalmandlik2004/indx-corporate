@@ -230,7 +230,7 @@ export default function TestDashboard() {
             )}
           </div>
         ) : (
-          <div className="card overflow-hidden">
+          <div className="card overflow-hidden mt-[-15]">
             {/* Desktop View */}
             <div className="hidden md:block overflow-x-auto max-h-[calc(100vh-300px)] overflow-y-auto">
               <table className="w-full">
@@ -417,7 +417,7 @@ export default function TestDashboard() {
 
 
             {/* Mobile View */}
-            <div className="md:hidden -mx-4 max-h-[calc(100vh-250px)] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            <div className="mt-[-5] md:hidden -mx-4 max-h-[calc(100vh-250px)] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               <table className="w-full text-xs">
                 <thead className="bg-gradient-to-r from-blue-50 to-blue-50 sticky top-0 z-10">
                   <tr>

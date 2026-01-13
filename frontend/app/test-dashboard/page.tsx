@@ -162,6 +162,12 @@ export default function TestDashboard() {
     }
   };
 
+  const formatTestName = (testName: string) => {
+    return testName
+      .replace(/Série\s*/gi, 'S')
+      .replace(/\s*-\s*/g, '-');
+  };
+
   return (
     <div className="min-h-screen py-10">
       <div className="max-w-[1320px] mx-auto px-4">
@@ -260,7 +266,7 @@ export default function TestDashboard() {
                     >
                       <td className="px-2 py-2 text-sm text-gray-900">{index + 1}</td>
                       <td className="px-2 py-2">
-                        <div className="font-semibold text-gray-900">{test.test_name}</div>
+                        <div className="font-semibold text-gray-900"> {formatTestName(test.test_name)}</div>
                       </td>
                       <td className="px-2 py-2">
                         <div className="text-sm text-gray-700">{test.user?.full_name || 'N/A'}</div>
@@ -439,7 +445,7 @@ export default function TestDashboard() {
                       </td>
                       <td className="px-1 py-3">
                         <div className="text-gray-900 text-xs break-words max-w-[100px]">
-                          {test.test_name}
+                          {formatTestName(test.test_name)}
                         </div>
                       </td>
                       <td className="px-1 py-3">
@@ -447,7 +453,7 @@ export default function TestDashboard() {
                           {test.user?.full_name || 'N/A'}
                         </div>
                       </td>
-                       <td className="px-1 py-3">
+                      <td className="px-1 py-3">
                         {test.score !== null ? (
                           <div className="flex justify-center">
                             <span className={`inline-flex items-center px-2 py-0.5 text-xs font-bold`}>
@@ -486,7 +492,7 @@ export default function TestDashboard() {
                           </div>
                         )}
                       </td>
-                      
+
                     </tr>
                   ))}
                 </tbody>

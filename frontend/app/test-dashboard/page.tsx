@@ -424,6 +424,7 @@ export default function TestDashboard() {
                     <th className="px-1 py-3 text-left font-bold text-gray-700">No.</th>
                     <th className="px-1 py-3 text-left font-bold text-gray-700">Test Name</th>
                     <th className="px-1 py-3 text-left font-bold text-gray-700">Author</th>
+                    <th className="px-1 py-3 text-center font-bold text-gray-700">Indx</th>
                     <th className="px-1 py-3 text-center font-bold text-gray-700">Details</th>
                     <th className="px-1 py-3 text-center font-bold text-gray-700">Analysis</th>
                   </tr>
@@ -437,7 +438,7 @@ export default function TestDashboard() {
                         </div>
                       </td>
                       <td className="px-1 py-3">
-                        <div className="font-semibold text-gray-900 text-xs break-words max-w-[100px]">
+                        <div className="text-gray-900 text-xs break-words max-w-[100px]">
                           {test.test_name}
                         </div>
                       </td>
@@ -445,6 +446,19 @@ export default function TestDashboard() {
                         <div className="text-gray-700 text-xs break-words max-w-[70px]">
                           {test.user?.full_name || 'N/A'}
                         </div>
+                      </td>
+                       <td className="px-1 py-3">
+                        {test.score !== null ? (
+                          <div className="flex justify-center">
+                            <span className={`inline-flex items-center px-2 py-0.5 text-xs font-bold`}>
+                              {test.score.toFixed(0)}
+                            </span>
+                          </div>
+                        ) : (
+                          <div className="flex justify-center">
+                            <span className="text-gray-400 text-xs">N/A</span>
+                          </div>
+                        )}
                       </td>
                       <td className="px-1 py-3">
                         <div className="flex justify-center">
@@ -503,17 +517,23 @@ export default function TestDashboard() {
                         <span className="font-bold text-gray-900">{selectedTest.test_name}</span>
                       </div>
                     </div>
-                    {selectedTest.score !== null && (
+                    {/* {selectedTest.score !== null && (
                       <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold ${getScoreBadge(selectedTest.score)}`}>
                         {selectedTest.score.toFixed(0)}
                       </span>
-                    )}
+                    )} */}
                   </div>
 
                   {/* Author */}
                   <div className="mb-2">
                     <span className="text-xs font-semibold text-gray-600">Author: </span>
                     <span className="text-sm text-gray-700">{selectedTest.user?.full_name || 'N/A'}</span>
+                  </div>
+
+                  {/* Score */}
+                  <div className="mb-2">
+                    <span className="text-xs font-semibold text-gray-600">INDX: </span>
+                    <span className="text-sm text-gray-700"> {selectedTest.score.toFixed(0)}</span>
                   </div>
 
                   {/* Date */}

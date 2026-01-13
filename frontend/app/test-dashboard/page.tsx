@@ -424,8 +424,8 @@ export default function TestDashboard() {
                     <th className="px-1 py-3 text-left font-bold text-gray-700">No.</th>
                     <th className="px-1 py-3 text-left font-bold text-gray-700">Test Name</th>
                     <th className="px-1 py-3 text-left font-bold text-gray-700">Author</th>
-                    <th className="px-1 py-3 text-center font-bold text-gray-700">Analysis</th>
                     <th className="px-1 py-3 text-center font-bold text-gray-700">Details</th>
+                    <th className="px-1 py-3 text-center font-bold text-gray-700">Analysis</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
@@ -447,6 +447,16 @@ export default function TestDashboard() {
                         </div>
                       </td>
                       <td className="px-1 py-3">
+                        <div className="flex justify-center">
+                          <button
+                            onClick={() => handleOpenDetails(test)}
+                            className="text-[#050E3C] hover:text-blue-700"
+                          >
+                            <Eye size={16} />
+                          </button>
+                        </div>
+                      </td>
+                      <td className="px-1 py-3">
                         {test.completed ? (
                           <div className="flex justify-center">
                             <button
@@ -462,16 +472,7 @@ export default function TestDashboard() {
                           </div>
                         )}
                       </td>
-                      <td className="px-1 py-3">
-                        <div className="flex justify-center">
-                          <button
-                            onClick={() => handleOpenDetails(test)}
-                            className="text-[#050E3C] hover:text-blue-700"
-                          >
-                            <Eye size={16} />
-                          </button>
-                        </div>
-                      </td>
+                      
                     </tr>
                   ))}
                 </tbody>

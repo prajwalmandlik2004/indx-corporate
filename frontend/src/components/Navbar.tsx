@@ -266,14 +266,14 @@ export default function Navbar() {
                   {/* <LogOut size={18} /> */}
                   <span>Déconnexion</span>
                 </button>
-                {/* <AutoLanguageSelector /> */}
+                <AutoLanguageSelector />
               </>
             ) : (
               <>
                 <Link href="/login" className="text-white">
                   Connexion
                 </Link>
-                {/* <AutoLanguageSelector /> */}
+                <AutoLanguageSelector />
                 {/* <Link href="/signup" className="btn-primary rounded-none">
                   Inscription
                 </Link> */}

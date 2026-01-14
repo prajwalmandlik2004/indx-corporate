@@ -366,20 +366,20 @@ export default function Navbar() {
                   {/* <LogOut size={18} /> */}
                   <span>Déconnexion</span>
                 </button>
-                {/* <div className="flex items-center justify-between py-2">
+                <div className="flex items-center justify-between py-2">
                   <span className="text-white">Language</span>
                   <AutoLanguageSelector /> 
-                </div> */}
+                </div>
               </>
             ) : (
               <div className="space-y-2 pt-2">
                 <Link href="/login" className="block w-full text-white" onClick={() => setIsOpen(false)}>
                   Connexion
                 </Link>
-                {/* <div className="flex items-center justify-between py-2">
+                <div className="flex items-center justify-between py-2">
                   <span className="text-white">Language</span>
                   <AutoLanguageSelector /> 
-                </div> */}
+                </div>
                 {/* <Link href="/signup" className="block w-full btn-primary text-center rounded-none" onClick={() => setIsOpen(false)}>
                   Inscription
                 </Link> */}

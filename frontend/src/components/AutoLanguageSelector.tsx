@@ -3,8 +3,8 @@ import { Globe } from 'lucide-react';
 
 const languages = [
     { code: 'fr', name: 'Français', flag: '🇫🇷', id: 'fr-FR' },
-    { code: 'en', name: 'English (UK)', flag: '🇬🇧', id: 'en-GB' },
-    { code: 'en', name: 'English (US)', flag: '🇺🇸', id: 'en-US' },
+    // { code: 'en', name: 'English (UK)', flag: '🇬🇧', id: 'en-GB' },
+    { code: 'en', name: 'English', flag: '🇺🇸', id: 'en-US' },
     // { code: 'es', name: 'Español', flag: '🇪🇸', id: 'es-ES' },
     // { code: 'de', name: 'Deutsch', flag: '🇩🇪', id: 'de-DE' },
     // { code: 'it', name: 'Italiano', flag: '🇮🇹', id: 'it-IT' },

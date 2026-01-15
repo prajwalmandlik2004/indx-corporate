@@ -180,11 +180,11 @@ export default function AutoLanguageSelector() {
                 title={isTranslating ? 'Translating...' : 'Change language'}
             >
                 <span className="text-xl">{selectedLanguage.flag}</span>
-                <Globe size={18} className={isTranslating ? 'animate-spin' : ''} />
+                {/* <Globe size={18} className={isTranslating ? 'animate-spin' : ''} /> */}
             </button>
 
             {isOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 z-50 border border-gray-200 max-h-80 overflow-y-auto">
+                <div className="absolute mt-2 w-48 left-0 sm:right-0 sm:left-auto bg-white rounded-lg shadow-xl py-2 z-50 border border-gray-200 max-h-80 overflow-y-auto">
                     {languages.map((language) => (
                         <button
                             key={language.id}
@@ -206,7 +206,7 @@ export default function AutoLanguageSelector() {
             )}
 
             {isTranslating && (
-                <div className="absolute right-0 top-full mt-1 bg-blue-600 text-white text-xs px-3 py-1 rounded shadow-lg whitespace-nowrap">
+                <div className="absolute top-full left-0 sm:right-0 sm:left-auto mt-1 bg-blue-600 text-white text-xs px-3 py-1 rounded shadow-lg whitespace-nowrap">
                     Translating...
                 </div>
             )}

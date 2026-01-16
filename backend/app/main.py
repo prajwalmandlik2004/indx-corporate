@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .database import engine, Base
-from .routes import auth, user, test, result, demo, sequence_analysis
+from .routes import auth, user, test, result, demo, sequence_analysis, email
 
 # Create database tables
 # Base.metadata.create_all(bind=engine)
@@ -28,6 +28,7 @@ app.include_router(test.router)
 app.include_router(result.router)
 app.include_router(demo.router)
 app.include_router(sequence_analysis.router)
+app.include_router(email.router)
 
 @app.get("/")
 async def root():

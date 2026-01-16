@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, JSON, Float, Text, Enum
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, JSON, Float, Text, Enum, Boolean
 from sqlalchemy.orm import relationship
 from datetime import datetime
 import enum
@@ -34,6 +34,9 @@ class TestAttempt(Base):
     feedback = Column(Text, nullable=True)
     completed = Column(DateTime)
     created_at = Column(DateTime, default=datetime.utcnow)
+
+    email_sent = Column(Boolean, default=False)  
+    email_sent_at = Column(DateTime, nullable=True)
     
     # Relationships
     user = relationship("User", back_populates="test_attempts")

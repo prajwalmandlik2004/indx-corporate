@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { ArrowLeft, Download, Share2 } from 'lucide-react';
-import { resultAPI } from '@/src/lib/api';
+import { ArrowLeft, Download, Mail, Share2 } from 'lucide-react';
+import { emailAPI, resultAPI } from '@/src/lib/api';
 import toast from 'react-hot-toast';
 
 // const AI_MODELS = [
@@ -42,6 +42,22 @@ export default function ResultPage() {
 
   const [feedback, setFeedback] = useState('');
   const [submittingFeedback, setSubmittingFeedback] = useState(false);
+
+  const [sendingEmail, setSendingEmail] = useState(false);
+
+  const handleSendEmail = async () => {
+    setSendingEmail(true);
+    try {
+      await emailAPI.sendResult(parseInt(testId));
+      toast.success('Result sent to your email!');
+      fetchResult(); // Refresh to show email_sent status
+    } catch (err: any) {
+      const errorMsg = err.response?.data?.detail || 'Failed to send email';
+      toast.error(errorMsg);
+    } finally {
+      setSendingEmail(false);
+    }
+  };
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -137,13 +153,13 @@ export default function ResultPage() {
     <div className="min-h-screen px-4 py-20">
       <div className="max-w-6xl mx-auto">
         {isAdmin && (
-        <button
-          onClick={() => router.push('/test-dashboard')}
-          className="flex items-center space-x-2 text-gray-600 hover:text-[#050E3C] transition-colors mb-8"
-        >
-          <ArrowLeft size={20} />
-          <span>Back to Dashboard</span>
-        </button>
+          <button
+            onClick={() => router.push('/test-dashboard')}
+            className="flex items-center space-x-2 text-gray-600 hover:text-[#050E3C] transition-colors mb-8"
+          >
+            <ArrowLeft size={20} />
+            <span>Back to Dashboard</span>
+          </button>
         )}
 
         {/* Header */}
@@ -236,7 +252,7 @@ export default function ResultPage() {
               {/* <h3 className="text-lg font-semibold mb-4 text-gray-800">Analyse synthétique continue</h3> */}
               <div className="mb-4">
                 <h3 className="text-lg font-semibold text-gray-800 inline">
-                  Analyse synthétique continue  
+                  Analyse synthétique continue
                   {isAdmin && (
                     <button
                       onClick={handleSequentialClick}
@@ -272,6 +288,24 @@ export default function ResultPage() {
                   INDX1000 : {result.score.toFixed(0)}
                 </p>
               </div>
+            </div>
+
+            {/* Add after INDX SCORE section */}
+            <div className="card animate-slide-up" style={{ animationDelay: '350ms' }}>
+              <button
+                onClick={handleSendEmail}
+                disabled={sendingEmail || result.email_sent}
+                className="flex items-center justify-center space-x-2 px-6 py-3 bg-[#050E3C] text-white font-semibold hover:bg-[#050E3C] transition-colors disabled:opacity-50"
+              >
+                {sendingEmail ? (
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                ) : (
+                  <Mail size={20} />
+                )}
+                <span>
+                  {sendingEmail ? 'Sending...' : result.email_sent ? 'Email Sent ✓' : 'Send Result to Email'}
+                </span>
+              </button>
             </div>
 
             {/* 5. FEEDBACK SECTION */}

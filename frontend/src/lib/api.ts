@@ -108,4 +108,12 @@ export const demoAPI = {
     api.post('/api/demo/submit', { test_id: testId, answers }),
 };
 
+export const emailAPI = {
+  sendResult: (testId: number) => 
+    api.post(`/api/email/send-result/${testId}`),
+  
+  resendResult: (testId: number) => 
+    api.post(`/api/email/resend-result/${testId}`),
+};
+
 export default api;

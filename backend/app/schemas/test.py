@@ -43,6 +43,8 @@ class TestDashboardItem(BaseModel):
     created_at: datetime
     remarks: Optional[str] = None
     feedback: Optional[str] = None
+    email_sent: Optional[bool] = False  
+    email_sent_at: Optional[datetime] = None  
     user: Optional[Dict[str, str]] = None
     
     class Config:

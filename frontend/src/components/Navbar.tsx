@@ -317,7 +317,7 @@ export default function Navbar() {
                 <ChevronDown size={16} className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               {dropdownOpen && (
-                <div className="pl-4 mt-2 space-y-2">
+                <div className="pl-4 mt-2 space-y-2 max-h-60 overflow-y-auto">
                   {testSeries.map((test) => (
                     <button
                       key={test.id}

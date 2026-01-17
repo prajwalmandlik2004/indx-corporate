@@ -111,11 +111,11 @@ def create_result_email_html(
                         <tr>
                             <td style="padding: 0 40px 40px 40px;">
                                 <div>
-                                    <p style="margin: 0 0 12px 0; color: #1f2937; font-size: 16px; font-weight: 700;">
+                                    <p style="margin: 0 0 14px 0; color: #1f2937; font-size: 18px; font-weight: 700;">
                                         Index intercognitif brut
                                     </p>
                                     <p style="margin: 0; color: #050E3C; font-size: 32px; font-weight: 700; line-height: 1;">
-                                        INDX<span style="font-size: 20px; vertical-align: sub;">1000</span> : {int(score)}
+                                        INDX<span style="font-size: 24px; vertical-align: sub;">1000</span> : {int(score)}
                                     </p>
                                 </div>
                             </td>

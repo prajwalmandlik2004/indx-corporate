@@ -290,23 +290,24 @@ export default function ResultPage() {
               </div>
             </div>
 
-            {/* Add after INDX SCORE section */}
-            <div className="card animate-slide-up" style={{ animationDelay: '350ms' }}>
-              <button
-                onClick={handleSendEmail}
-                disabled={sendingEmail || result.email_sent}
-                className="flex items-center justify-center space-x-2 px-6 py-3 bg-[#050E3C] text-white font-semibold hover:bg-[#050E3C] transition-colors disabled:opacity-50"
-              >
-                {sendingEmail ? (
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                ) : (
-                  <Mail size={20} />
-                )}
-                <span>
-                  {sendingEmail ? 'Sending...' : result.email_sent ? 'Email Sent ✓' : 'Send Result to Email'}
-                </span>
-              </button>
-            </div>
+            {isAdmin && (
+              <div className="card animate-slide-up" style={{ animationDelay: '350ms' }}>
+                <button
+                  onClick={handleSendEmail}
+                  disabled={sendingEmail || result.email_sent}
+                  className="flex items-center justify-center space-x-2 px-6 py-3 bg-[#050E3C] text-white font-semibold hover:bg-[#050E3C] transition-colors disabled:opacity-50"
+                >
+                  {sendingEmail ? (
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                  ) : (
+                    <Mail size={20} />
+                  )}
+                  <span>
+                    {sendingEmail ? 'Sending...' : result.email_sent ? 'Email Sent ✓' : 'Send Result to Email'}
+                  </span>
+                </button>
+              </div>
+            )}
 
             {/* 5. FEEDBACK SECTION */}
             <div className="card animate-slide-up" style={{ animationDelay: '400ms' }}>

@@ -286,7 +286,7 @@ export default function ResultPage() {
                 <h3 className="text-sm font-bold text-gray-800 mb-2">Index intercognitif brut</h3>
                 <p className="text-2xl font-bold text-[#050E3C]">
                   INDX
-                  <sub className="text-xl align-sub">1000</sub> : {result.score.toFixed(0)}
+                  <sub className="text-xl top-2/3">1000</sub> : {result.score.toFixed(0)}
                 </p>
               </div>
             </div>
@@ -316,7 +316,7 @@ export default function ResultPage() {
               <textarea
                 value={feedback}
                 onChange={(e) => setFeedback(e.target.value)}
-                placeholder="Chaque retour beta est scrupuleusement étudié et reçoit une réponse rapide."
+                placeholder="Chaque retour est scrupuleusement étudié et reçoit une réponse rapide."
                 rows={4}
                 className="w-full px-4 py-3 border border-gray-300 rounded focus:border-[#050E3C] focus:ring-1 focus:ring-[#050E3C] outline-none resize-none"
               />

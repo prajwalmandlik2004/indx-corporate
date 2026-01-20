@@ -285,7 +285,8 @@ export default function ResultPage() {
               <div className="py-4">
                 <h3 className="text-sm font-bold text-gray-800 mb-2">Index intercognitif brut</h3>
                 <p className="text-2xl font-bold text-[#050E3C]">
-                  INDX1000 : {result.score.toFixed(0)}
+                  INDX
+                  <sub className="text-xl align-sub">1000</sub> : {result.score.toFixed(0)}
                 </p>
               </div>
             </div>
@@ -303,7 +304,7 @@ export default function ResultPage() {
                     <Mail size={20} />
                   )}
                   <span>
-                    {sendingEmail ? 'Sending...' : result.email_sent ? 'Email Sent ✓' : 'Send Result to Email'}
+                    {sendingEmail ? 'Sending...' : result.email_sent ? 'Email Sent ✓' : 'Send analysis'}
                   </span>
                 </button>
               </div>

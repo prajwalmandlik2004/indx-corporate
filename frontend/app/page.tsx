@@ -179,7 +179,7 @@ export default function Home() {
             {/* University Building Image */}
             <div className="relative h-[300px] lg:h-[350px] overflow-hidden shadow-xl">
               <img
-                src="/home_four.jpg"
+                src="/building.png"
                 alt="University Campus"
                 className="w-full h-full object-cover"
               />

@@ -1,9 +1,9 @@
 'use client';
 
-export default function PrivacyPolicyPage() {
+export default function LegalCorporatePage() {
   return (
     <div className="overflow-hidden">
-      {/* Privacy Policy Section */}
+      {/* Legal Pages Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-8">
@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
               </div>
 
               <p>
-                Le site ind-x.fr est un site institutionnel dédié à la présentation de cadres conceptuels, de travaux analytiques et de dispositifs intellectuels développés par son éditeur.
+                Le site ind-x.fr est destiné à la présentation de cadres conceptuels, de dispositifs analytiques et d'approches méthodologiques pouvant être utilisés dans un contexte professionnel, stratégique ou organisationnel.
               </p>
 
               <p>
@@ -50,10 +50,10 @@ export default function PrivacyPolicyPage() {
             </div>
           </div>
 
-          {/* 2. Propriété intellectuelle et exclusivité */}
+          {/* 2. Propriété intellectuelle */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              2. Propriété intellectuelle et exclusivité
+              2. Propriété intellectuelle
             </h2>
 
             <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
@@ -64,11 +64,10 @@ export default function PrivacyPolicyPage() {
               <ul className="list-disc pl-6 space-y-2">
                 <li>les cadres conceptuels,</li>
                 <li>les structures méthodologiques,</li>
-                <li>les terminologies,</li>
                 <li>les dispositifs analytiques,</li>
-                <li>les architectures de tests,</li>
-                <li>les documents, textes, graphismes,</li>
-                <li>les mises en forme, séquences et agencements,</li>
+                <li>les terminologies,</li>
+                <li>les architectures, séquences et logiques de tests,</li>
+                <li>les documents, textes, graphismes et mises en forme,</li>
               </ul>
 
               <p>
@@ -84,7 +83,7 @@ export default function PrivacyPolicyPage() {
               </p>
 
               <p>
-                L'accès au site n'emporte aucune concession de licence, explicite ou implicite, sur les éléments qu'il contient.
+                L'accès au site n'emporte aucune concession de licence, explicite ou implicite, ni aucun transfert de droits de propriété intellectuelle.
               </p>
             </div>
           </div>
@@ -97,50 +96,53 @@ export default function PrivacyPolicyPage() {
 
             <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
               <p>
-                Le site ind-x.fr peut collecter des données strictement nécessaires à son fonctionnement technique et à l'analyse de son usage, notamment :
+                Le site ind-x.fr peut collecter des données nécessaires à son fonctionnement technique, à la gestion de ses contenus et à l'analyse de son usage, notamment :
               </p>
 
               <ul className="list-disc pl-6 space-y-2">
                 <li>données de navigation,</li>
                 <li>journaux techniques (logs),</li>
-                <li>informations transmises volontairement par l'utilisateur.</li>
+                <li>informations transmises volontairement par les utilisateurs dans un cadre professionnel.</li>
               </ul>
 
               <p>
-                Les données collectées ne font l'objet d'aucune exploitation commerciale, publicitaire ou de revente.
+                Les données collectées ne font l'objet d'aucune exploitation commerciale de type publicitaire ou de revente à des tiers.
               </p>
 
               <p>
-                Elles peuvent être utilisées à des fins internes d'analyse, de recherche ou d'amélioration des dispositifs présentés, y compris sous forme anonymisée ou agrégée.
+                Elles peuvent être utilisées à des fins internes d'analyse, de recherche, de démonstration ou d'amélioration des dispositifs présentés, y compris sous forme anonymisée ou agrégée.
               </p>
 
               <p>
-                Conformément à la réglementation applicable, l'utilisateur dispose d'un droit d'accès, de rectification et de suppression des données le concernant, exercé selon les modalités prévues par le site.
+                Conformément à la réglementation applicable, l'utilisateur dispose d'un droit d'accès, de rectification et de suppression des données le concernant.
               </p>
             </div>
           </div>
 
-          {/* 4. Conditions d'accès et d'utilisation */}
+          {/* 4. Conditions d'utilisation – Usage professionnel */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              4. Conditions d'accès et d'utilisation
+              4. Conditions d'utilisation – Usage professionnel
             </h2>
 
             <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
               <p>
-                Le site ind-x.fr est mis à disposition à titre institutionnel.
+                Le site ind-x.fr met à disposition des contenus et dispositifs susceptibles d'être utilisés dans un cadre professionnel, exploratoire ou stratégique.
               </p>
 
               <p>
-                Les contenus et dispositifs présentés sont fournis en l'état, sans engagement de résultat, sans garantie et sans finalité opérationnelle déclarée.
+                Sauf mention expresse contraire, les éléments présentés :
               </p>
 
-              <p>
-                L'éditeur se réserve le droit de modifier, suspendre ou interrompre tout ou partie du site, à tout moment et sans préavis.
-              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>ne constituent pas une offre contractuelle,</li>
+                <li>n'emportent aucun engagement de résultat,</li>
+                <li>ne constituent ni une certification, ni une garantie de performance,</li>
+                <li>ne sauraient être assimilés à un conseil, un audit ou une prestation formalisée.</li>
+              </ul>
 
               <p>
-                Toute utilisation du site ou de ses contenus en dehors de leur simple consultation relève de la seule responsabilité de l'utilisateur.
+                Toute utilisation des contenus dans un cadre opérationnel, décisionnel ou organisationnel relève de la seule responsabilité de l'utilisateur ou de l'entité qui en fait usage.
               </p>
             </div>
           </div>
@@ -153,8 +155,14 @@ export default function PrivacyPolicyPage() {
 
             <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
               <p>
-                L'éditeur ne saurait être tenu responsable de toute interprétation, utilisation ou conséquence directe ou indirecte résultant de l'accès au site ou de la consultation de ses contenus.
+                L'éditeur ne saurait être tenu responsable de toute conséquence directe ou indirecte résultant :
               </p>
+
+              <ul className="list-disc pl-6 space-y-2">
+                <li>de l'utilisation des contenus ou dispositifs présentés,</li>
+                <li>de leur interprétation dans un contexte professionnel,</li>
+                <li>de décisions prises sur la base des informations ou analyses proposées.</li>
+              </ul>
             </div>
           </div>
 

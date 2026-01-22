@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import { Globe } from 'lucide-react';
 
 const languages = [
-    { code: 'fr', name: 'Français', flag: '🇫🇷', id: 'fr-FR' },
+    { code: 'fr', name: 'Français', flag: <span className="fi fi-fr"></span>, id: 'fr-FR' },
     // { code: 'en', name: 'English (UK)', flag: '🇬🇧', id: 'en-GB' },
-    { code: 'en', name: 'English', flag: '🇺🇸', id: 'en-US' },
+    { code: 'en', name: 'English', flag: <span className="fi fi-us"></span>, id: 'en-US' },
     // { code: 'es', name: 'Español', flag: '🇪🇸', id: 'es-ES' },
     // { code: 'de', name: 'Deutsch', flag: '🇩🇪', id: 'de-DE' },
     // { code: 'it', name: 'Italiano', flag: '🇮🇹', id: 'it-IT' },
@@ -179,7 +179,7 @@ export default function AutoLanguageSelector() {
                 aria-label="Select language"
                 title={isTranslating ? 'Translating...' : 'Change language'}
             >
-                <span className="text-xl">{selectedLanguage.flag}</span>
+                <span className="text-lg">{selectedLanguage.flag}</span>
                 {/* <Globe size={18} className={isTranslating ? 'animate-spin' : ''} /> */}
             </button>
 
@@ -195,7 +195,7 @@ export default function AutoLanguageSelector() {
                                 : 'text-gray-700 hover:bg-gray-50'
                                 }`}
                         >
-                            <span className="text-xl">{language.flag}</span>
+                            <span className="text-lg">{language.flag}</span>
                             <span className="font-medium">{language.name}</span>
                             {selectedLanguage.id === language.id && (
                                 <span className="ml-auto text-blue-600">✓</span>

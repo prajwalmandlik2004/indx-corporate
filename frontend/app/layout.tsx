@@ -10,7 +10,7 @@ import SiteLocker from '@/src/components/SiteLocker'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'INDX - Human - Ai Cognitive Reasearch',
+  title: 'INDX - Intercognitive Reasearch',
   description: '',
 }
 

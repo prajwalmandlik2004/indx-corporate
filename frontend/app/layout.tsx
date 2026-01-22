@@ -6,6 +6,7 @@ import Footer from '@/src/components/Footer'
 import { Toaster } from 'react-hot-toast';
 import ScrollToTop from '@/src/components/ScrollTop'
 import SiteLocker from '@/src/components/SiteLocker'
+import 'flag-icons/css/flag-icons.min.css';
 
 const inter = Inter({ subsets: ['latin'] })
 

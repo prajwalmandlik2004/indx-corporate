@@ -149,6 +149,31 @@ export default function ResultPage() {
     router.push(`/result/${testId}/sequential/${activeModel}`);
   };
 
+  const handleCopyAnalysis = () => {
+    const analysisText = `
+Index de lecture:
+${currentAnalysis.index?.map((item: string, index: number) => `${index + 1}. ${item}`).join('\n')}
+
+Analyse synthétique continue:
+${currentAnalysis.analysis}
+
+Projection opératoire:
+${currentAnalysis.operational_projection}
+
+Index intercognitif brut:
+INDX1000 : ${result.score.toFixed(0)}
+  `.trim();
+
+    navigator.clipboard.writeText(analysisText)
+      .then(() => {
+        toast.success('Analysis copied to clipboard!');
+      })
+      .catch(() => {
+        toast.error('Failed to copy analysis');
+      });
+  };
+
+  
   return (
     <div className="min-h-screen px-4 py-20">
       <div className="max-w-6xl mx-auto">
@@ -223,6 +248,18 @@ export default function ResultPage() {
             ))}
           </div>
         </div>
+
+        {/* Copy Analysis Button */}
+        {isAdmin && !currentAnalysis?.error && currentAnalysis && (
+          <div className="mb-6 flex">
+            <button
+              onClick={handleCopyAnalysis}
+              className="flex items-center space-x-2 px-4 py-2 bg-gray-200 hover:bg-gray-200 text-gray-700 font-medium transition-colors"
+            >
+              <span>Copy Analysis</span>
+            </button>
+          </div>
+        )}
 
         {/* Error Display */}
         {currentAnalysis?.error && (

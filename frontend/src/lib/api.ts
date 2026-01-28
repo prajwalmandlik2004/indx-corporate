@@ -84,7 +84,16 @@ export const resultAPI = {
     api.get(`/api/result/${testId}/certificate`, {
       responseType: 'blob'
   }),
-
+  downloadQAPDF: async (testId: number) => {
+    return api.get(`/api/result/${testId}/qa-pdf`, {
+      responseType: 'blob',
+    });
+  },
+  downloadQAAPDF: async (testId: number, modelName: string) => {
+    return api.get(`/api/result/${testId}/qaa-pdf/${modelName}`, {
+      responseType: 'blob',
+    });
+  },
   getSequenceAnalyses: (testId: number, modelName: string) =>
     api.get(`/api/sequence-analysis/${testId}/${modelName}`),
   saveSequenceAnalysis: (data: any) =>

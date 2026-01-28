@@ -17,9 +17,9 @@ import toast from 'react-hot-toast';
 const getAIModels = (isAdmin: boolean) => {
   if (isAdmin) {
     return [
-      { id: 'gpt4o', name: 'GPT-4o', color: 'from-green-500 to-emerald-600' },
+      { id: 'gpt4o', name: 'GPT-4o', color: 'from-black to-black' },
       { id: 'claude', name: 'Claude', color: 'from-orange-500 to-red-600' },
-      { id: 'grok', name: 'Grok', color: 'from-black to-black' },
+      { id: 'grok', name: 'Grok', color: 'from-green-500 to-emerald-600' },
       { id: 'groq', name: 'Gemini', color: 'from-blue-500 to-blue-600' },
       { id: 'mistral', name: 'Mistral', color: 'from-violet-500 to-violet-600' },
     ];
@@ -44,6 +44,29 @@ export default function ResultPage() {
   const [submittingFeedback, setSubmittingFeedback] = useState(false);
 
   const [sendingEmail, setSendingEmail] = useState(false);
+  const [downloadingQAA, setDownloadingQAA] = useState(false);
+
+  const handleDownloadQAA = async () => {
+    setDownloadingQAA(true);
+    try {
+      const response = await resultAPI.downloadQAAPDF(parseInt(testId), activeModel);
+
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `INDX1000_QAA_${activeModel.toUpperCase()}_${result.test_name.replace(/[^a-z0-9]/gi, '_')}.pdf`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      toast.success('QAA PDF downloaded!');
+    } catch (err) {
+      toast.error('Failed to download QAA PDF');
+    } finally {
+      setDownloadingQAA(false);
+    }
+  };
+
 
   const handleSendEmail = async () => {
     setSendingEmail(true);
@@ -173,7 +196,6 @@ INDX1000 : ${result.score.toFixed(0)}
       });
   };
 
-  
   return (
     <div className="min-h-screen px-4 py-20">
       <div className="max-w-6xl mx-auto">
@@ -249,17 +271,33 @@ INDX1000 : ${result.score.toFixed(0)}
           </div>
         </div>
 
+
         {/* Copy Analysis Button */}
         {isAdmin && !currentAnalysis?.error && currentAnalysis && (
-          <div className="mb-6 flex">
+          <div className="mb-6 flex space-x-3">
             <button
               onClick={handleCopyAnalysis}
               className="flex items-center space-x-2 px-4 py-2 bg-gray-200 hover:bg-gray-200 text-gray-700 font-medium transition-colors"
             >
               <span>Copy Analysis</span>
             </button>
+
+            <button
+              onClick={handleDownloadQAA}
+              disabled={downloadingQAA}
+              className="flex items-center space-x-2 px-4 py-2 bg-[#050E3C] hover:bg-[#050E3C]/90 text-white font-medium transition-colors disabled:opacity-50"
+            >
+              {downloadingQAA ? (
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+              ) : (
+                <Download size={16} />
+              )}
+              <span>QAA</span>
+            </button>
           </div>
         )}
+
+
 
         {/* Error Display */}
         {currentAnalysis?.error && (
@@ -289,13 +327,13 @@ INDX1000 : ${result.score.toFixed(0)}
               {/* <h3 className="text-lg font-semibold mb-4 text-gray-800">Analyse synthétique continue</h3> */}
               <div className="mb-4">
                 <h3 className="text-lg font-semibold text-gray-800 inline">
-                  Analyse synthétique continue
+                  Analyse synthétique continue /
                   {isAdmin && (
                     <button
                       onClick={handleSequentialClick}
-                      className="text-[#050E3C] font-medium text-lg ml-3 cursor-pointer hover:underline"
+                      className="text-[#050E3C] font-medium text-lg ml-3 cursor-pointer underline decoration-2"
                     >
-                      / Sequential
+                      Sequential
                     </button>
                   )}
                 </h3>
@@ -320,10 +358,20 @@ INDX1000 : ${result.score.toFixed(0)}
             {/* 4. INDX SCORE - Compact format matching screenshot 2 */}
             <div className="card animate-slide-up bg-white border border-gray-200" style={{ animationDelay: '300ms' }}>
               <div className="py-4">
-                <h3 className="text-sm font-bold text-gray-800 mb-2">Index intercognitif brut</h3>
-                <p className="text-2xl font-bold text-[#050E3C]">
+                {/* <h3 className="text-sm font-bold text-gray-800 mb-2">Index intercognitif brut</h3> */}
+                {/* <p className="text-2xl font-bold text-[#050E3C]">
                   INDX
                   <sub className="text-xl top-2/3">1000</sub> : {result.score.toFixed(0)}
+                </p> */}
+                <h3 className="text-sm font-bold text-gray-800 mb-2">
+                  Index intercognitif brut <span className="text-gray-600 font-normal">by</span>{' '}
+                  <span className={`bg-gradient-to-br ${getAIModels(isAdmin).find(m => m.id === activeModel)?.color} text-white px-2 py-1 text-xs font-semibold`}>
+                    {getAIModels(isAdmin).find(m => m.id === activeModel)?.name}
+                  </span>
+                </h3>
+                <p className="text-2xl font-bold text-[#050E3C]">
+                  INDX
+                  <sub className="text-xl top-2/3">1000</sub> : {currentAnalysis.overall_score ? currentAnalysis.overall_score.toFixed(0) : result.score.toFixed(0)}
                 </p>
               </div>
             </div>

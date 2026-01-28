@@ -1658,7 +1658,8 @@ async def get_demo_series(
             "series_25_g",  
             "series_25_h",
             "series_25_i",
-            "series_15_j"   
+            "series_15_j",
+            "series_1_k"   
         ]
     
     return {

@@ -41,19 +41,19 @@ export default function PartnershipsPage() {
               <li className="flex items-start">
                 <span className="mr-3">•</span>
                 <span>
-                  des <strong>organisations publiques ou privées</strong>, pour lesquelles la conduite des interactions humain-IA présente des enjeux opérationnels, décisionnels ou stratégiques ;
+                  des organisations publiques ou privées, pour lesquelles la conduite des interactions humain-IA présente des enjeux opérationnels, décisionnels ou stratégiques ;
                 </span>
               </li>
               <li className="flex items-start">
                 <span className="mr-3">•</span>
                 <span>
-                  des <strong>institutions académiques ou de formation</strong>, souhaitant disposer d'outils d'évaluation dépassant les approches déclaratives ou purement techniques ;
+                  des institutions académiques ou de formation, souhaitant disposer d'outils d'évaluation dépassant les approches déclaratives ou purement techniques ;
                 </span>
               </li>
               <li className="flex items-start">
                 <span className="mr-3">•</span>
                 <span>
-                  des <strong>entreprises technologiques</strong>, dans des cadres clairement définis, lorsque l'indépendance du dispositif est préservée.
+                  des entreprises technologiques, dans des cadres clairement définis, lorsque l'indépendance du dispositif est préservée.
                 </span>
               </li>
             </ul>
@@ -73,7 +73,7 @@ export default function PartnershipsPage() {
                 INDX est conçu pour fonctionner indépendamment des modèles, des fournisseurs et des architectures techniques.            
                 Cette indépendance garantit la stabilité des évaluations, la comparabilité dans le temps et l'absence d'alignement implicite sur une technologie donnée.          
                 Les partenariats s'inscrivent dans une logique de durée, avec un objectif clair :
-                <strong>fournir des éléments de lecture fiables, comparables et exploitables</strong>, sans réduire la complexité des situations observées.
+                fournir des éléments de lecture fiables, comparables et exploitables, sans réduire la complexité des situations observées.
               </p>
             </div>
             <div className="h-px bg-gray-300 my-8"></div>

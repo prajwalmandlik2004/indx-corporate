@@ -25,7 +25,7 @@ export default function Login() {
     try {
       const response = await authAPI.login(formData);
       localStorage.setItem('token', response.data.access_token);
-      router.push('/demo');
+      router.push('/');
       toast.success('Login successfully');
     } catch (err: any) {
       setError(err.response?.data?.detail || 'Login failed. Please check your credentials.');

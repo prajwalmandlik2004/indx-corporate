@@ -20,8 +20,8 @@ export default function MissionPage() {
               <p>
                 L'intelligence artificielle constitue désormais un environnement de raisonnement à part entière.
                 Elle intervient dans des processus de décision, d'analyse et d'interprétation qui s'inscrivent dans la durée, avec des effets cumulatifs et parfois irréversibles.
-                Dans ce contexte, la question n'est plus uniquement celle des capacités des systèmes, mais celle de la <strong>tenue du raisonnement humain</strong> lorsqu'il s'exerce au contact de systèmes non déterministes.
-                La vision portée par INDX est que cette tenue ne relève ni de la performance ponctuelle, ni de la maîtrise technique seule, mais d'une <strong>capacité à conduire un cheminement cognitif cohérent, ajustable et soutenable</strong>, en interaction continue avec l'IA.
+                Dans ce contexte, la question n'est plus uniquement celle des capacités des systèmes, mais celle de la tenue du raisonnement humain lorsqu'il s'exerce au contact de systèmes non déterministes.
+                La vision portée par INDX est que cette tenue ne relève ni de la performance ponctuelle, ni de la maîtrise technique seule, mais d'une capacité à conduire un cheminement cognitif cohérent, ajustable et soutenable, en interaction continue avec l'IA.
               </p>
             </div>
           </div>
@@ -37,7 +37,7 @@ export default function MissionPage() {
                 La mission d'INDX est d'évaluer et de qualifier cette capacité.
                 INDX met en œuvre un dispositif structuré permettant d'analyser, dans la durée, la manière dont un raisonnement humain se construit, se stabilise, se corrige ou se rigidifie au fil des interactions avec une intelligence artificielle.
                 L'approche ne se limite pas à l'observation.
-                Elle permet de <strong>positionner des trajectoires</strong>, d'en comparer les dynamiques et d'en restituer une lecture synthétique, destinée à éclairer des décisions individuelles ou institutionnelles.
+                Elle permet de positionner des trajectoires, d'en comparer les dynamiques et d'en restituer une lecture synthétique, destinée à éclairer des décisions individuelles ou institutionnelles.
                 INDX ne mesure pas des réponses isolées, mais des cheminements.
                 Il vise à rendre explicites des différences de conduite cognitive qui restent généralement invisibles, alors qu'elles deviennent déterminantes dès lors que l'IA est mobilisée dans des usages réels, complexes et durables.
               </p>

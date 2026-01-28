@@ -46,6 +46,7 @@ class TestDashboardItem(BaseModel):
     email_sent: Optional[bool] = False  
     email_sent_at: Optional[datetime] = None  
     user: Optional[Dict[str, str]] = None
+    answers: Optional[List[Dict]] = None 
     
     class Config:
         from_attributes = True

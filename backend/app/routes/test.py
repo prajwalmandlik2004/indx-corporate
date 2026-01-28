@@ -182,7 +182,8 @@ async def get_test_dashboard(
             "user": {
                 "full_name": test.user.full_name if test.user else None,
                 "email": test.user.email if test.user else None
-            } if test.user else None
+            } if test.user else None,
+            "answers": test.answers
 
         }
         result.append(test_dict)

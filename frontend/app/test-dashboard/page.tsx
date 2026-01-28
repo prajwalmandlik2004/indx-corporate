@@ -22,6 +22,9 @@ export default function TestDashboard() {
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [selectedTest, setSelectedTest] = useState<any>(null);
 
+  const [downloadingCertificate, setDownloadingCertificate] = useState<number | null>(null);
+  const [downloadingQA, setDownloadingQA] = useState<number | null>(null);
+
   const handleOpenDetails = (test: any) => {
     setSelectedTest(test);
     setShowDetailsModal(true);
@@ -94,8 +97,8 @@ export default function TestDashboard() {
     }
   };
 
-
   const handleDownloadCertificate = async (testId: number, testName: string) => {
+    setDownloadingCertificate(testId);
     try {
       const response = await resultAPI.downloadCertificate(testId);
 
@@ -110,6 +113,29 @@ export default function TestDashboard() {
       toast.success('Certificate downloaded!');
     } catch (err) {
       toast.error('Failed to download certificate');
+    } finally {
+      setDownloadingCertificate(null);
+    }
+  };
+
+  const handleDownloadQA = async (testId: number, testName: string) => {
+    setDownloadingQA(testId);
+    try {
+      const response = await resultAPI.downloadQAPDF(testId);
+
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `INDX1000_QA_${testName.replace(/[^a-z0-9]/gi, '_')}.pdf`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      toast.success('Q&A PDF downloaded!');
+    } catch (err) {
+      toast.error('Failed to download Q&A PDF');
+    } finally {
+      setDownloadingQA(null);
     }
   };
 
@@ -242,20 +268,21 @@ export default function TestDashboard() {
               <table className="w-full">
                 <thead className="bg-gradient-to-r from-blue-50 to-blue-50 sticky top-0 z-10">
                   <tr>
-                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">S.No</th>
-                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Test Name</th>
-                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Author</th>
+                    <th className="px-2 py-4 text-left text-sm font-bold text-gray-700">S.No</th>
+                    <th className="px-2 py-4 text-left text-sm font-bold text-gray-700">Test Name</th>
+                    <th className="px-2 py-4 text-left text-sm font-bold text-gray-700">Author</th>
                     {/* <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Email</th> */}
                     {/* <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Category</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">Level</th> */}
-                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Date & Time</th>
-                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Answers</th>
-                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">INDX1000</th>
-                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Analysis</th>
-                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Delete</th>
-                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Remarks</th>
-                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Feedback</th>
-                    <th className="px-3 py-4 text-left text-sm font-bold text-gray-700">Certificate</th>
+                    <th className="px-2 py-4 text-left text-sm font-bold text-gray-700">Date & Time</th>
+                    <th className="px-2 py-4 text-left text-sm font-bold text-gray-700">Answers</th>
+                    <th className="px-2 py-4 text-left text-sm font-bold text-gray-700">INDX1000</th>
+                    <th className="px-2 py-4 text-left text-sm font-bold text-gray-700">Analysis</th>
+                    <th className="px-2 py-4 text-left text-sm font-bold text-gray-700">Delete</th>
+                    <th className="px-2 py-4 text-left text-sm font-bold text-gray-700">Remarks</th>
+                    <th className="px-2 py-4 text-left text-sm font-bold text-gray-700">Feedback</th>
+                    <th className="px-2 py-4 text-left text-sm font-bold text-gray-700">Certificate</th>
+                    <th className="px-2 py-4 text-left text-sm font-bold text-gray-700">QA</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
@@ -402,10 +429,35 @@ export default function TestDashboard() {
                           <div className="flex justify-center">
                             <button
                               onClick={() => handleDownloadCertificate(test.id, test.test_name)}
-                              className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors"
+                              disabled={downloadingCertificate === test.id}
+                              className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors disabled:opacity-50"
                             >
-                              <Download size={18} />
-                              {/* <span>Download</span> */}
+                              {downloadingCertificate === test.id ? (
+                                <div className="h-4 w-4 border-2 border-[#050E3C] border-t-transparent rounded-full animate-spin" />
+                              ) : (
+                                <Download size={18} />
+                              )}
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="flex justify-center">
+                            <span className="text-gray-400 text-sm">N/A</span>
+                          </div>
+                        )}
+                      </td>
+                      <td className="px-2 py-2">
+                        {test.completed && test.answers && test.answers.length > 0 ? (
+                          <div className="flex justify-center">
+                            <button
+                              onClick={() => handleDownloadQA(test.id, test.test_name)}
+                              disabled={downloadingQA === test.id}
+                              className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors disabled:opacity-50"
+                            >
+                              {downloadingQA === test.id ? (
+                                <div className="h-4 w-4 border-2 border-[#050E3C] border-t-transparent rounded-full animate-spin" />
+                              ) : (
+                                <Download size={18} />
+                              )}
                             </button>
                           </div>
                         ) : (
@@ -629,14 +681,39 @@ export default function TestDashboard() {
                     {selectedTest.completed && selectedTest.score ? (
                       <button
                         onClick={() => handleDownloadCertificate(selectedTest.id, selectedTest.test_name)}
-                        className="w-full flex items-center justify-center space-x-2 px-4 py-2 text-[#050E3C] hover:text-blue-700 border border-gray-300 rounded font-semibold text-sm"
+                        disabled={downloadingCertificate === selectedTest.id}
+                        className="w-full flex items-center justify-center space-x-2 px-4 py-2 text-[#050E3C] hover:text-blue-700 border border-gray-300 rounded font-semibold text-sm disabled:opacity-50"
                       >
-                        <Download size={16} />
+                        {downloadingCertificate === selectedTest.id ? (
+                          <div className="h-4 w-4 border-2 border-[#050E3C] border-t-transparent rounded-full animate-spin" />
+                        ) : (
+                          <Download size={16} />
+                        )}
                         <span>Download Certificate</span>
                       </button>
                     ) : (
                       <div className="w-full px-4 py-2 text-center text-gray-400 text-sm border border-gray-200 rounded">
                         Certificate N/A
+                      </div>
+                    )}
+
+
+                    {selectedTest.completed && selectedTest.answers && selectedTest.answers.length > 0 ? (
+                      <button
+                        onClick={() => handleDownloadQA(selectedTest.id, selectedTest.test_name)}
+                        disabled={downloadingQA === selectedTest.id}
+                        className="w-full flex items-center justify-center space-x-2 px-4 py-2 text-[#050E3C] hover:text-blue-700 border border-gray-300 rounded font-semibold text-sm disabled:opacity-50"
+                      >
+                        {downloadingQA === selectedTest.id ? (
+                          <div className="h-4 w-4 border-2 border-[#050E3C] border-t-transparent rounded-full animate-spin" />
+                        ) : (
+                          <Download size={16} />
+                        )}
+                        <span>Download Q&A</span>
+                      </button>
+                    ) : (
+                      <div className="w-full px-4 py-2 text-center text-gray-400 text-sm border border-gray-200 rounded">
+                        Q&A N/A
                       </div>
                     )}
 

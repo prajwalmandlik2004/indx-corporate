@@ -32,7 +32,7 @@ export default function Home() {
                   INDX
                 </h1>
 
-                <p className="text-base font-semibold">
+                <p className="text-xl font-semibold">
                   Analyse de la trajectoire intercognitive
                 </p>
 
@@ -41,7 +41,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="text-2xl font-bold">
+              <div className="text-3xl font-bold">
                 ACCUEIL — Vue générale
               </div>
 

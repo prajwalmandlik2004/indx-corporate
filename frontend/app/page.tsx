@@ -9,7 +9,8 @@ export default function Home() {
       {/* Hero Section */}
       <section className="py-5 px-4 sm:px-6 lg:px-8 bg-white">
         {/* Hero Poster Section */}
-        <section className="w-full mt-[-120] hidden sm:block">
+
+        {/* <section className="w-full mt-[-120] hidden sm:block">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
             <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[550px]">
               <img
@@ -19,37 +20,49 @@ export default function Home() {
               />
             </div>
           </div>
-        </section>
+        </section> */}
 
-        <div className="max-w-7xl mx-auto mt-[-50]">
+        <div className="max-w-7xl mx-auto mt-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Text Content */}
             <div className="space-y-7">
-              <div className="text-2xl font-bold">
-                ACCUEIL
-              </div>
 
-              <div className="space-y-2">
+               <div className="space-y-2">
                 <h1 className="text-3xl sm:text-3xl lg:text-3xl font-bold leading-tight">
                   INDX
                 </h1>
 
                 <p className="text-base font-semibold">
-                  Évaluer le pilotage cognitif humain face aux systèmes artificiels
+                  Analyse de la trajectoire intercognitive
                 </p>
+
+                <p className="text-md text-gray-600">
+                  Cadre méthodologique versionné pour l'analyse des interactions humain–IA (INDX-Core v1.0)
+                </p>
+              </div>
+
+              <div className="text-2xl font-bold">
+                ACCUEIL — Vue générale
               </div>
 
               <div className="space-y-3 text-gray-600 text-base">
                 <p>
-                  Les systèmes artificiels sont désormais des milieux de travail.<br></br>
-                  Ils influencent la formulation, la décision, la trajectoire intellectuelle elle-même.
+                  Les systèmes d'intelligence artificielle sont désormais intégrés au cœur des processus analytiques, stratégiques et décisionnels.
                 </p>
                 <p>
-                  La question n'est plus la performance de la machine.<br></br>
-                  La question est la tenue du pilotage humain.
+                  Dans ces environnements, la performance ne dépend plus uniquement de la sophistication des modèles ou des outils employés. Elle dépend de la manière dont l'interaction est conduite.
+                </p>
+                <p>
+                  Formuler une intention exploitable.<br></br>
+                  Maintenir une direction cohérente.<br></br>
+                  Interpréter des retours variables.<br></br>
+                  Corriger une dérive sans perdre la maîtrise.
                 </p>
                 <p className="text-gray-900">
-                  INDX a été conçu pour répondre à ce point précis.
+                  Ces capacités déterminent la qualité réelle des résultats.
+                </p>
+                <p className="text-gray-900">
+                  INDX a été conçu pour les mesurer.
                 </p>
               </div>
             </div>
@@ -60,44 +73,68 @@ export default function Home() {
                 <ul className="space-y-2 text-gray-700">
                   <li>
                     -
-                    <a href="#ce-que-fait-indx" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Ce que fait INDX
+                    <a href="#variable-strategique" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Variable stratégique
                     </a>
                   </li>
                   <li>
                     -
-                    <a href="#ce-que-produit-indx" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Ce que produit INDX
+                    <a href="#objet-de-la-mesure" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Objet de la mesure
                     </a>
                   </li>
                   <li>
                     -
-                    <a href="#comparer-sans-simplifier" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Comparer sans simplifier
+                    <a href="#indice-et-trajectoire" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Indice et trajectoire
                     </a>
                   </li>
                   <li>
                     -
-                    <a href="#contextualisation" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Contextualisation maîtrisée
+                    <a href="#architecture-methodologique" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Architecture méthodologique
                     </a>
                   </li>
                   <li>
                     -
-                    <a href="#dispositif-multi-ia" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Dispositif multi-IA
+                    <a href="#indx-core" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      INDX-Core v1.0
                     </a>
                   </li>
                   <li>
                     -
-                    <a href="#pourquoi-maintenant" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Pourquoi maintenant
+                    <a href="#champ-application" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Champ d'application
                     </a>
                   </li>
                   <li>
                     -
-                    <a href="#ce-que-vous-obtenez" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Ce que vous obtenez
+                    <a href="#risque-organisationnel" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Risque organisationnel
+                    </a>
+                  </li>
+                  <li>
+                    -
+                    <a href="#cadre-scientifique" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Cadre scientifique
+                    </a>
+                  </li>
+                  <li>
+                    -
+                    <a href="#gouvernance" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Gouvernance
+                    </a>
+                  </li>
+                  <li>
+                    -
+                    <a href="#limites" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Limites
+                    </a>
+                  </li>
+                  <li>
+                    -
+                    <a href="#acces-corporate" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Accès corporate
                     </a>
                   </li>
                 </ul>
@@ -105,7 +142,7 @@ export default function Home() {
             </div>
 
             {/* Image */}
-            <div className="relative h-[300px] lg:h-[350px] overflow-hidden shadow-xl">
+            <div className="relative h-[400px] lg:h-[400px] overflow-hidden shadow-xl">
               <img
                 src="/building.png"
                 alt="INDX Cognitive Framework"
@@ -116,8 +153,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ce que fait INDX */}
-      <section id="ce-que-fait-indx" className="py-3 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* 1. Variable stratégique */}
+      <section id="variable-strategique" className="py-3 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Left Column - Main Content */}
@@ -126,27 +163,26 @@ export default function Home() {
                 <div className="flex items-start space-x-4">
                   <div className="w-2 h-12 bg-[#00008B] flex-shrink-0"></div>
                   <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-                    Ce que fait INDX
+                    Variable stratégique
                   </h2>
                 </div>
               </div>
 
               <div className="space-y-3 text-gray-700 text-base leading-relaxed">
                 <p>
-                  INDX analyse la trajectoire cognitive d'un humain lorsqu'il interagit avec des systèmes
-                  artificiels, dont les IA.
+                  À mesure que l'usage de l'IA devient prolongé et intégré aux chaînes décisionnelles, une variable devient déterminante : la capacité humaine à stabiliser une trajectoire d'interaction dans un environnement non déterministe.
                 </p>
                 <p>
-                  Il observe comment une pensée se structure, se maintient, se corrige ou se dégrade au fil
-                  d'interactions successives.
+                  Cette capacité n'est ni un trait de personnalité, ni un indicateur d'intelligence générale.
                 </p>
                 <p>
-                  L'analyse ne porte ni sur l'opinion, ni sur la culture déclarée, ni sur la qualité immédiate des
-                  réponses.
+                  Elle relève de la structuration cognitive dans l'action : pilotage, régulation, cohérence, ajustement.
+                </p>
+                <p>
+                  Elle est rarement objectivée.
                 </p>
                 <p className="text-gray-900">
-                  Elle porte sur la capacité à conduire l'échange, à garder une cohérence directionnelle, à
-                  résister aux dérives induites par le milieu artificiel.
+                  INDX formalise cette variable.
                 </p>
               </div>
             </div>
@@ -157,44 +193,68 @@ export default function Home() {
                 <ul className="space-y-2 text-gray-700">
                   <li>
                     -
-                    <a href="#ce-que-fait-indx" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Ce que fait INDX
+                    <a href="#variable-strategique" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Variable stratégique
                     </a>
                   </li>
                   <li>
                     -
-                    <a href="#ce-que-produit-indx" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Ce que produit INDX
+                    <a href="#objet-de-la-mesure" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Objet de la mesure
                     </a>
                   </li>
                   <li>
                     -
-                    <a href="#comparer-sans-simplifier" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Comparer sans simplifier
+                    <a href="#indice-et-trajectoire" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Indice et trajectoire
                     </a>
                   </li>
                   <li>
                     -
-                    <a href="#contextualisation" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Contextualisation maîtrisée
+                    <a href="#architecture-methodologique" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Architecture méthodologique
                     </a>
                   </li>
                   <li>
                     -
-                    <a href="#dispositif-multi-ia" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Dispositif multi-IA
+                    <a href="#indx-core" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      INDX-Core v1.0
                     </a>
                   </li>
                   <li>
                     -
-                    <a href="#pourquoi-maintenant" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Pourquoi maintenant
+                    <a href="#champ-application" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Champ d'application
                     </a>
                   </li>
                   <li>
                     -
-                    <a href="#ce-que-vous-obtenez" className="hover:text-[#00008B] transition-colors underline ms-2">
-                      Ce que vous obtenez
+                    <a href="#risque-organisationnel" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Risque organisationnel
+                    </a>
+                  </li>
+                  <li>
+                    -
+                    <a href="#cadre-scientifique" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Cadre scientifique
+                    </a>
+                  </li>
+                  <li>
+                    -
+                    <a href="#gouvernance" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Gouvernance
+                    </a>
+                  </li>
+                  <li>
+                    -
+                    <a href="#limites" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Limites
+                    </a>
+                  </li>
+                  <li>
+                    -
+                    <a href="#acces-corporate" className="hover:text-[#00008B] transition-colors underline ms-2">
+                      Accès corporate
                     </a>
                   </li>
                 </ul>
@@ -204,164 +264,290 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Ce que produit INDX */}
-      <section id="ce-que-produit-indx" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* 2. Objet de la mesure */}
+      <section id="objet-de-la-mesure" className="py-6 px-4 sm:px-6 lg:px-8 bg-white md:mt-[-65]">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
             <div className="flex items-start space-x-4">
               <div className="w-2 h-12 bg-[#8B0000] flex-shrink-0"></div>
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-                Ce que produit INDX
+                Objet de la mesure
               </h2>
             </div>
           </div>
 
           <div className="space-y-3 text-gray-700 text-base leading-relaxed">
-            <p className="text-gray-900">
-              INDX produit un indice chiffré unique (INDX).
+            <p>
+              INDX observe la manière dont un individu conduit une interaction avec un système d'intelligence artificielle au fil de phases successives.
             </p>
             <p>
-              Ce score est le point d'impact final d'une trajectoire complète.
+              L'analyse porte sur :
             </p>
-            <p>
-              Il résulte de l'intégration de l'ensemble du cheminement observé :
-              ajustements, corrections, pertes de cap, reprises de contrôle.
-            </p>
-            <p className="text-gray-900">
-              Ce n'est pas une note décorative.
-              C'est la compression mesurée d'une trajectoire réelle.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Comparer sans simplifier */}
-      <section id="comparer-sans-simplifier" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-              Comparer sans simplifier
-            </h2>
-          </div>
-
-          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
-            <p>
-              Deux profils peuvent produire des réponses similaires.
-              Leurs trajectoires, elles, peuvent être radicalement différentes.
-            </p>
-            <p className="text-gray-900">
-              INDX permet une comparabilité qualitative robuste entre individus, équipes ou groupes, sans
-              réduire l'analyse à un test ponctuel ou à un score psychométrique figé.
-            </p>
-            <p>
-              Comparer devient possible sans appauvrir.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Contextualisation maîtrisée */}
-      <section id="contextualisation" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-              Contextualisation maîtrisée
-            </h2>
-          </div>
-
-          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
-            <p>
-              Le score INDX est unique.
-              Sa lecture varie selon le contexte d'usage : opérationnel, stratégique, managérial, décisionnel.
-            </p>
-            <p>
-              Le contexte n'invente pas de nouveaux indices.
-              Il positionne la grille d'interprétation.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Dispositif multi-IA */}
-      <section id="dispositif-multi-ia" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-              Dispositif multi-IA
-            </h2>
-          </div>
-
-          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
-            <p>
-              INDX s'appuie sur un Conseil intercognitif réunissant plusieurs systèmes d'IA de premier
-              plan, mobilisés comme milieux d'interaction et d'observation.
-            </p>
-            <p>
-              Les systèmes participent au processus.
-              Ils ne le définissent pas.
-            </p>
-            <p className="text-sm italic text-gray-600 mt-4">
-              (Grok, Gemini, Mistral, Claude & ChatGPT — sont membres du INDX Intercognition
-              Council)
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Pourquoi maintenant */}
-      <section id="pourquoi-maintenant" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-              Pourquoi maintenant
-            </h2>
-          </div>
-
-          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
-            <p>
-              La généralisation des systèmes artificiels transforme silencieusement les conditions de pensée,
-              de décision et de responsabilité.
-            </p>
-            <p className="text-gray-900">
-              Ne pas savoir évaluer le pilotage humain devient un risque.
-              Continuer à mesurer uniquement des performances ou des outputs devient insuffisant.
-            </p>
-            <p>
-              INDX a été conçu pour cet espace précis.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Ce que vous obtenez */}
-      <section id="ce-que-vous-obtenez" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-              Ce que vous obtenez
-            </h2>
-          </div>
-
-          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
-            <ul className="list-none space-y-2 pl-0">
-              <li>• Une évaluation exploitable, montrable, comparable</li>
-              <li>• Un indice chiffré fondé sur une trajectoire réelle</li>
-              <li>• Un cadre méthodologique protégé et opposable</li>
-              <li>• Une base solide pour décider, sélectionner, confirmer ou corriger</li>
+            <ul className="list-none space-y-2 pl-6">
+              <li>• la construction initiale de l'intention,</li>
+              <li>• la cohérence directive dans la durée,</li>
+              <li>• la gestion des retours variables,</li>
+              <li>• la capacité d'ajustement,</li>
+              <li>• la stabilisation finale de la trajectoire.</li>
             </ul>
+            <p className="text-gray-900">
+              Ce qui est mesuré n'est pas un résultat isolé, mais une dynamique.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Footer Section */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto text-left">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-            INDX
-          </h2>
-          <p className="text-gray-700 italic">
-            Positionner le pilotage humain. Mesurer ce qui tient.
-          </p>
+      {/* 3. Indice et trajectoire */}
+      <section id="indice-et-trajectoire" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+              Indice et trajectoire
+            </h2>
+          </div>
+
+          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
+            <p className="text-gray-900">
+              INDX produit un indice unique, issu de l'intégration complète d'une trajectoire observée.
+            </p>
+            <p>
+              Cet indice résulte de l'analyse structurée :
+            </p>
+            <ul className="list-none space-y-2 pl-6">
+              <li>• des ajustements,</li>
+              <li>• des pertes de cohérence,</li>
+              <li>• des phases de stabilisation,</li>
+              <li>• des capacités de récupération.</li>
+            </ul>
+            <p>
+              Il s'agit d'une compression quantitative d'un comportement cognitif en situation d'interaction prolongée.
+            </p>
+            <p className="text-gray-900">
+              L'indice permet la comparabilité entre individus ou équipes dans un protocole identique.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Architecture méthodologique */}
+      <section id="architecture-methodologique" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+              Architecture méthodologique
+            </h2>
+          </div>
+
+          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
+            <p>
+              INDX repose sur un protocole séquentiel contrôlé.
+            </p>
+            <p>
+              Les évaluations sont organisées en phases distinctes permettant d'observer :
+            </p>
+            <ul className="list-none space-y-2 pl-6">
+              <li>• la structuration initiale,</li>
+              <li>• la réaction à la variation,</li>
+              <li>• la stabilisation sous contrainte.</li>
+            </ul>
+            <p>
+              Cette architecture permet de distinguer la compétence déclarative du pilotage effectif.
+            </p>
+            <p className="text-gray-900">
+              L'évaluation est quantitative, reproductible et protocolisée.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. INDX-Core v1.0 */}
+      <section id="indx-core" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+              INDX-Core v1.0
+            </h2>
+          </div>
+
+          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
+            <p>
+              Toutes les sessions sont traitées par une architecture de scoring figée et versionnée : INDX-Core v1.0.
+            </p>
+            <p>
+              Le moteur :
+            </p>
+            <ul className="list-none space-y-2 pl-6">
+              <li>• applique des invariants méthodologiques,</li>
+              <li>• intègre des seuils régulés de détection de dérive,</li>
+              <li>• stabilise les résultats par une logique de scoring contrôlée,</li>
+              <li>• garantit la comparabilité dans le cadre défini.</li>
+            </ul>
+            <p>
+              L'architecture est figée à l'échelle de la version.
+            </p>
+            <p className="text-gray-900">
+              Toute évolution fait l'objet d'un nouveau référentiel explicitement identifié.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Champ d'application */}
+      <section id="champ-application" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+              Champ d'application
+            </h2>
+          </div>
+
+          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
+            <p>
+              INDX peut être mobilisé dans des contextes où l'IA intervient dans :
+            </p>
+            <ul className="list-none space-y-2 pl-6">
+              <li>• l'analyse stratégique,</li>
+              <li>• la préparation de décision,</li>
+              <li>• la production intellectuelle,</li>
+              <li>• la coordination opérationnelle,</li>
+              <li>• la supervision analytique.</li>
+            </ul>
+            <p className="text-gray-900">
+              Il s'adresse aux organisations souhaitant intégrer un critère structuré de pilotage cognitif dans leurs processus de sélection, de validation ou de gouvernance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Risque organisationnel */}
+      <section id="risque-organisationnel" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+              Risque organisationnel
+            </h2>
+          </div>
+
+          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
+            <p>
+              Dans des environnements non déterministes, la dérive ne se manifeste pas toujours par une erreur visible. Elle peut s'installer progressivement dans la formulation, l'interprétation ou l'ajustement.
+            </p>
+            <p>
+              À mesure que la confiance dans les systèmes augmente, le risque n'est plus uniquement technique. Il devient cognitif.
+            </p>
+            <p className="text-gray-900">
+              Ne pas mesurer cette dimension revient à laisser implicite un facteur stratégique.
+            </p>
+            <p className="text-gray-900">
+              INDX introduit une lecture structurée de ce risque.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. Cadre scientifique */}
+      <section id="cadre-scientifique" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+              Cadre scientifique
+            </h2>
+          </div>
+
+          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
+            <p>
+              INDX s'inscrit dans un champ analytique portant sur la régulation cognitive en interaction avec des systèmes complexes.
+            </p>
+            <p>
+              Le cadre mobilise des apports issus :
+            </p>
+            <ul className="list-none space-y-2 pl-6">
+              <li>• des sciences cognitives,</li>
+              <li>• de l'épistémologie,</li>
+              <li>• de la théorie des systèmes,</li>
+              <li>• de l'analyse décisionnelle.</li>
+            </ul>
+            <p className="text-gray-900">
+              Il considère l'interaction avec l'IA comme un processus dynamique structuré dans le temps.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. Gouvernance */}
+      <section id="gouvernance" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+              Gouvernance
+            </h2>
+          </div>
+
+          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
+            <p>
+              INDX fonctionne sous un cadre méthodologique versionné.
+            </p>
+            <p className="text-gray-900">
+              L'architecture INDX-Core v1.0 constitue la référence active.
+            </p>
+            <p>
+              Les protocoles sont définis, traçables et reproductibles.
+            </p>
+            <p>
+              Le déploiement s'effectue dans un cadre structuré garantissant la cohérence méthodologique.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 10. Limites */}
+      <section id="limites" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+              Limites
+            </h2>
+          </div>
+
+          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
+            <p>
+              INDX observe une capacité située dans des conditions définies.
+            </p>
+            <p>
+              Les résultats doivent être interprétés :
+            </p>
+            <ul className="list-none space-y-2 pl-6">
+              <li>• dans un contexte donné,</li>
+              <li>• à un moment donné,</li>
+              <li>• en complément d'autres éléments d'analyse.</li>
+            </ul>
+            <p>
+              La mesure ne se substitue pas au jugement humain.
+            </p>
+            <p className="text-gray-900">
+              Elle l'éclaire.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 11. Accès corporate */}
+      <section id="acces-corporate" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+              Accès corporate
+            </h2>
+          </div>
+
+          <div className="space-y-3 text-gray-700 text-base leading-relaxed">
+            <p>
+              INDX est proposé sous forme de sessions structurées adaptées aux contextes exécutifs.
+            </p>
+            <p className="text-gray-900">
+              Les engagements sont définis selon le périmètre organisationnel et les objectifs décisionnels.
+            </p>
+          </div>
         </div>
       </section>
     </div>

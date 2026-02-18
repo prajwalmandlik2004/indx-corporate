@@ -41,7 +41,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="text-3xl font-bold">
+              <div className="text-2xl font-bold">
                 ACCUEIL — Vue générale
               </div>
 

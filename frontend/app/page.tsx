@@ -154,7 +154,7 @@ export default function Home() {
       </section>
 
       {/* 1. Variable stratégique */}
-      <section id="variable-strategique" className="py-3 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="variable-strategique" className="py-6 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Left Column - Main Content */}
@@ -265,7 +265,7 @@ export default function Home() {
       </section>
 
       {/* 2. Objet de la mesure */}
-      <section id="objet-de-la-mesure" className="py-6 px-4 sm:px-6 lg:px-8 bg-white md:mt-[-65]">
+      <section id="objet-de-la-mesure" className="py-4 px-4 sm:px-6 lg:px-8 bg-white md:mt-[-65]">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
             <div className="flex items-start space-x-4">

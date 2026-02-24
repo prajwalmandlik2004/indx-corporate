@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { BarChart3, Calendar, Award, Eye, Search, Trash2, LoaderCircle } from 'lucide-react';
-import { resultAPI, testAPI } from '@/src/lib/api';
+import { resultAPI, testAPI, seriesTestAPI } from '@/src/lib/api';
 import toast from 'react-hot-toast';
 import { Download } from 'lucide-react';
 
@@ -12,9 +12,9 @@ export default function TestDashboard() {
   const [tests, setTests] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [deletingTestId, setDeletingTestId] = useState<number | null>(null);
-  const [editingRemarks, setEditingRemarks] = useState<{ [key: number]: string }>({});
-  const [savingRemarks, setSavingRemarks] = useState<number | null>(null);
+  const [deletingTestId, setDeletingTestId] = useState<string | null>(null);
+  const [editingRemarks, setEditingRemarks] = useState<{ [key: string]: string }>({});
+  const [savingRemarks, setSavingRemarks] = useState<string | null>(null);
 
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [selectedFeedback, setSelectedFeedback] = useState('');
@@ -45,9 +45,10 @@ export default function TestDashboard() {
       const response = await testAPI.getDashboard();
       setTests(response.data);
 
-      const remarksMap: { [key: number]: string } = {};
+      const remarksMap: { [key: string]: string } = {};
       response.data.forEach((test: any) => {
-        remarksMap[test.id] = test.remarks || '';
+        const key = `${test.test_type}_${test.id}`;
+        remarksMap[key] = test.remarks || '';
       });
       setEditingRemarks(remarksMap);
 
@@ -58,30 +59,35 @@ export default function TestDashboard() {
     }
   };
 
-  const handleRemarksChange = (testId: number, value: string) => {
+  const handleRemarksChange = (testKey: string, value: string) => {
     setEditingRemarks({
       ...editingRemarks,
-      [testId]: value
+      [testKey]: value
     });
   };
 
-  const handleRemarksBlur = async (testId: number) => {
-    const remarks = editingRemarks[testId] || '';
-    const originalRemarks = tests.find(t => t.id === testId)?.remarks || '';
+  const handleRemarksBlur = async (test: any) => {
+    const testKey = `${test.test_type}_${test.id}`;
+    const remarks = editingRemarks[testKey] || '';
+    const originalRemarks = test.remarks || '';
 
     if (remarks === originalRemarks) return;
 
-    setSavingRemarks(testId);
+    setSavingRemarks(testKey);
     try {
-      await testAPI.updateRemarks(testId, remarks);
+      if (test.test_type === 'series') {
+        await seriesTestAPI.updateRemarks(test.id, remarks);
+      } else {
+        await testAPI.updateRemarks(test.id, remarks);
+      }
 
-      setTests(tests.map(test =>
-        test.id === testId ? { ...test, remarks } : test
+      setTests(tests.map(t =>
+        (t.id === test.id && t.test_type === test.test_type) ? { ...t, remarks } : t
       ));
 
       setEditingRemarks({
         ...editingRemarks,
-        [testId]: remarks
+        [testKey]: remarks
       });
 
       toast.success('Remarks saved');
@@ -90,22 +96,24 @@ export default function TestDashboard() {
       toast.error('Failed to save remarks');
       setEditingRemarks({
         ...editingRemarks,
-        [testId]: originalRemarks
+        [testKey]: originalRemarks
       });
     } finally {
       setSavingRemarks(null);
     }
   };
 
-  const handleDownloadCertificate = async (testId: number, testName: string) => {
-    setDownloadingCertificate(testId);
+  const handleDownloadCertificate = async (test: any) => {
+    setDownloadingCertificate(test.id);
     try {
-      const response = await resultAPI.downloadCertificate(testId);
+      const response = test.test_type === 'series'
+        ? await seriesTestAPI.downloadCertificate(test.id)
+        : await resultAPI.downloadCertificate(test.id);
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', `INDX1000_Certificate_${testName.replace(/[^a-z0-9]/gi, '_')}.pdf`);
+      link.setAttribute('download', `INDX1000_Certificate_${test.test_name.replace(/[^a-z0-9]/gi, '_')}.pdf`);
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -118,15 +126,17 @@ export default function TestDashboard() {
     }
   };
 
-  const handleDownloadQA = async (testId: number, testName: string) => {
-    setDownloadingQA(testId);
+  const handleDownloadQA = async (test: any) => {
+    setDownloadingQA(test.id);
     try {
-      const response = await resultAPI.downloadQAPDF(testId);
+      const response = test.test_type === 'series'
+        ? await seriesTestAPI.downloadQAPDF(test.id)
+        : await resultAPI.downloadQAPDF(test.id);
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', `INDX1000_QA_${testName.replace(/[^a-z0-9]/gi, '_')}.pdf`);
+      link.setAttribute('download', `INDX1000_QA_${test.test_name.replace(/[^a-z0-9]/gi, '_')}.pdf`);
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -157,8 +167,8 @@ export default function TestDashboard() {
   };
 
   const getScoreBadge = (score: number) => {
-    if (score >= 80) return 'bg-blue-100 text-blue-700';
-    if (score >= 60) return 'bg-yellow-100 text-yellow-700';
+    if (score >= 80) return 'bg-green-100 text-green-700';
+    if (score >= 60) return 'bg-blue-100 text-blue-700';
     return 'bg-red-100 text-red-700';
   };
 
@@ -170,14 +180,19 @@ export default function TestDashboard() {
     );
   }
 
-  const handleDeleteTest = async (testId: number) => {
+  const handleDeleteTest = async (test: any) => {
     if (!window.confirm('Are you sure you want to delete this test? This action cannot be undone.')) {
       return;
     }
 
-    setDeletingTestId(testId);
+    const testKey = `${test.test_type}_${test.id}`;
+    setDeletingTestId(testKey);
     try {
-      await testAPI.deleteTest(testId);
+      if (test.test_type === 'series') {
+        await seriesTestAPI.deleteTest(test.id);
+      } else {
+        await testAPI.deleteTest(test.id);
+      }
       fetchTests();
       toast.success('Test deleted successfully');
     } catch (err) {
@@ -288,7 +303,7 @@ export default function TestDashboard() {
                 <tbody className="divide-y divide-gray-200">
                   {filteredTests.map((test, index) => (
                     <tr
-                      key={test.id}
+                      key={`${test.test_type}_${test.id}`}
                       className="hover:bg-blue-50/50 transition-colors"
                     >
                       <td className="px-2 py-2 text-sm text-gray-900">{index + 1}</td>
@@ -326,12 +341,12 @@ export default function TestDashboard() {
                           </span>
                         </div>
                       </td>
-                      {/* Add this new cell */}
+                      {/* Answers cell */}
                       <td className="px-2 py-2">
                         {test.completed ? (
                           <div className="flex justify-center">
                             <button
-                              onClick={() => router.push(`/answers/${test.id}`)}
+                              onClick={() => router.push(test.test_type === 'series' ? `/series-answers/${test.id}` : `/answers/${test.id}`)}
                               className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors"
                             >
                               <Eye size={18} />
@@ -344,7 +359,7 @@ export default function TestDashboard() {
                       <td className="px-2 py-2">
                         {test.score !== null ? (
                           <div className="flex justify-center">
-                            <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold ${getScoreBadge(test.score)}`}>
+                            <span className={`inline-flex items-center px-3 py-1 rounded-sm text-sm font-bold ${getScoreBadge(test.score)}`}>
                               {/* <Award size={16} className="mr-1" /> */}
                               {test.score.toFixed(0)}
                             </span>
@@ -357,11 +372,10 @@ export default function TestDashboard() {
                         {test.completed ? (
                           <div className="flex justify-center">
                             <button
-                              onClick={() => router.push(`/result/${test.id}`)}
+                              onClick={() => router.push(test.test_type === 'series' ? `/series-result/${test.id}` : `/result/${test.id}`)}
                               className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors"
                             >
                               <Eye size={18} />
-                              {/* <span>View Result</span> */}
                             </button>
                           </div>
                         ) : (
@@ -371,17 +385,15 @@ export default function TestDashboard() {
                       <td className="px-2 py-2">
                         <div className="flex justify-center">
                           <button
-                            onClick={() => handleDeleteTest(test.id)}
-                            disabled={deletingTestId === test.id}
+                            onClick={() => handleDeleteTest(test)}
+                            disabled={deletingTestId === `${test.test_type}_${test.id}`}
                             className="flex items-center space-x-2 text-red-600 hover:text-red-700 font-semibold transition-colors disabled:opacity-50"
                           >
-                            {deletingTestId === test.id ? (
+                            {deletingTestId === `${test.test_type}_${test.id}` ? (
                               <div className="h-4 w-4 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
-
                             ) : (
                               <Trash2 size={18} />
                             )}
-                            {/* <span>Delete</span> */}
                           </button>
                         </div>
                       </td>
@@ -389,13 +401,13 @@ export default function TestDashboard() {
                         <div className="relative">
                           <input
                             type="text"
-                            value={editingRemarks[test.id] || ''}
-                            onChange={(e) => handleRemarksChange(test.id, e.target.value)}
-                            onBlur={() => handleRemarksBlur(test.id)}
+                            value={editingRemarks[`${test.test_type}_${test.id}`] || ''}
+                            onChange={(e) => handleRemarksChange(`${test.test_type}_${test.id}`, e.target.value)}
+                            onBlur={() => handleRemarksBlur(test)}
                             placeholder="Add remarks..."
                             className="w-48 px-3 py-2 text-sm border border-gray-300 rounded focus:border-[#050E3C] focus:ring-1 focus:ring-[#050E3C] outline-none"
                           />
-                          {savingRemarks === test.id && (
+                          {savingRemarks === `${test.test_type}_${test.id}` && (
                             <div className="absolute right-2 top-2">
                               <div className="h-4 w-4 border-2 border-[#050E3C] border-t-transparent rounded-full animate-spin" />
                             </div>
@@ -428,7 +440,7 @@ export default function TestDashboard() {
                         {test.completed && test.score ? (
                           <div className="flex justify-center">
                             <button
-                              onClick={() => handleDownloadCertificate(test.id, test.test_name)}
+                              onClick={() => handleDownloadCertificate(test)}
                               disabled={downloadingCertificate === test.id}
                               className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors disabled:opacity-50"
                             >
@@ -449,7 +461,7 @@ export default function TestDashboard() {
                         {test.completed && test.answers && test.answers.length > 0 ? (
                           <div className="flex justify-center">
                             <button
-                              onClick={() => handleDownloadQA(test.id, test.test_name)}
+                              onClick={() => handleDownloadQA(test)}
                               disabled={downloadingQA === test.id}
                               className="flex items-center space-x-2 text-[#050E3C] hover:text-blue-700 font-semibold transition-colors disabled:opacity-50"
                             >
@@ -489,7 +501,7 @@ export default function TestDashboard() {
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   {filteredTests.map((test, index) => (
-                    <tr key={test.id} className="hover:bg-blue-50/50">
+                    <tr key={`${test.test_type}_${test.id}`} className="hover:bg-blue-50/50">
                       <td className="px-1 py-3">
                         <div className="text-gray-900 text-xs font-semibold">
                           {index + 1}
@@ -532,7 +544,7 @@ export default function TestDashboard() {
                         {test.completed ? (
                           <div className="flex justify-center">
                             <button
-                              onClick={() => router.push(`/result/${test.id}`)}
+                              onClick={() => router.push(test.test_type === 'series' ? `/series-result/${test.id}` : `/result/${test.id}`)}
                               className="text-[#050E3C] hover:text-blue-700"
                             >
                               <Eye size={16} />
@@ -570,7 +582,7 @@ export default function TestDashboard() {
                     <div className="flex-1">
                       <div className="flex items-center space-x-2 mb-1">
                         <span className="text-sm font-bold text-gray-500">
-                          #{filteredTests.findIndex(t => t.id === selectedTest.id) + 1}
+                          #{filteredTests.findIndex(t => t.id === selectedTest.id && t.test_type === selectedTest.test_type) + 1}
                         </span>
                         <span className="font-bold text-gray-900">{selectedTest.test_name}</span>
                       </div>
@@ -591,7 +603,7 @@ export default function TestDashboard() {
                   {/* Score */}
                   <div className="mb-2">
                     <span className="text-xs font-semibold text-gray-600">INDX: </span>
-                    <span className="text-sm text-gray-700"> {selectedTest.score.toFixed(0)}</span>
+                    <span className="text-sm text-gray-700"> {selectedTest.score?.toFixed(0) || 'N/A'}</span>
                   </div>
 
                   {/* Date */}
@@ -615,13 +627,13 @@ export default function TestDashboard() {
                     <div className="relative">
                       <input
                         type="text"
-                        value={editingRemarks[selectedTest.id] || ''}
-                        onChange={(e) => handleRemarksChange(selectedTest.id, e.target.value)}
-                        onBlur={() => handleRemarksBlur(selectedTest.id)}
+                        value={editingRemarks[`${selectedTest.test_type}_${selectedTest.id}`] || ''}
+                        onChange={(e) => handleRemarksChange(`${selectedTest.test_type}_${selectedTest.id}`, e.target.value)}
+                        onBlur={() => handleRemarksBlur(selectedTest)}
                         placeholder="Add remarks..."
                         className="w-full px-3 py-2 text-sm border border-gray-300 rounded focus:border-[#050E3C] focus:ring-1 focus:ring-[#050E3C] outline-none"
                       />
-                      {savingRemarks === selectedTest.id && (
+                      {savingRemarks === `${selectedTest.test_type}_${selectedTest.id}` && (
                         <div className="absolute right-2 top-2">
                           <div className="h-4 w-4 border-2 border-[#050E3C] border-t-transparent rounded-full animate-spin" />
                         </div>
@@ -636,7 +648,7 @@ export default function TestDashboard() {
                         <button
                           onClick={() => {
                             setShowDetailsModal(false);
-                            router.push(`/answers/${selectedTest.id}`);
+                            router.push(selectedTest.test_type === 'series' ? `/series-answers/${selectedTest.id}` : `/answers/${selectedTest.id}`);
                           }}
                           className="w-full flex items-center justify-center space-x-2 px-4 py-2 text-[#050E3C] hover:text-blue-700 border border-gray-300 rounded font-semibold text-sm"
                         >
@@ -646,7 +658,7 @@ export default function TestDashboard() {
                         <button
                           onClick={() => {
                             setShowDetailsModal(false);
-                            router.push(`/result/${selectedTest.id}`);
+                            router.push(selectedTest.test_type === 'series' ? `/series-result/${selectedTest.id}` : `/result/${selectedTest.id}`);
                           }}
                           className="w-full flex items-center justify-center space-x-2 px-4 py-2 text-[#050E3C] hover:text-blue-700 border border-gray-300 rounded font-semibold text-sm"
                         >
@@ -680,7 +692,7 @@ export default function TestDashboard() {
 
                     {selectedTest.completed && selectedTest.score ? (
                       <button
-                        onClick={() => handleDownloadCertificate(selectedTest.id, selectedTest.test_name)}
+                        onClick={() => handleDownloadCertificate(selectedTest)}
                         disabled={downloadingCertificate === selectedTest.id}
                         className="w-full flex items-center justify-center space-x-2 px-4 py-2 text-[#050E3C] hover:text-blue-700 border border-gray-300 rounded font-semibold text-sm disabled:opacity-50"
                       >
@@ -700,7 +712,7 @@ export default function TestDashboard() {
 
                     {selectedTest.completed && selectedTest.answers && selectedTest.answers.length > 0 ? (
                       <button
-                        onClick={() => handleDownloadQA(selectedTest.id, selectedTest.test_name)}
+                        onClick={() => handleDownloadQA(selectedTest)}
                         disabled={downloadingQA === selectedTest.id}
                         className="w-full flex items-center justify-center space-x-2 px-4 py-2 text-[#050E3C] hover:text-blue-700 border border-gray-300 rounded font-semibold text-sm disabled:opacity-50"
                       >
@@ -718,11 +730,11 @@ export default function TestDashboard() {
                     )}
 
                     <button
-                      onClick={() => handleDeleteTest(selectedTest.id)}
-                      disabled={deletingTestId === selectedTest.id}
+                      onClick={() => handleDeleteTest(selectedTest)}
+                      disabled={deletingTestId === `${selectedTest.test_type}_${selectedTest.id}`}
                       className="w-full flex items-center justify-center space-x-2 px-4 py-2 text-red-600 hover:text-red-700 border border-gray-300 rounded font-semibold text-sm disabled:opacity-50"
                     >
-                      {deletingTestId === selectedTest.id ? (
+                      {deletingTestId === `${selectedTest.test_type}_${selectedTest.id}` ? (
                         <div className="h-4 w-4 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
                       ) : (
                         <Trash2 size={16} />

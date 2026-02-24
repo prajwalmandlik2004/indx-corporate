@@ -69,8 +69,8 @@ export const testAPI = {
   deleteTest: (testId: number) => api.delete(`/api/test/delete/${testId}`),
   updateRemarks: (testId: number, remarks: string) =>  // ADD THIS
     api.patch(`/api/test/remarks/${testId}`, null, {
-    params: { remarks }
-  }),
+      params: { remarks }
+    }),
 };
 
 // Result APIs
@@ -79,11 +79,11 @@ export const resultAPI = {
   submitFeedback: (testId: number, feedback: string) =>  // ADD THIS
     api.patch(`/api/result/feedback/${testId}`, null, {
       params: { feedback }
-  }),
+    }),
   downloadCertificate: (testId: number) =>  // ADD THIS
     api.get(`/api/result/${testId}/certificate`, {
       responseType: 'blob'
-  }),
+    }),
   downloadQAPDF: async (testId: number) => {
     return api.get(`/api/result/${testId}/qa-pdf`, {
       responseType: 'blob',
@@ -98,7 +98,7 @@ export const resultAPI = {
     api.get(`/api/sequence-analysis/${testId}/${modelName}`),
   saveSequenceAnalysis: (data: any) =>
     api.post('/api/sequence-analysis/save', data),
-  
+
 };
 
 // Demo APIs
@@ -118,11 +118,75 @@ export const demoAPI = {
 };
 
 export const emailAPI = {
-  sendResult: (testId: number) => 
+  sendResult: (testId: number) =>
     api.post(`/api/email/send-result/${testId}`),
-  
-  resendResult: (testId: number) => 
+
+  resendResult: (testId: number) =>
     api.post(`/api/email/resend-result/${testId}`),
+};
+
+// Series Test APIs
+export const seriesTestAPI = {
+  getTypes: () => api.get('/api/series-test/types'),
+
+  startTest: (seriesType: string) =>
+    api.post('/api/series-test/start', { series_type: seriesType }),
+
+  getTest: (testId: number) =>
+    api.get(`/api/series-test/test/${testId}`),
+
+  startModule: (testId: number, moduleNumber: number) =>
+    api.post(`/api/series-test/start-module/${testId}/${moduleNumber}`),
+
+  submitModule: (data: {
+    test_id: number;
+    module_number: number;
+    answers: Array<{ question_id: number; answer_text: string }>;
+    time_taken_seconds: number;
+  }) => api.post('/api/series-test/submit-module', data),
+
+  getResult: (testId: number) =>
+    api.get(`/api/series-test/result/${testId}`),
+
+  getDashboard: () =>
+    api.get('/api/series-test/dashboard'),
+
+  deleteTest: (testId: number) =>
+    api.delete(`/api/series-test/delete/${testId}`),
+
+  updateRemarks: (testId: number, remarks: string) =>
+    api.patch(`/api/series-test/remarks/${testId}`, null, {
+      params: { remarks }
+    }),
+
+  submitFeedback: (testId: number, feedback: string) =>
+    api.post(`/api/series-test/feedback/${testId}`, { feedback }),
+
+  downloadQAAPDF: (testId: number, modelName: string) =>
+    api.get(`/api/series-test/qaa-pdf/${testId}/${modelName}`, { responseType: 'blob' }),
+
+  sendEmail: (testId: number) =>
+    api.post(`/api/series-test/send-email/${testId}`),
+
+  downloadCertificate: (testId: number) =>
+    api.get(`/api/series-test/certificate/${testId}`, { responseType: 'blob' }),
+
+  downloadQAPDF: (testId: number) =>
+    api.get(`/api/series-test/qa-pdf/${testId}`, { responseType: 'blob' }),
+
+  getAnswers: (testId: number) =>
+    api.get(`/api/series-test/answers/${testId}`),
+
+  getAnalysisStatus: (testId: number) =>
+    api.get(`/api/series-test/analysis-status/${testId}`),
+};
+
+// Stats APIs (Admin only)
+export const statsAPI = {
+  getOverview: () => api.get('/api/stats/overview'),
+  getScoreDistribution: () => api.get('/api/stats/score-distribution'),
+  getAIModelAccuracy: () => api.get('/api/stats/ai-model-accuracy'),
+  getSeriesBreakdown: () => api.get('/api/stats/series-breakdown'),
 };
 
 export default api;

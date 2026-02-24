@@ -17,3 +17,4 @@ class User(Base):
     
     # Relationships
     test_attempts = relationship("TestAttempt", back_populates="user")
+    series_test_attempts = relationship("SeriesTestAttempt", back_populates="user")

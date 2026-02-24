@@ -146,24 +146,28 @@ async def submit_test(
         "score": test.score
     }
 
-@router.get("/dashboard", response_model=List[TestDashboardItem])
+@router.get("/dashboard")
 async def get_test_dashboard(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
-    """Get all tests taken by the user"""
-    
-    # tests = db.query(TestAttempt).filter(
-    #     TestAttempt.user_id == current_user.id
-    # ).order_by(TestAttempt.created_at.desc()).all()
+    """Get all tests taken by the user (both old tests and series tests)"""
+    from ..models.series_test import SeriesTestAttempt
 
-    tests = db.query(TestAttempt).order_by(
+    # Fetch old tests
+    old_tests = db.query(TestAttempt).order_by(
         TestAttempt.created_at.desc()
     ).all()
 
-    
+    # Fetch series tests
+    series_tests = db.query(SeriesTestAttempt).order_by(
+        SeriesTestAttempt.created_at.desc()
+    ).all()
+
     result = []
-    for test in tests:
+
+    # Add old tests
+    for test in old_tests:
         test_dict = {
             "id": test.id,
             "test_name": test.test_name,
@@ -175,19 +179,46 @@ async def get_test_dashboard(
             "remarks": test.remarks,
             "feedback": test.feedback,
             "certificate_available": test.completed and test.score is not None,
-            # "user": {
-            #     "full_name": test.user.full_name,
-            #     "email": test.user.email
-            # }
             "user": {
                 "full_name": test.user.full_name if test.user else None,
                 "email": test.user.email if test.user else None
             } if test.user else None,
-            "answers": test.answers
-
+            "answers": test.answers,
+            "test_type": "old"
         }
         result.append(test_dict)
-    
+
+    # Add series tests
+    for test in series_tests:
+        # Combine all answers from modules
+        all_answers = []
+        all_answers.extend(test.module_1_answers or [])
+        all_answers.extend(test.module_2_answers or [])
+        all_answers.extend(test.module_3_answers or [])
+
+        test_dict = {
+            "id": test.id,
+            "test_name": test.test_name,
+            "category": "series",
+            "level": test.series_type,
+            "score": test.score,
+            "completed": test.completed_at,
+            "created_at": test.created_at,
+            "remarks": test.remarks,
+            "feedback": test.feedback,
+            "certificate_available": test.is_completed and test.score is not None,
+            "user": {
+                "full_name": test.user.full_name if test.user else None,
+                "email": test.user.email if test.user else None
+            } if test.user else None,
+            "answers": all_answers,
+            "test_type": "series"
+        }
+        result.append(test_dict)
+
+    # Sort combined results by created_at descending
+    result.sort(key=lambda x: x["created_at"], reverse=True)
+
     return result
 
 @router.get("/categories")

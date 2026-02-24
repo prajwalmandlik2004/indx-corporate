@@ -29,9 +29,10 @@ export default function Footer() {
           <div className="mt-12">
             {/* <h3 className="font-bold text-lg mb-4">Liens rapides</h3> */}
             <ul className="space-y-2">
-              <li><Link href="/demo" className="text-blue-100 hover:text-white transition-colors">Plateforme</Link></li>
+              {/* <li><Link href="/demo" className="text-blue-100 hover:text-white transition-colors">Plateforme</Link></li> */}
               {/* <li><Link href="/test-dashboard" className="text-blue-100 hover:text-white transition-colors">Dashboard</Link></li> */}
               <li><Link href="/about" className="text-blue-100 hover:text-white transition-colors">À propos d’INDX</Link></li>
+              <li><Link href="/privacy" className="text-blue-100 hover:text-white transition-colors">Légale</Link></li>
             </ul>
           </div>
 

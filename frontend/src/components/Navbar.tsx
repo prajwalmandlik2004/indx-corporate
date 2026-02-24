@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Menu, X, User, LogOut, Home, BookOpen, BarChart3, Info, Beaker, Brain } from 'lucide-react';
+import { Menu, X, User, LogOut, Home, BookOpen, BarChart3, Info, Beaker, Brain, TrendingUp } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
 import AutoLanguageSelector from '@/src/components/AutoLanguageSelector';
@@ -14,43 +14,64 @@ export default function Navbar() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [testSeries, setTestSeries] = useState([
-    { id: 'series_25_a', name: 'Série 25 - T1' },
-    { id: 'series_25_f', name: 'Série 25 - CTX1' },
-    { id: 'series_25_g', name: 'Série 25 - CTX2' },
-    { id: 'series_25_i', name: 'Série 25 - CTX2.5' },
-    { id: 'series_25_h', name: 'Série 25 - CTX3' },
-    { id: 'series_15_j', name: 'Série 15 - CTX4' },
-    { id: 'series_1_k', name: 'Série 1 - Admin' },
+  const [testSeries, setTestSeries] = useState<{ id: string; name: string; isNewSeries?: boolean }[]>([
+    // { id: 'series_25_a', name: 'Série 25 - T1' },
+    // { id: 'series_25_f', name: 'Série 25 - CTX1' },
+    // { id: 'series_25_g', name: 'Série 25 - CTX2' },
+    // { id: 'series_25_i', name: 'Série 25 - CTX2.5' },
+    // { id: 'series_25_h', name: 'Série 25 - CTX3' },
+    // { id: 'series_15_j', name: 'Série 15 - CTX4' },
+    // { id: 'series_1_k', name: 'Série 1 - Admin' },
+    { id: 'mono', name: 'M1 Series', isNewSeries: true },
+    { id: 'bi', name: 'M2 Series', isNewSeries: true },
+    { id: 'tri', name: 'M3 Series', isNewSeries: true },
+    { id: 'mt', name: 'M1 Series Admin', isNewSeries: true },
+    { id: 'bt', name: 'M2 Series Admin', isNewSeries: true },
+    { id: 'tt', name: 'M3 Series Admin', isNewSeries: true },
   ]);
 
   useEffect(() => {
     if (isAdmin) {
       setTestSeries([
-        { id: 'series_a', name: 'Série 15 - S1' },
-        { id: 'series_b', name: 'Série 15 - S2' },
-        { id: 'series_c', name: 'Série 15 - S3' },
-        { id: 'series_25_a', name: 'Série 25 - T1' },
-        { id: 'series_25_b', name: 'Série 25 - T2' },
-        { id: 'series_25_c', name: 'Série 25 - T3' },
-        { id: 'series_25_d', name: 'Série 25 - CTX' },
-        { id: 'series_25_e', name: 'Série 25 - CTX0' },
-        { id: 'series_25_f', name: 'Série 25 - CTX1' },
-        { id: 'series_25_g', name: 'Série 25 - CTX2' },
-        { id: 'series_25_i', name: 'Série 25 - CTX2.5' },
-        { id: 'series_25_h', name: 'Série 25 - CTX3' },
-        { id: 'series_15_j', name: 'Série 15 - CTX4' },
-        { id: 'series_1_k', name: 'Série 1 - Admin' },
+        // New Series Tests (v3.0)
+        { id: 'mono', name: 'M1 Series', isNewSeries: true },
+        { id: 'bi', name: 'M2 Series', isNewSeries: true },
+        { id: 'tri', name: 'M3 Series', isNewSeries: true },
+        { id: 'mt', name: 'M1 Series Admin', isNewSeries: true },
+        { id: 'bt', name: 'M2 Series Admin', isNewSeries: true },
+        { id: 'tt', name: 'M3 Series Admin', isNewSeries: true },
+
+        // Divider label
+        // { id: 'divider', name: '── Old Tests ──' },
+
+        // Old Series Tests
+        // { id: 'series_a', name: 'Série 15 - S1' },
+        // { id: 'series_b', name: 'Série 15 - S2' },
+        // { id: 'series_c', name: 'Série 15 - S3' },
+        // { id: 'series_25_a', name: 'Série 25 - T1' },
+        // { id: 'series_25_b', name: 'Série 25 - T2' },
+        // { id: 'series_25_c', name: 'Série 25 - T3' },
+        // { id: 'series_25_d', name: 'Série 25 - CTX' },
+        // { id: 'series_25_e', name: 'Série 25 - CTX0' },
+        // { id: 'series_25_f', name: 'Série 25 - CTX1' },
+        // { id: 'series_25_g', name: 'Série 25 - CTX2' },
+        // { id: 'series_25_i', name: 'Série 25 - CTX2.5' },
+        // { id: 'series_25_h', name: 'Série 25 - CTX3' },
+        // { id: 'series_15_j', name: 'Série 15 - CTX4' },
+        // { id: 'series_1_k', name: 'Série 1 - Admin' },
       ]);
     } else {
       setTestSeries([
-        { id: 'series_25_a', name: 'Série 25 - T1' },
-        { id: 'series_25_f', name: 'Série 25 - CTX1' },
-        { id: 'series_25_g', name: 'Série 25 - CTX2' },
-        { id: 'series_25_i', name: 'Série 25 - CTX2.5' },
-        { id: 'series_25_h', name: 'Série 25 - CTX3' },
-        { id: 'series_15_j', name: 'Série 15 - CTX4' },
-        { id: 'series_1_k', name: 'Série 1 - Admin' },
+        // { id: 'series_25_a', name: 'Série 25 - T1' },
+        // { id: 'series_25_f', name: 'Série 25 - CTX1' },
+        // { id: 'series_25_g', name: 'Série 25 - CTX2' },
+        // { id: 'series_25_i', name: 'Série 25 - CTX2.5' },
+        // { id: 'series_25_h', name: 'Série 25 - CTX3' },
+        // { id: 'series_15_j', name: 'Série 15 - CTX4' },
+        // { id: 'series_1_k', name: 'Série 1 - Admin' },
+        { id: 'mono', name: 'M1 Series', isNewSeries: true },
+        { id: 'bi', name: 'M2 Series', isNewSeries: true },
+        { id: 'tri', name: 'M3 Series', isNewSeries: true },
       ]);
     }
   }, [isAdmin]);
@@ -101,11 +122,32 @@ export default function Navbar() {
   //   setIsOpen(false);
   // };
 
-  const handleTestSelect = async (seriesId: string) => {
+  const handleTestSelect = async (test: { id: string; name: string; isNewSeries?: boolean }) => {
+    // Skip divider items
+    if (test.id === 'divider') return;
+
+    // Handle new series tests (v3.0)
+    if (test.isNewSeries) {
+      setDropdownOpen(false);
+      setIsOpen(false);
+
+      // Check if user is logged in
+      const token = localStorage.getItem('token');
+      if (token) {
+        // Logged in user - go directly to test info page
+        router.push(`/series-test/new?type=${test.id}`);
+      } else {
+        // Guest user - redirect to series-platform with startTest param to show guest modal
+        router.push(`/series-platform?startTest=${test.id}`);
+      }
+      return;
+    }
+
+    // Handle old demo tests
     const token = localStorage.getItem('token');
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/demo/start/${seriesId}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/demo/start/${test.id}`, {
         method: 'POST',
         headers: {
           ...(token && { 'Authorization': `Bearer ${token}` }),  // Only add if exists
@@ -166,12 +208,14 @@ export default function Navbar() {
     { href: '/mission', label: 'Mission/Vision', icon: Home },
     // { href: '/informations', label: 'Information', icon: Info },
     { href: '/partnerships', label: 'Partenariats', icon: Info },
-    { href: '/demo', label: 'Plateforme', icon: Beaker },
+    // { href: '/demo', label: 'Plateforme', icon: Beaker },
+    // { href: '/series-platform', label: 'Plateforme', icon: BarChart3 },
     // { href: '/test-platform', label: 'Test Platform', icon: BookOpen },
     // { href: '/test-dashboard', label: 'Dashboard', icon: BarChart3 },
     ...(isAdmin ? [{ href: '/test-dashboard', label: 'Dashboard', icon: BarChart3 }] : []),
-    { href: '/about', label: 'À propos d’INDX', icon: BarChart3 },
-    { href: '/privacy', label: 'Légales', icon: BarChart3 },
+    ...(isAdmin ? [{ href: '/stats', label: 'Stats', icon: TrendingUp }] : []),
+    { href: '/about', label: "À propos d'INDX", icon: BarChart3 },
+    { href: '/privacy', label: 'Légale', icon: BarChart3 },
 
   ];
 
@@ -196,11 +240,11 @@ export default function Navbar() {
             {/* <div className="w-10 h-10 bg-gradient-to-br from-[#050E3C] to-[#050E3C]  flex items-center justify-center">
               <span className="text-white font-bold text-xl"><Brain /></span>
             </div> */}
-            <span className="text-4xl font-bold text-white">INDX</span>
+            <span className="text-3xl font-bold text-white">INDX</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             {navLinks.slice(0, 4).map((link) => (
               <Link
                 key={link.href}
@@ -223,15 +267,21 @@ export default function Navbar() {
               </button>
 
               {dropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 z-50">
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 z-50 max-h-96 overflow-y-auto">
                   {testSeries.map((test) => (
-                    <button
-                      key={test.id}
-                      onClick={() => handleTestSelect(test.id)}
-                      className="w-full text-left px-4 py-2 text-[#050E3C] hover:bg-[#050E3C] hover:text-white transition-colors"
-                    >
-                      {test.name}
-                    </button>
+                    test.id === 'divider' ? (
+                      <div key={test.id} className="px-4 py-2 text-xs text-gray-400 text-center">
+                        {test.name}
+                      </div>
+                    ) : (
+                      <button
+                        key={test.id}
+                        onClick={() => handleTestSelect(test)}
+                        className={`w-full text-left px-4 py-2 text-[#050E3C] hover:bg-[#050E3C] hover:text-white transition-colors ${test.isNewSeries ? 'font-semibold' : ''}`}
+                      >
+                        {test.name}
+                      </button>
+                    )
                   ))}
                 </div>
               )}
@@ -322,16 +372,22 @@ export default function Navbar() {
               {dropdownOpen && (
                 <div className="pl-4 mt-2 space-y-2 max-h-60 overflow-y-auto">
                   {testSeries.map((test) => (
-                    <button
-                      key={test.id}
-                      onClick={() => {
-                        handleTestSelect(test.id);
-                        setIsOpen(false);
-                      }}
-                      className="block w-full text-left text-white/80 py-1 text-sm"
-                    >
-                      {test.name}
-                    </button>
+                    test.id === 'divider' ? (
+                      <div key={test.id} className="text-xs text-white/50 text-center py-1">
+                        {test.name}
+                      </div>
+                    ) : (
+                      <button
+                        key={test.id}
+                        onClick={() => {
+                          handleTestSelect(test);
+                          setIsOpen(false);
+                        }}
+                        className={`block w-full text-left text-white/80 py-1 text-sm ${test.isNewSeries ? 'font-semibold' : ''}`}
+                      >
+                        {test.name}
+                      </button>
+                    )
                   ))}
                 </div>
               )}
@@ -371,7 +427,7 @@ export default function Navbar() {
                 </button>
                 <div className="flex items-center justify-left py-2">
                   {/* <span className="text-white">Language</span> */}
-                  <AutoLanguageSelector /> 
+                  <AutoLanguageSelector />
                 </div>
               </>
             ) : (
@@ -381,7 +437,7 @@ export default function Navbar() {
                 </Link>
                 <div className="flex items-center justify-left py-2">
                   {/* <span className="text-white">Language</span> */}
-                  <AutoLanguageSelector /> 
+                  <AutoLanguageSelector />
                 </div>
                 {/* <Link href="/signup" className="block w-full btn-primary text-center rounded-none" onClick={() => setIsOpen(false)}>
                   Inscription
